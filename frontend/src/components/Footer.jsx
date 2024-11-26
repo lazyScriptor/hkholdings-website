@@ -36,7 +36,7 @@ function Footer() {
       }}
     >
       {/* Overlay with 60% opacity */}
-      <div className="absolute inset-0 bg-brandBlack opacity-80"></div>
+      <div className="absolute inset-0 bg-brandLightMaroon/30"></div>
 
       {/* Content container */}
       <div className="container relative z-10 py-12">

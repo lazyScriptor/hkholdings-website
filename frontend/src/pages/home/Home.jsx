@@ -9,13 +9,16 @@ import Slider from "react-slick";
 import Strip1 from "./Strip1";
 import Footer from "../../components/Footer";
 import AboutusStrip from "../aboutus/AboutusStrip";
+import WhyChooseUs from "../whychooseus/WhyChooseUs";
+import BottomFooter from "../../components/BottomFooter";
+import QuantityBar from "../quantity/QuantityBar";
 
 const settings = {
   dots: true, // Show navigation dots
   infinite: true, // Infinite loop
   speed: 1000, // Transition speed
   autoplay: true, // Autoplay the carousel
-  autoplaySpeed: 3000, // Autoplay speed in ms
+  autoplaySpeed: 30000, // Autoplay speed in ms
   fade: true, // Enable fade transition
 };
 function Home() {
@@ -26,9 +29,13 @@ function Home() {
       {/* Slick Carousel */}
       <Sliderr />
 
-      <AboutusStrip/>
+      <AboutusStrip />
       <Strip1 />
+      <div className="h-8 my-1.5 bg-brandLightMaroon"></div>
+      <WhyChooseUs />
+      <QuantityBar/>
       <Footer />
+      <BottomFooter/>
     </div>
   );
 }
@@ -41,11 +48,11 @@ const Sliderr = () => {
       <Slider {...settings}>
         {/* Slide 1 */}
         <div className="relative h-screen ">
-          <div 
-            className="absolute inset-0 bg-cover bg-center"
+          <div
+            className="absolute inset-0 bg-cover bg-center h-full "
             style={{ backgroundImage: `url(${heroImg})` }}
           >
-            <div className="absolute inset-0 flex flex-col items-center justify-center bg-black/60 text-white">
+            <div className="absolute inset-0 flex flex-col items-center justify-center  bg-brandLightMaroon/30  text-white">
               <div className="container  flex flex-col items-center justify-center">
                 <h1 className=" text-4xl md:text-7xl font-bold mb-4 text-center">
                   IGNITING INNOVATION THROUGH CRAFTMANSHIP
@@ -69,7 +76,7 @@ const Sliderr = () => {
             className="absolute inset-0 bg-cover bg-center"
             style={{ backgroundImage: `url(${heroImg2})` }}
           >
-            <div className="absolute inset-0 flex flex-col items-center justify-center bg-black/60 text-white">
+            <div className="absolute inset-0 flex flex-col items-center justify-center bg-brandLightMaroon/30   text-white">
               <div className="container flex flex-col items-center justify-center">
                 <h1 className="text-4xl md:text-7xl  font-bold mb-4 text-center">
                   IGNITING INNOVATION THROUGH CRAFTMANSHIP
@@ -93,7 +100,7 @@ const Sliderr = () => {
             className="absolute inset-0 bg-cover bg-center"
             style={{ backgroundImage: `url(${heroImg3})` }}
           >
-            <div className="absolute inset-0 flex flex-col items-center justify-center bg-black/60 text-white">
+            <div className="absolute inset-0 flex flex-col items-center justify-center bg-brandLightMaroon/30   text-white">
               <div className="container flex flex-col items-center justify-center">
                 <h1 className="text-4xl md:text-7xl  font-bold mb-4 text-center">
                   IGNITING INNOVATION THROUGH CRAFTMANSHIP
@@ -117,7 +124,7 @@ const Sliderr = () => {
             className="absolute inset-0 bg-cover bg-center"
             style={{ backgroundImage: `url(${heroImg4})` }}
           >
-            <div className="absolute inset-0 flex flex-col items-center justify-center bg-black/60 text-white">
+            <div className="absolute inset-0 flex flex-col items-center justify-center bg-brandLightMaroon/30   text-white">
               <div className="container flex flex-col items-center justify-center">
                 <h1 className="text-4xl md:text-7xl font-bold mb-4 text-center">
                   IGNITING INNOVATION THROUGH CRAFTMANSHIP

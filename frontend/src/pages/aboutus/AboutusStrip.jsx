@@ -10,16 +10,16 @@ function AboutusStrip() {
           <div className="flex  md:col-span-2  justify-center gap-1 ">
 
             <div className="flex items-start">
-              <img src={image1} alt="" loading={lazy} className="w-36"/>
+              <img src={image1} alt="" loading={lazy} className="w-36 shadow-2xl rounded-2xl"/>
             </div>
             <div className="flex items-end">
-              <img src={image2} alt="" loading={lazy} className="w-36"/>
+              <img src={image2} alt="" loading={lazy} className="w-36 shadow-2xl rounded-2xl"/>
             </div>
 
             
           </div>
           {/* text section */}
-          <div className="md:col-span-3  flex flex-col gap-4">
+          <div className="md:col-span-3  flex flex-col gap-8">
             <h1 className="text-brandLightMaroon">About us</h1>
             <div>
               <h2 className="text-brandDarkMaroon text-2xl">
