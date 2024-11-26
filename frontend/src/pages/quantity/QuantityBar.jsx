@@ -12,7 +12,7 @@ function QuantityBar() {
     >
       <div className="container">
         <div className="py-8 flex justify-center flex-col items-center gap-4">
-          <h1 className="text-3xl text-brandWhite uppercase">
+          <h1 className="text-3xl text-brandWhite uppercase text-center">
             helping a local business reinvent
           </h1>
 

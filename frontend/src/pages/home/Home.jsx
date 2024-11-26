@@ -1,5 +1,5 @@
 import React from "react";
-import heroImg from "../../assets/hero.webp";
+import hero from "../../assets/hero.webp";
 import heroImg2 from "../../assets/hero2.webp";
 import heroImg3 from "../../assets/hero3.webp";
 import heroImg4 from "../../assets/hero4.webp";
@@ -12,6 +12,7 @@ import AboutusStrip from "../aboutus/AboutusStrip";
 import WhyChooseUs from "../whychooseus/WhyChooseUs";
 import BottomFooter from "../../components/BottomFooter";
 import QuantityBar from "../quantity/QuantityBar";
+import ProjectsHomeScreen from "../projects/ProjectsHomeScreen";
 
 const settings = {
   dots: true, // Show navigation dots
@@ -33,29 +34,135 @@ function Home() {
       <Strip1 />
       <div className="h-8 my-1.5 bg-brandLightMaroon"></div>
       <WhyChooseUs />
-      <QuantityBar/>
+      <QuantityBar />
+      <ProjectsHomeScreen />
       <Footer />
-      <BottomFooter/>
+      <BottomFooter />
     </div>
   );
 }
 
 export default Home;
 
+// const Sliderr = () => {
+//   return (
+//     <>
+//       <Slider {...settings}>
+//         {/* Slide 1 */}
+//         <div className="relative h-screen ">
+//           <div
+//             className="absolute inset-0 bg-cover bg-center h-full "
+//             style={{ backgroundImage: `url(${heroImg})` }}
+//           >
+//             <div className="absolute inset-0 flex flex-col items-center justify-center  bg-brandLightMaroon/30  text-white">
+//               <div className="container  flex flex-col items-center justify-center">
+//                 <h1 className=" text-4xl md:text-7xl font-bold mb-4 text-center">
+//                   IGNITING INNOVATION THROUGH CRAFTMANSHIP
+//                 </h1>
+//                 <p className="container text-sm text-center max-w-[70%]">
+//                   There are many variations of passages of Lorem ipsum dolor sit
+//                   amet consectetur, adipisicing elit. Vero esse adipisci aliquid
+//                   necessitatibus!
+//                 </p>
+//                 <button className="mt-6 px-8 py-2 bg-brandLightMaroon hover:bg-brandDarkMaroon transition-all duration-200 text-white rounded-lg">
+//                   DISCOVER MORE
+//                 </button>
+//               </div>
+//             </div>
+//           </div>
+//         </div>
+
+//         {/* Slide 2 */}
+//         <div className="relative h-screen">
+//           <div
+//             className="absolute inset-0 bg-cover bg-center"
+//             style={{ backgroundImage: `url(${heroImg2})` }}
+//           >
+//             <div className="absolute inset-0 flex flex-col items-center justify-center bg-brandLightMaroon/30   text-white">
+//               <div className="container flex flex-col items-center justify-center">
+//                 <h1 className="text-4xl md:text-7xl  font-bold mb-4 text-center">
+//                   IGNITING INNOVATION THROUGH CRAFTMANSHIP
+//                 </h1>
+//                 <p className="container text-sm text-center max-w-[70%]">
+//                   There are many variations of passages of Lorem ipsum dolor sit
+//                   amet consectetur, adipisicing elit. Vero esse adipisci aliquid
+//                   necessitatibus!
+//                 </p>
+//                 <button className="mt-6 px-8 py-2 bg-brandLightMaroon hover:bg-brandDarkMaroon transition-all duration-200 text-white">
+//                   DISCOVER MORE
+//                 </button>
+//               </div>
+//             </div>
+//           </div>
+//         </div>
+
+//         {/* Slide 3 */}
+//         <div className="relative h-screen">
+//           <div
+//             className="absolute inset-0 bg-cover bg-center"
+//             style={{ backgroundImage: `url(${heroImg3})` }}
+//           >
+//             <div className="absolute inset-0 flex flex-col items-center justify-center bg-brandLightMaroon/30   text-white">
+//               <div className="container flex flex-col items-center justify-center">
+//                 <h1 className="text-4xl md:text-7xl  font-bold mb-4 text-center">
+//                   IGNITING INNOVATION THROUGH CRAFTMANSHIP
+//                 </h1>
+//                 <p className="container text-sm text-center max-w-[70%]">
+//                   There are many variations of passages of Lorem ipsum dolor sit
+//                   amet consectetur, adipisicing elit. Vero esse adipisci aliquid
+//                   necessitatibus!
+//                 </p>
+//                 <button className="mt-6 px-8 py-2 bg-brandLightMaroon hover:bg-brandDarkMaroon transition-all duration-200 text-white">
+//                   DISCOVER MORE
+//                 </button>
+//               </div>
+//             </div>
+//           </div>
+//         </div>
+
+//         {/* Slide 4 */}
+//         <div className="relative h-screen">
+//           <div
+//             className="absolute inset-0 bg-cover bg-center"
+//             style={{ backgroundImage: `url(${heroImg4})` }}
+//           >
+//             <div className="absolute inset-0 flex flex-col items-center justify-center bg-brandLightMaroon/30   text-white">
+//               <div className="container flex flex-col items-center justify-center">
+//                 <h1 className="text-4xl md:text-7xl font-bold mb-4 text-center">
+//                   IGNITING INNOVATION THROUGH CRAFTMANSHIP
+//                 </h1>
+//                 <p className="container text-sm text-center max-w-[70%]">
+//                   There are many variations of passages of Lorem ipsum dolor sit
+//                   amet consectetur, adipisicing elit. Vero esse adipisci aliquid
+//                   necessitatibus!
+//                 </p>
+//                 <button className="mt-6 px-8 py-2 bg-brandLightMaroon hover:bg-brandDarkMaroon transition-all duration-200 text-white">
+//                   DISCOVER MORE
+//                 </button>
+//               </div>
+//             </div>
+//           </div>
+//         </div>
+//       </Slider>
+//       <div className="h-8 mb-1.5 bg-brandLightMaroon"></div>
+//     </>
+//   );
+// };
+
 const Sliderr = () => {
   return (
-    <>
+    <div className="overflow-x-hidden">
       <Slider {...settings}>
         {/* Slide 1 */}
-        <div className="relative h-screen ">
+        <div className="relative h-screen">
           <div
-            className="absolute inset-0 bg-cover bg-center h-full "
-            style={{ backgroundImage: `url(${heroImg})` }}
+            className="absolute inset-0 bg-cover bg-center h-full"
+            style={{ backgroundImage: `url(${hero})` }}
           >
-            <div className="absolute inset-0 flex flex-col items-center justify-center  bg-brandLightMaroon/30  text-white">
-              <div className="container  flex flex-col items-center justify-center">
-                <h1 className=" text-4xl md:text-7xl font-bold mb-4 text-center">
-                  IGNITING INNOVATION THROUGH CRAFTMANSHIP
+            <div className="absolute inset-0 flex flex-col items-center justify-center bg-brandLightMaroon/30 text-white">
+              <div className="container flex flex-col items-center justify-center">
+                <h1 className="text-4xl md:text-7xl font-bold mb-4 text-center">
+                  IGNITING INNOVATION THROUGH CRAFTSMANSHIP
                 </h1>
                 <p className="container text-sm text-center max-w-[70%]">
                   There are many variations of passages of Lorem ipsum dolor sit
@@ -70,79 +177,82 @@ const Sliderr = () => {
           </div>
         </div>
 
-        {/* Slide 2 */}
-        <div className="relative h-screen">
+          {/* Slide 2 */}
+          <div className="relative h-screen">
           <div
-            className="absolute inset-0 bg-cover bg-center"
+            className="absolute inset-0 bg-cover bg-center h-full"
             style={{ backgroundImage: `url(${heroImg2})` }}
           >
-            <div className="absolute inset-0 flex flex-col items-center justify-center bg-brandLightMaroon/30   text-white">
-              <div className="container flex flex-col items-center justify-center">
-                <h1 className="text-4xl md:text-7xl  font-bold mb-4 text-center">
-                  IGNITING INNOVATION THROUGH CRAFTMANSHIP
-                </h1>
-                <p className="container text-sm text-center max-w-[70%]">
-                  There are many variations of passages of Lorem ipsum dolor sit
-                  amet consectetur, adipisicing elit. Vero esse adipisci aliquid
-                  necessitatibus!
-                </p>
-                <button className="mt-6 px-8 py-2 bg-brandLightMaroon hover:bg-brandDarkMaroon transition-all duration-200 text-white">
-                  DISCOVER MORE
-                </button>
-              </div>
-            </div>
-          </div>
-        </div>
-
-        {/* Slide 3 */}
-        <div className="relative h-screen">
-          <div
-            className="absolute inset-0 bg-cover bg-center"
-            style={{ backgroundImage: `url(${heroImg3})` }}
-          >
-            <div className="absolute inset-0 flex flex-col items-center justify-center bg-brandLightMaroon/30   text-white">
-              <div className="container flex flex-col items-center justify-center">
-                <h1 className="text-4xl md:text-7xl  font-bold mb-4 text-center">
-                  IGNITING INNOVATION THROUGH CRAFTMANSHIP
-                </h1>
-                <p className="container text-sm text-center max-w-[70%]">
-                  There are many variations of passages of Lorem ipsum dolor sit
-                  amet consectetur, adipisicing elit. Vero esse adipisci aliquid
-                  necessitatibus!
-                </p>
-                <button className="mt-6 px-8 py-2 bg-brandLightMaroon hover:bg-brandDarkMaroon transition-all duration-200 text-white">
-                  DISCOVER MORE
-                </button>
-              </div>
-            </div>
-          </div>
-        </div>
-
-        {/* Slide 4 */}
-        <div className="relative h-screen">
-          <div
-            className="absolute inset-0 bg-cover bg-center"
-            style={{ backgroundImage: `url(${heroImg4})` }}
-          >
-            <div className="absolute inset-0 flex flex-col items-center justify-center bg-brandLightMaroon/30   text-white">
+            <div className="absolute inset-0 flex flex-col items-center justify-center bg-brandLightMaroon/30 text-white">
               <div className="container flex flex-col items-center justify-center">
                 <h1 className="text-4xl md:text-7xl font-bold mb-4 text-center">
-                  IGNITING INNOVATION THROUGH CRAFTMANSHIP
+                  IGNITING INNOVATION THROUGH CRAFTSMANSHIP
                 </h1>
                 <p className="container text-sm text-center max-w-[70%]">
                   There are many variations of passages of Lorem ipsum dolor sit
                   amet consectetur, adipisicing elit. Vero esse adipisci aliquid
                   necessitatibus!
                 </p>
-                <button className="mt-6 px-8 py-2 bg-brandLightMaroon hover:bg-brandDarkMaroon transition-all duration-200 text-white">
+                <button className="mt-6 px-8 py-2 bg-brandLightMaroon hover:bg-brandDarkMaroon transition-all duration-200 text-white rounded-lg">
                   DISCOVER MORE
                 </button>
               </div>
             </div>
           </div>
         </div>
+
+          {/* Slide 3 */}
+          <div className="relative h-screen">
+          <div
+            className="absolute inset-0 bg-cover bg-center h-full"
+            style={{ backgroundImage: `url(${heroImg3})` }}
+          >
+            <div className="absolute inset-0 flex flex-col items-center justify-center bg-brandLightMaroon/30 text-white">
+              <div className="container flex flex-col items-center justify-center">
+                <h1 className="text-4xl md:text-7xl font-bold mb-4 text-center">
+                  IGNITING INNOVATION THROUGH CRAFTSMANSHIP
+                </h1>
+                <p className="container text-sm text-center max-w-[70%]">
+                  There are many variations of passages of Lorem ipsum dolor sit
+                  amet consectetur, adipisicing elit. Vero esse adipisci aliquid
+                  necessitatibus!
+                </p>
+                <button className="mt-6 px-8 py-2 bg-brandLightMaroon hover:bg-brandDarkMaroon transition-all duration-200 text-white rounded-lg">
+                  DISCOVER MORE
+                </button>
+              </div>
+            </div>
+          </div>
+        </div>
+
+          {/* Slide 4 */}
+          <div className="relative h-screen">
+          <div
+            className="absolute inset-0 bg-cover bg-center h-full"
+            style={{ backgroundImage: `url(${heroImg4})` }}
+          >
+            <div className="absolute inset-0 flex flex-col items-center justify-center bg-brandLightMaroon/30 text-white">
+              <div className="container flex flex-col items-center justify-center">
+                <h1 className="text-4xl md:text-7xl font-bold mb-4 text-center">
+                  IGNITING INNOVATION THROUGH CRAFTSMANSHIP
+                </h1>
+                <p className="container text-sm text-center max-w-[70%]">
+                  There are many variations of passages of Lorem ipsum dolor sit
+                  amet consectetur, adipisicing elit. Vero esse adipisci aliquid
+                  necessitatibus!
+                </p>
+                <button className="mt-6 px-8 py-2 bg-brandLightMaroon hover:bg-brandDarkMaroon transition-all duration-200 text-white rounded-lg">
+                  DISCOVER MORE
+                </button>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        {/* Additional Slides */}
+        {/* Repeat similar structure for other slides */}
       </Slider>
       <div className="h-8 mb-1.5 bg-brandLightMaroon"></div>
-    </>
+    </div>
   );
 };

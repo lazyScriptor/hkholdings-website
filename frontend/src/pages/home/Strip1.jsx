@@ -3,22 +3,27 @@ import { Paper } from "@mui/material";
 import img1 from "../../assets/strip1img1.webp";
 import img2 from "../../assets/strip1img2.webp";
 import img3 from "../../assets/strip1img3.webp";
+import servicesBackgroundImage from "../../assets/servicesbackground.png";
 import Slider from "react-slick"; // Slick carousel import
 import "slick-carousel/slick/slick.css"; // Slick carousel styles
 import "slick-carousel/slick/slick-theme.css";
 
 function Strip1() {
   return (
-    <div className="bg-brandDarkMaroon py-12 flex flex-col justify-center items-center">
+    <div
+      className="bg-brandDarkMaroon py-12 flex flex-col justify-center items-center"
+      style={{ backgroundImage: `url(${servicesBackgroundImage})` }}
+    >
       <div className="py-8 flex justify-center flex-col items-center gap-4">
-        <h1 className="text-3xl text-brandWhite uppercase">Services we provided</h1>
+        <h1 className="text-3xl text-brandWhite uppercase">
+          Services we provided
+        </h1>
         <p className="text-md text-brandWhite text-opacity-70 max-w-[70%] text-center">
-              {" "}
-              There are many variations of passages about of loram ipsum
-              avalabie, but the majority have suffered alteration free in some
-              form, by injected humour, or tree randomised words which don't
-              lock even{" "}
-            </p>
+          {" "}
+          There are many variations of passages about of loram ipsum avalabie,
+          but the majority have suffered alteration free in some form, by
+          injected humour, or tree randomised words which don't lock even{" "}
+        </p>
       </div>
       <div className="container w-[90%] text-brandWhite">
         <CardComponent />
@@ -84,7 +89,9 @@ const CardComponent = () => {
     <>
       <Slider {...settings}>
         {cardComponentDetails.map((item) => (
-          <div key={item.id} className="px-2"> {/* Add padding for spacing */}
+          <div key={item.id} className="px-2">
+            {" "}
+            {/* Add padding for spacing */}
             <Paper sx={{ borderRadius: 0 }} className="bg-white">
               <div className="p-4">
                 <h2 className="font-bold">{item.title}</h2>
