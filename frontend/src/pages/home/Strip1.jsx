@@ -9,7 +9,17 @@ import "slick-carousel/slick/slick-theme.css";
 
 function Strip1() {
   return (
-    <div className="bg-brandDarkMaroon py-8">
+    <div className="bg-brandDarkMaroon py-12 flex flex-col justify-center items-center">
+      <div className="py-8 flex justify-center flex-col items-center gap-4">
+        <h1 className="text-3xl text-brandWhite uppercase">Services we provided</h1>
+        <p className="text-md text-brandWhite text-opacity-70 max-w-[70%] text-center">
+              {" "}
+              There are many variations of passages about of loram ipsum
+              avalabie, but the majority have suffered alteration free in some
+              form, by injected humour, or tree randomised words which don't
+              lock even{" "}
+            </p>
+      </div>
       <div className="container w-[90%] text-brandWhite">
         <CardComponent />
       </div>
@@ -33,14 +43,14 @@ const CardComponent = () => {
       title: "METAL WORKS",
       description:
         "Lorem ipsum dolor sit amet consectetur adipisicing elit. Quisquaiste iure a architecto, hic fuga",
-      image: img2,
+      image: img1,
     },
     {
       id: 3,
       title: "STEEL WELDING",
       description:
         "Lorem ipsum dolor sit amet consectetur adipisicing elit. Quisquaiste iure a architecto, hic fuga",
-      image: img3,
+      image: img1,
     },
   ];
 

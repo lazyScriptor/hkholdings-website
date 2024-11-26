@@ -8,6 +8,7 @@ import "slick-carousel/slick/slick-theme.css";
 import Slider from "react-slick";
 import Strip1 from "./Strip1";
 import Footer from "../../components/Footer";
+import AboutusStrip from "../aboutus/AboutusStrip";
 
 const settings = {
   dots: true, // Show navigation dots
@@ -24,7 +25,8 @@ function Home() {
     <div className="relative h-screen">
       {/* Slick Carousel */}
       <Sliderr />
-      <div className="h-8 mb-1.5 bg-brandLightMaroon"></div>
+
+      <AboutusStrip/>
       <Strip1 />
       <Footer />
     </div>
@@ -39,7 +41,7 @@ const Sliderr = () => {
       <Slider {...settings}>
         {/* Slide 1 */}
         <div className="relative h-screen ">
-          <div
+          <div 
             className="absolute inset-0 bg-cover bg-center"
             style={{ backgroundImage: `url(${heroImg})` }}
           >
@@ -53,7 +55,7 @@ const Sliderr = () => {
                   amet consectetur, adipisicing elit. Vero esse adipisci aliquid
                   necessitatibus!
                 </p>
-                <button className="mt-6 px-8 py-2 bg-brandLightMaroon hover:bg-brandDarkMaroon transition-all duration-200 text-white">
+                <button className="mt-6 px-8 py-2 bg-brandLightMaroon hover:bg-brandDarkMaroon transition-all duration-200 text-white rounded-lg">
                   DISCOVER MORE
                 </button>
               </div>
@@ -133,6 +135,7 @@ const Sliderr = () => {
           </div>
         </div>
       </Slider>
+      <div className="h-8 mb-1.5 bg-brandLightMaroon"></div>
     </>
   );
 };
