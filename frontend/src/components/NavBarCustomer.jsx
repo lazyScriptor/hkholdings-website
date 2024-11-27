@@ -5,7 +5,7 @@ import logo from "../assets/logo.webp";
 import MobileNavigation from "./MobileNavigation";
 function NavBarCustomer({ children ,number}) {
   const navBarComponents = [
-    { id: 1, name: "Home", navigate: "/home" },
+    { id: 1, name: "Home", navigate: "/" },
     { id: 2, name: "About", navigate: "/about" },
     { id: 3, name: "Services", navigate: "/services" },
     { id: 4, name: "Blog", navigate: "/blog" },

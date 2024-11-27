@@ -9,8 +9,8 @@ const About = React.lazy(() => import("./pages/aboutus/AboutUsMain"));
 const Services = React.lazy(() => import("./pages/services/ServicesMain"));
 // const Pages = React.lazy(() => import("./pages/pages/Pages"));
 // const Shop = React.lazy(() => import("./pages/shop/Shop"));
-// const Blog = React.lazy(() => import("./pages/blog/Blog"));
-// const Contact = React.lazy(() => import("./pages/contact/Contact"));
+const Blog = React.lazy(() => import("./pages/blog/BlogMain"));
+const Contact = React.lazy(() => import("./pages/contactus/ContactUsMain"));
 
 function RoutesCustomer() {
   tailChase.register();
@@ -18,12 +18,14 @@ function RoutesCustomer() {
     <BrowserRouter>
       <Suspense
         fallback={
-          <l-tail-chase size="40" speed="1.75" color="black"></l-tail-chase>
+          <div className="w-screen h-screen bg-brandLightMaroon flex justify-center items-center">
+            <l-tail-chase size="200" speed="2.0" color="white "></l-tail-chase>
+          </div>
         }
       >
         <Routes>
           <Route
-            path="/home"
+            path="/"
             element={
               <NavBarCustomer number={1}>
                 <Home />
@@ -48,8 +50,22 @@ function RoutesCustomer() {
           />
           <Route path="/pages" element={<>pages</>} />
           <Route path="/shop" element={<>shop</>} />
-          <Route path="/blog" element={<>blog</>} />
-          <Route path="/contact" element={<>contact</>} />
+          <Route
+            path="/blog"
+            element={
+              <NavBarCustomer number={4}>
+                <Blog />
+              </NavBarCustomer>
+            }
+          />
+          <Route
+            path="/contact"
+            element={
+              <NavBarCustomer number={5}>
+                <Contact />
+              </NavBarCustomer>
+            }
+          />
         </Routes>
       </Suspense>
     </BrowserRouter>

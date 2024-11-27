@@ -157,7 +157,7 @@ const Sliderr = () => {
         <div className="relative h-screen">
           <div
             className="absolute inset-0 bg-cover bg-center h-full"
-            style={{ backgroundImage: `url(${hero})` }}
+            style={{ backgroundImage: `url(${heroImg4})` }}
           >
             <div className="absolute inset-0 flex flex-col items-center justify-center bg-brandLightMaroon/30 text-white">
               <div className="container flex flex-col items-center justify-center">
