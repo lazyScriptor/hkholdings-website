@@ -8,10 +8,14 @@ import aboutuscharacters from "../../assets/aboutuscharacters.png";
 import Footer from "../../components/Footer";
 import BottomFooter from "../../components/BottomFooter";
 import { RiSettingsFill } from "react-icons/ri";
+
+import abt1 from "../../assets/abt1.png";
+import abt2 from "../../assets/abt2.png";
+import abt3 from "../../assets/abt3.png";
 function AboutUsMain() {
   return (
     <>
-     <div className="relative w-screen">
+      <div className="relative w-screen">
         {/* Background Image */}
         <img
           src={commonHeroImage}
@@ -29,7 +33,6 @@ function AboutUsMain() {
           </p>
         </div>
       </div>
-
 
       <div className="h-8 bg-brandLightMaroon"></div>
       <SecondPart />
@@ -153,7 +156,72 @@ const FifthPart = () => {
             but the majority have suffered alteration free in some form, by
             injected humour, or tree randomised words which don't lock even
           </p>
-          <img src={aboutuscharacters} className="py-4" alt="" />
+          <div className="flex gap-2 h-[60vh]">
+            {/* Image 1 */}
+            <div className="relative w-[30%] overflow-hidden group">
+              <img
+                src={abt1}
+                className="h-[100%] w-full object-cover transition-transform duration-300 group-hover:scale-125"
+                alt="About Us"
+              />
+              <div className="absolute inset-0 bg-black/60 flex flex-col justify-center items-center opacity-0 group-hover:opacity-100 transition-opacity duration-300">
+                <h3 className="text-white text-lg font-semibold">Name 1</h3>
+                <p className="text-white text-sm">Position 1</p>
+              </div>
+            </div>
+
+            {/* Image 2 */}
+            <div className="relative w-[30%] overflow-hidden group">
+              <img
+                src={abt2}
+                className="h-[100%] w-full object-cover transition-transform duration-300 group-hover:scale-125"
+                alt="About Us"
+              />
+              <div className="absolute inset-0 bg-black/60 flex flex-col justify-center items-center opacity-0 group-hover:opacity-100 transition-opacity duration-300">
+                <h3 className="text-white text-lg font-semibold">Name 2</h3>
+                <p className="text-white text-sm">Position 2</p>
+              </div>
+            </div>
+
+            {/* Image 3 */}
+            <div className="relative w-[30%] overflow-hidden group">
+              <img
+                src={abt3}
+                className="h-[100%] w-full object-cover transition-transform duration-300 group-hover:scale-125"
+                alt="About Us"
+              />
+              <div className="absolute inset-0 bg-black/60 flex flex-col justify-center items-center opacity-0 group-hover:opacity-100 transition-opacity duration-300">
+                <h3 className="text-white text-lg font-semibold">Name 3</h3>
+                <p className="text-white text-sm">Position 3</p>
+              </div>
+            </div>
+
+            {/* Image 1 */}
+            <div className="relative w-[30%] overflow-hidden group">
+              <img
+                src={abt1}
+                className="h-[100%] w-full object-cover transition-transform duration-300 group-hover:scale-125"
+                alt="About Us"
+              />
+              <div className="absolute inset-0 bg-black/60 flex flex-col justify-center items-center opacity-0 group-hover:opacity-100 transition-opacity duration-300">
+                <h3 className="text-white text-lg font-semibold">Name 1</h3>
+                <p className="text-white text-sm">Position 1</p>
+              </div>
+            </div>
+
+            {/* Image 2 */}
+            <div className="relative w-[30%] overflow-hidden group">
+              <img
+                src={abt2}
+                className="h-[100%] w-full object-cover transition-transform duration-300 group-hover:scale-125"
+                alt="About Us"
+              />
+              <div className="absolute inset-0 bg-black/60 flex flex-col justify-center items-center opacity-0 group-hover:opacity-100 transition-opacity duration-300">
+                <h3 className="text-white text-lg font-semibold">Name 2</h3>
+                <p className="text-white text-sm">Position 2</p>
+              </div>
+            </div>
+          </div>
         </div>
       </div>
     </>

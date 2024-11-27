@@ -15,7 +15,7 @@ function ProjectsHomeScreen() {
           </div>
           {/* text section */}
           <div className="md:col-span-3  flex flex-col gap-8">
-            <h1 className="text-brandLightMaroon capitalize">our Products</h1>
+            <h1 className="text-brandLightMaroon capitalize text-2xl font-semibold">our Products</h1>
             <div>
               <h2 className="text-brandDarkMaroon text-2xl">
                 RRECENTLY COMPLETED

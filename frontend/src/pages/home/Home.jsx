@@ -13,6 +13,7 @@ import WhyChooseUs from "../whychooseus/WhyChooseUs";
 import BottomFooter from "../../components/BottomFooter";
 import QuantityBar from "../quantity/QuantityBar";
 import ProjectsHomeScreen from "../projects/ProjectsHomeScreen";
+import { useNavigate } from "react-router-dom";
 
 const settings = {
   dots: true, // Show navigation dots
@@ -29,8 +30,10 @@ function Home() {
     <div className="relative h-screen">
       {/* Slick Carousel */}
       <Sliderr />
+      <div className="relative">
+        <AboutusStrip />
+      </div>
 
-      <AboutusStrip />
       <Strip1 />
       <div className="h-8 my-1.5 bg-brandLightMaroon"></div>
       <WhyChooseUs />
@@ -150,6 +153,7 @@ export default Home;
 // };
 
 const Sliderr = () => {
+  const navigate = useNavigate();
   return (
     <div className="overflow-x-hidden">
       <Slider {...settings}>
@@ -169,7 +173,10 @@ const Sliderr = () => {
                   amet consectetur, adipisicing elit. Vero esse adipisci aliquid
                   necessitatibus!
                 </p>
-                <button className="mt-6 px-8 py-2 bg-brandLightMaroon hover:bg-brandDarkMaroon transition-all duration-200 text-white rounded-lg">
+                <button
+                  onClick={() => navigate("/services")}
+                  className="mt-6 px-8 py-2 bg-brandLightMaroon hover:bg-brandDarkMaroon transition-all duration-200 text-white rounded-lg"
+                >
                   DISCOVER MORE
                 </button>
               </div>
@@ -177,8 +184,8 @@ const Sliderr = () => {
           </div>
         </div>
 
-          {/* Slide 2 */}
-          <div className="relative h-screen">
+        {/* Slide 2 */}
+        <div className="relative h-screen">
           <div
             className="absolute inset-0 bg-cover bg-center h-full"
             style={{ backgroundImage: `url(${heroImg2})` }}
@@ -193,7 +200,10 @@ const Sliderr = () => {
                   amet consectetur, adipisicing elit. Vero esse adipisci aliquid
                   necessitatibus!
                 </p>
-                <button className="mt-6 px-8 py-2 bg-brandLightMaroon hover:bg-brandDarkMaroon transition-all duration-200 text-white rounded-lg">
+                <button
+                  onClick={() => navigate("/services")}
+                  className="mt-6 px-8 py-2 bg-brandLightMaroon hover:bg-brandDarkMaroon transition-all duration-200 text-white rounded-lg"
+                >
                   DISCOVER MORE
                 </button>
               </div>
@@ -201,8 +211,8 @@ const Sliderr = () => {
           </div>
         </div>
 
-          {/* Slide 3 */}
-          <div className="relative h-screen">
+        {/* Slide 3 */}
+        <div className="relative h-screen">
           <div
             className="absolute inset-0 bg-cover bg-center h-full"
             style={{ backgroundImage: `url(${heroImg3})` }}
@@ -217,7 +227,10 @@ const Sliderr = () => {
                   amet consectetur, adipisicing elit. Vero esse adipisci aliquid
                   necessitatibus!
                 </p>
-                <button className="mt-6 px-8 py-2 bg-brandLightMaroon hover:bg-brandDarkMaroon transition-all duration-200 text-white rounded-lg">
+                <button
+                  onClick={() => navigate("/services")}
+                  className="mt-6 px-8 py-2 bg-brandLightMaroon hover:bg-brandDarkMaroon transition-all duration-200 text-white rounded-lg"
+                >
                   DISCOVER MORE
                 </button>
               </div>
@@ -225,8 +238,8 @@ const Sliderr = () => {
           </div>
         </div>
 
-          {/* Slide 4 */}
-          <div className="relative h-screen">
+        {/* Slide 4 */}
+        <div className="relative h-screen">
           <div
             className="absolute inset-0 bg-cover bg-center h-full"
             style={{ backgroundImage: `url(${heroImg4})` }}
@@ -241,7 +254,10 @@ const Sliderr = () => {
                   amet consectetur, adipisicing elit. Vero esse adipisci aliquid
                   necessitatibus!
                 </p>
-                <button className="mt-6 px-8 py-2 bg-brandLightMaroon hover:bg-brandDarkMaroon transition-all duration-200 text-white rounded-lg">
+                <button
+                  onClick={() => navigate("/services")}
+                  className="mt-6 px-8 py-2 bg-brandLightMaroon hover:bg-brandDarkMaroon transition-all duration-200 text-white rounded-lg"
+                >
                   DISCOVER MORE
                 </button>
               </div>

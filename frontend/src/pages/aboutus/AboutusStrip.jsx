@@ -2,8 +2,9 @@ import React, { lazy } from "react";
 import image1 from "../../assets/about1.png";
 import image2 from "../../assets/about2.png";
 import { useNavigate } from "react-router-dom";
+import { RiSettingsFill } from "react-icons/ri";
 function AboutusStrip() {
-  const navigate = useNavigate(); 
+  const navigate = useNavigate();
   const handleAboutClick = () => {
     navigate("/about");
   };
@@ -32,7 +33,9 @@ function AboutusStrip() {
           </div>
           {/* text section */}
           <div className="md:col-span-3  flex flex-col gap-8">
-            <h1 className="text-brandLightMaroon">About us</h1>
+            <h1 className="text-brandLightMaroon text-2xl font-semibold">
+              About us
+            </h1>
             <div>
               <h2 className="text-brandDarkMaroon text-2xl">
                 PROJECT WITH EXPERT & METAL
@@ -46,15 +49,14 @@ function AboutusStrip() {
               form, by injected humour, or tree randomised words which don't
               lock even{" "}
             </p>
-            <div className="px-8 py-4 bg-[#FEF6EB] text-gray-400">
-              <p className="uppercase">
-                Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do
-                eiusmod tempor incididunt
+            <div className="absolute right-0 bottom-28 px-8 md:w-[40%] py-4 bg-brandLightMaroon/10 rounded-l-xl text-gray-400">
+              <p className="capitalize flex items-center gap-2 text-lg font-semibold text-brandBlack">
+                <RiSettingsFill /> Innovation at Every Step
               </p>
             </div>
             <button
               onClick={handleAboutClick}
-              className="mt-6 px-4 self-center md:self-auto py-2 w-44 rounded-lg bg-brandLightMaroon hover:bg-brandDarkMaroon transition-all duration-200 text-white shadow-lg"
+              className="mt-20 px-4 self-center md:self-auto py-2 w-44 rounded-lg bg-brandLightMaroon hover:bg-brandDarkMaroon transition-all duration-200 text-white shadow-lg"
             >
               DISCOVER MORE
             </button>

@@ -10,7 +10,7 @@ function WhyChooseUs() {
         <div className="grid grid-cols-1 md:grid-cols-5 gap-4">
           {/* text section */}
           <div className="md:col-span-3  flex flex-col gap-8 order-2 md:order-1">
-            <h1 className="text-brandLightMaroon">Why choose us ?</h1>
+            <h1 className="text-brandLightMaroon text-2xl font-semibold">Why choose us ?</h1>
             <div>
               <h2 className="text-brandDarkMaroon text-2xl uppercase">
                 Why you should choose

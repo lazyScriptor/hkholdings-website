@@ -81,7 +81,7 @@ const Strip1 = () => {
 const Strip2 = () => {
   return (
     <>
-      <div className="bg-[#1B1513] py-12">
+      <div className="bg-brandDarkMaroon py-12">
         <div className="container flex flex-col items-center gap-4  text-brandWhite">
           <div className="p-8">
             <h1 className="text-4xl font-semibold text-center">
@@ -98,7 +98,7 @@ const Strip2 = () => {
   );
 };
 
-const styles = {
+export const styles = {
   borderRadius: 1,
   backgroundColor: "#40342F",
   "& .MuiInputLabel-root": {

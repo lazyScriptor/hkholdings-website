@@ -15,10 +15,7 @@ function NavBarCustomer({ children ,number}) {
   return (
     <div className="relative">
       {/* Navbar */}
-
-
-
-      <nav className="fixed top-0 left-0 w-full text-white z-50 max-w-full bg-gradient-to-b from-brandBlack to-black/1">
+      <nav className="fixed  top-0 left-0 w-full text-white z-50 max-w-full bg-gradient-to-b from-brandBlack to-black/1">
         <div className="container flex items-center  gap-12 h-16">
         <MobileNavigation/>
           {/* Left: Logo */}
