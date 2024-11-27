@@ -30,13 +30,13 @@ function Footer() {
   ];
   return (
     <div
-      className="py-4 bg-brandBlack mt-1.5 relative bg-cover bg-center"
+      className="py-4 bg-brandBlack  relative bg-cover bg-center"
       style={{
         backgroundImage: `url(${bgImage})`, // Replace with your image path
       }}
     >
       {/* Overlay with 60% opacity */}
-      <div className="absolute inset-0 bg-brandLightMaroon/30"></div>
+      <div className="absolute inset-0 bg-brandDarkMaroon/80"></div>
 
       {/* Content container */}
       <div className="container relative z-10 py-12">

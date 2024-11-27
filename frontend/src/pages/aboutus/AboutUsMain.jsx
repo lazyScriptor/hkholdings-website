@@ -1,6 +1,11 @@
 import React from "react";
 import aboutUsHero from "../../assets/aboutheronew.png";
 import aboutUsImage from "../../assets/aboutUsImage.png";
+import aboutusvisionImage from "../../assets/aboutusvision.png";
+import aboutusmissionimage from "../../assets/aboutusmissionimage.png";
+import aboutuscharacters from "../../assets/aboutuscharacters.png";
+import Footer from "../../components/Footer";
+import BottomFooter from "../../components/BottomFooter";
 import { RiSettingsFill } from "react-icons/ri";
 function AboutUsMain() {
   return (
@@ -20,6 +25,13 @@ function AboutUsMain() {
       </div>
       <div className="h-8 bg-brandLightMaroon"></div>
       <SecondPart />
+      <ThirdPart />
+      <FourthPart />
+      <FifthPart />
+      <div className="h-8 bg-brandLightMaroon"></div>
+
+      <Footer />
+      <BottomFooter />
     </>
   );
 }
@@ -29,13 +41,15 @@ export default AboutUsMain;
 const SecondPart = () => {
   return (
     <>
-      <div className="container pt-12">
+      <div className="container pt-12 pb-12 md:pb-0">
         <div className="grid grid-cols-1 md:grid-cols-5 gap-4">
           <div className="md:col-span-2">
             <img src={aboutUsImage} alt="aboutusImage" />
           </div>
           <div className="md:col-span-3 flex flex-col gap-8 pt-8">
-            <h1 className="uppercase text-4xl font-semibold text-center md:text-start">WHO WE ARE?</h1>
+            <h1 className="uppercase text-4xl font-semibold text-center md:text-start">
+              WHO WE ARE?
+            </h1>
             <p className="">
               Lorem ipsum odor amet, consectetuer adipiscing elit. Urna
               tincidunt lectus mi porttitor rutrum habitasse. Interdum pharetra
@@ -63,6 +77,75 @@ const SecondPart = () => {
               </div>
             </div>
           </div>
+        </div>
+      </div>
+    </>
+  );
+};
+
+const ThirdPart = () => {
+  return (
+    <>
+      <div className="bg-brandLightMaroon">
+        <div className="grid grid-cols-1 md:grid-cols-5">
+          <div className="col-span-3 flex flex-col py-12 md:pb-0 md:pt-20 items-center md:items-end justify-start  gap-8 container text-brandWhite">
+            <h1 className="text-4xl font-semibold ">Vision:</h1>
+            <p className="text-center md:text-right">
+              Lorem ipsum odor amet, consectetuer adipiscing elit. Urna
+              tincidunt lectus mi porttitor rutrum habitasse. Interdum pharetra
+              mi, et platea lobortis ex sapien. Eros eros nisl neque porttitor
+              primis elit maecenas. Viverra quam luctus phasellus class ipsum
+              duis elit vehicula nascetur.
+            </p>
+          </div>
+          <div className="col-span-2">
+            <img src={aboutusvisionImage} alt="" />
+          </div>
+        </div>
+      </div>
+      <div className="h-8" />
+    </>
+  );
+};
+
+const FourthPart = () => {
+  return (
+    <>
+      <div className="bg-brandDarkMaroon">
+        <div className="grid grid-cols-1 md:grid-cols-5">
+          <div className="col-span-2">
+            <img src={aboutusmissionimage} alt="" />
+          </div>
+          <div className="col-span-3 flex flex-col py-12 md:pb-0 md:pt-20 items-center md:items-start justify-start  gap-8 container text-brandWhite">
+            <h1 className="text-4xl font-semibold ">Mission:</h1>
+            <p className="text-center md:text-start">
+              Lorem ipsum odor amet, consectetuer adipiscing elit. Urna
+              tincidunt lectus mi porttitor rutrum habitasse. Interdum pharetra
+              mi, et platea lobortis ex sapien. Eros eros nisl neque porttitor
+              primis elit maecenas. Viverra quam luctus phasellus class ipsum
+              duis elit vehicula nascetur.
+            </p>
+          </div>
+        </div>
+      </div>
+      <div className="h-8" />
+    </>
+  );
+};
+const FifthPart = () => {
+  return (
+    <>
+      <div className="container py-12">
+        <div className="flex flex-col gap-8 justify-center items-center">
+          <h1 className="text-4xl font-semibold uppercase text-center">
+            OUR TEAM
+          </h1>
+          <p className="text-center w-[80%]">
+            There are many variations of passages about of loram ipsum avalabie,
+            but the majority have suffered alteration free in some form, by
+            injected humour, or tree randomised words which don't lock even
+          </p>
+          <img src={aboutuscharacters} className="py-4" alt="" />
         </div>
       </div>
     </>

@@ -6,7 +6,7 @@ import AboutUsMain from "./pages/aboutus/AboutUsMain";
 // Lazy load components for all routes
 const Home = React.lazy(() => import("./pages/home/Home"));
 const About = React.lazy(() => import("./pages/aboutus/AboutUsMain"));
-// const Services = React.lazy(() => import("./pages/services/Services"));
+const Services = React.lazy(() => import("./pages/services/ServicesMain"));
 // const Pages = React.lazy(() => import("./pages/pages/Pages"));
 // const Shop = React.lazy(() => import("./pages/shop/Shop"));
 // const Blog = React.lazy(() => import("./pages/blog/Blog"));
@@ -38,7 +38,14 @@ function RoutesCustomer() {
               </NavBarCustomer>
             }
           />
-          <Route path="/services" element={<>services</>} />
+          <Route
+            path="/services"
+            element={
+              <NavBarCustomer number={3}>
+                <Services />
+              </NavBarCustomer>
+            }
+          />
           <Route path="/pages" element={<>pages</>} />
           <Route path="/shop" element={<>shop</>} />
           <Route path="/blog" element={<>blog</>} />
