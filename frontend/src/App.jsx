@@ -3,7 +3,7 @@ import RoutesCustomer from "./RoutesCustomer";
 
 function App() {
   return (
-    <div className="bg-brandDarkMaroon ">
+    <div className="">
       <RoutesCustomer />
     </div>
   );

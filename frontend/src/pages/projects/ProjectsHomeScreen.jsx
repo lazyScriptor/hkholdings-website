@@ -10,7 +10,7 @@ function ProjectsHomeScreen() {
           {/* image section */}
           <div className="flex  md:col-span-2  justify-center ">
             <div className="flex items-start">
-              <img src={productsImage} alt="" />
+              <img src={productsImage} alt="" loading={lazy} className=""/>
             </div>
           </div>
           {/* text section */}
@@ -23,11 +23,10 @@ function ProjectsHomeScreen() {
               <h3 className="font-semibold text-4xl">OUR LATEST PROJECTS</h3>
             </div>
             <p className="text-md text-gray-400">
-              {" "}
               There are many variations of passages about of loram ipsum
               avalabie, but the majority have suffered alteration free in some
               form, by injected humour, or tree randomised words which don't
-              lock even{" "}
+              lock even.
             </p>
             {/* <div className="px-8 py-4 bg-[#FEF6EB] text-gray-400">
               <p className="uppercase">

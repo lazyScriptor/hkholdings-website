@@ -2,7 +2,8 @@ import React from "react";
 import heroImg from "../assets/hero.jpg";
 import { LuPhoneCall } from "react-icons/lu";
 import logo from "../assets/logo.webp";
-function NavBarCustomer({ children }) {
+import MobileNavigation from "./MobileNavigation";
+function NavBarCustomer({ children ,number}) {
   const navBarComponents = [
     { id: 1, name: "Home", navigate: "/home" },
     { id: 2, name: "About", navigate: "/about" },
@@ -14,9 +15,12 @@ function NavBarCustomer({ children }) {
   return (
     <div className="relative">
       {/* Navbar */}
-      
+
+
+
       <nav className="fixed top-0 left-0 w-full text-white z-50 max-w-full bg-gradient-to-b from-brandBlack to-black/1">
         <div className="container flex items-center  gap-12 h-16">
+        <MobileNavigation/>
           {/* Left: Logo */}
           <div className="text-xl font-bold">
             <a href="/" className="hover:text-brandLightMaroon duration-200">
@@ -28,7 +32,9 @@ function NavBarCustomer({ children }) {
           <ul className="hidden md:flex gap-8">
             {navBarComponents.map((component) => (
               <li
-                className="hover:text-brandLightMaroon duration-200 transition-all"
+                className={`${
+                  component.id == number ? "text-brandLightMaroon" : ""
+                } hover:text-brandLightMaroon duration-200 transition-all`}
                 key={component.id}
               >
                 <a href={component.navigate}>{component.name}</a>
