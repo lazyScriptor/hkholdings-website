@@ -3,7 +3,7 @@ import heroImg from "../assets/hero.jpg";
 import { LuPhoneCall } from "react-icons/lu";
 import logo from "../assets/logo.webp";
 import MobileNavigation from "./MobileNavigation";
-function NavBarCustomer({ children ,number}) {
+function NavBarCustomer({ children, number }) {
   const navBarComponents = [
     { id: 1, name: "Home", navigate: "/" },
     { id: 2, name: "About", navigate: "/about" },
@@ -17,7 +17,7 @@ function NavBarCustomer({ children ,number}) {
       {/* Navbar */}
       <nav className="fixed  top-0 left-0 w-full text-white z-50 max-w-full bg-gradient-to-b from-brandBlack to-black/1">
         <div className="container flex items-center  gap-12 h-16">
-        <MobileNavigation/>
+          <MobileNavigation />
           {/* Left: Logo */}
           <div className="text-xl font-bold">
             <a href="/" className="hover:text-brandLightMaroon duration-200">
@@ -40,11 +40,17 @@ function NavBarCustomer({ children ,number}) {
           </ul>
 
           {/* Right: Button (absolute positioning) */}
-          <div className="hidden md:block absolute top-2 right-4">
-            <button className="flex text-brandBlack hover:text-brandWhite justify-center items-center gap-2 bg-brandLightMaroon hover:bg-brandDarkMaroon font-bold py-2 px-8 duration-200 transition-all">
-              <LuPhoneCall />
-              0705123804 / 0716795913
-            </button>
+          <div className="hidden md:block absolute group top-2 right-4">
+            <a href="tel:0778408764">
+              <button className="flex rounded-full w-[200px] hover:w-[100px] text-white hover:text-brandWhite items-center gap-2 bg-green-800 hover:bg-green-600 hover:rounded-full font-bold py-2 px-8 duration-700 transition-all overflow-hidden">
+                {/* Icon */}
+                <LuPhoneCall className="transition-all duration-300 group-hover:translate-x-0 group-hover:mx-auto" />
+                {/* Text */}
+                <p className=" group-hover:w-0 group-hover:opacity-0 transition-all duration-400 whitespace-nowrap">
+                  0705123804
+                </p>
+              </button>
+            </a>
           </div>
         </div>
       </nav>

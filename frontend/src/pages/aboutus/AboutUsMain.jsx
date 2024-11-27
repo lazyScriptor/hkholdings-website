@@ -156,7 +156,7 @@ const FifthPart = () => {
             but the majority have suffered alteration free in some form, by
             injected humour, or tree randomised words which don't lock even
           </p>
-          <div className="flex gap-2 h-[60vh]">
+          <div className="flex gap-2 h-[60vh] ">
             {/* Image 1 */}
             <div className="relative w-[30%] overflow-hidden group">
               <img
@@ -209,18 +209,7 @@ const FifthPart = () => {
               </div>
             </div>
 
-            {/* Image 2 */}
-            <div className="relative w-[30%] overflow-hidden group">
-              <img
-                src={abt2}
-                className="h-[100%] w-full object-cover transition-transform duration-300 group-hover:scale-125"
-                alt="About Us"
-              />
-              <div className="absolute inset-0 bg-black/60 flex flex-col justify-center items-center opacity-0 group-hover:opacity-100 transition-opacity duration-300">
-                <h3 className="text-white text-lg font-semibold">Name 2</h3>
-                <p className="text-white text-sm">Position 2</p>
-              </div>
-            </div>
+    
           </div>
         </div>
       </div>
