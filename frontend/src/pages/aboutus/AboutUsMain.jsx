@@ -1,5 +1,6 @@
 import React from "react";
-import aboutUsHero from "../../assets/aboutheronew.png";
+import commonHeroImage from "../../assets/commonheroimage.png";
+
 import aboutUsImage from "../../assets/aboutUsImage.png";
 import aboutusvisionImage from "../../assets/aboutusvision.png";
 import aboutusmissionimage from "../../assets/aboutusmissionimage.png";
@@ -10,19 +11,26 @@ import { RiSettingsFill } from "react-icons/ri";
 function AboutUsMain() {
   return (
     <>
-      <div
-        className="py-12 h-[50vh] flex gap-4 flex-col text-brandWhite justify-center items-center"
-        style={{
-          backgroundImage: `url(${aboutUsHero})`,
-        }}
-      >
-        <h1 className=" text-4xl font-semibold">ABOUT US</h1>
-        <p className="max-w-[60%] text-center text-sm">
-          Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do
-          eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad
-          minim veniam, quis nostrud exercitation ullamco laboris nisi ut{" "}
-        </p>
+     <div className="relative w-screen">
+        {/* Background Image */}
+        <img
+          src={commonHeroImage}
+          alt="Background"
+          className="absolute w-screen h-[100vh]"
+        />
+
+        {/* Overlay Content */}
+        <div className="relative z-10 flex flex-col items-center justify-center w-full h-[60vh] text-brandWhite gap-4">
+          <h1 className="text-4xl font-semibold">About Us</h1>
+          <p className="max-w-[60%] text-center text-sm">
+            Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do
+            eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim
+            ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut{" "}
+          </p>
+        </div>
       </div>
+
+
       <div className="h-8 bg-brandLightMaroon"></div>
       <SecondPart />
       <ThirdPart />
