@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState } from "react";
 import commonHeroImage from "../../assets/commonheroimage.png";
 import { PiPhoneCallFill } from "react-icons/pi";
 import { MdLocationOn } from "react-icons/md";
@@ -6,6 +6,9 @@ import { MdEmail } from "react-icons/md";
 import TextField from "@mui/material/TextField";
 import Footer from "../../components/Footer";
 import BottomFooter from "../../components/BottomFooter";
+import { Box, Button } from "@mui/material";
+import axios from "axios";
+import LoadingComponent from '../../components/LoadingComponent'
 function ContactUsMain() {
   return (
     <div>
@@ -124,53 +127,158 @@ export const styles = {
 };
 
 const ContactForm = () => {
+  const [formData, setFormData] = useState({
+    first_name: "",
+    last_name: "",
+    email_address: "",
+    phone_number: "",
+    message: "",
+  });
+  const [loading, setLoading] = useState(false);
+  const [errorMessage, setErrorMessage] = useState(null);
+  const [successMessage, setSuccessMessage] = useState(null);
+
+  const handleChange = (e) => {
+    const { name, value } = e.target;
+    setFormData((prevData) => ({
+      ...prevData,
+      [name]: value,
+    }));
+  };
+
+  const handleSubmit = async (e) => {
+  
+    e.preventDefault();
+    setLoading(true);
+    setErrorMessage(null);
+    setSuccessMessage(null);
+
+    // Validate the form
+    if (
+      !formData.first_name ||
+      !formData.last_name ||
+      !formData.email_address ||
+      !formData.phone_number ||
+      !formData.message
+    ) {
+      setErrorMessage("All fields are required.");
+      setLoading(false);
+      return;
+    }
+
+    try {
+      console.log("d")
+      const response = await axios.post(
+        `${import.meta.env.VITE_API_URL}/enquiries`,
+        formData
+      );
+      console.log(response,"Dd")
+      setSuccessMessage("Your enquiry has been submitted successfully!");
+      setFormData({
+        first_name: "",
+        last_name: "",
+        email_address: "",
+        phone_number: "",
+        message: "",
+      });
+    } catch (error) {
+      setErrorMessage("Something went wrong. Please try again later.");
+    } finally {
+      setLoading(false);
+    }
+  };
+
   return (
     <>
-      <div className="flex flex-col md:flex-row gap-4 justify-center md:w-[50%] w-full">
-        <TextField
-          fullWidth
-          sx={styles}
-          id="outlined-basic"
-          label="First Name"
-          variant="outlined"
-        />
-        <TextField
-          fullWidth
-          sx={styles}
-          id="outlined-basic"
-          label="Last Name"
-          variant="outlined"
-        />
-      </div>
-      <div className="w-full md:w-[50%] flex flex-col gap-4">
-        <TextField
-          fullWidth
-          sx={styles}
-          id="outlined-basic"
-          label="Email Address"
-          variant="outlined"
-        />
-        <TextField
-          fullWidth
-          sx={styles}
-          id="outlined-basic"
-          label="Phone Number"
-          variant="outlined"
-        />
-        <TextField
-          fullWidth
-          sx={styles}
-          id="outlined-multiline-flexible"
-          label="Message"
-          multiline
-          rows={4}
-          maxRows={6}
-          variant="outlined"
-        />
-        <button className=" px-8 py-3 mt-2 bg-brandLightMaroon hover:bg-brandDarkMaroon transition-all duration-200 text-white rounded-lg">
-          SEND
-        </button>
-      </div>
+      <Box
+        component="form"
+        sx={{
+          p: 0,
+          m: 0,
+          width: "100%",
+          display: "flex",
+          flexDirection: "column",
+          alignItems: "center",
+          gap: 2,
+        }}
+        onSubmit={handleSubmit}
+      >
+        <div className="flex flex-col md:flex-row gap-4 justify-center md:w-[50%] w-full">
+          <TextField
+            fullWidth
+            sx={styles}
+            id="outlined-basic"
+            label="First Name"
+            variant="outlined"
+            name="first_name"
+            value={formData.first_name}
+            onChange={handleChange}
+            required
+          />
+          <TextField
+            fullWidth
+            sx={styles}
+            id="outlined-basic"
+            label="Last Name"
+            variant="outlined"
+            name="last_name"
+            value={formData.last_name}
+            onChange={handleChange}
+            required
+          />
+        </div>
+        <div className="w-full md:w-[50%] flex flex-col gap-4">
+          <TextField
+            fullWidth
+            sx={styles}
+            id="outlined-basic"
+            label="Email Address"
+            variant="outlined"
+            name="email_address"
+            value={formData.email_address}
+            onChange={handleChange}
+            required
+          />
+          <TextField
+            fullWidth
+            sx={styles}
+            id="outlined-basic"
+            label="Phone Number"
+            variant="outlined"
+            name="phone_number"
+            value={formData.phone_number}
+            onChange={handleChange}
+            required
+          />
+          <TextField
+            fullWidth
+            sx={styles}
+            id="outlined-multiline-flexible"
+            label="Message"
+            multiline
+            rows={4}
+            maxRows={6}
+            variant="outlined"
+            name="message"
+            value={formData.message}
+            onChange={handleChange}
+            required
+          />
+          {errorMessage && <div className="text-red-500">{errorMessage}</div>}
+          {successMessage && (
+            <div className="text-green-500">{successMessage}</div>
+          )}
+          <Button
+            variant="contained"
+            color="primary"
+            type="submit"
+            disabled={loading}
+            className="mt-4 bg-brandLightMaroon hover:bg-brandDarkMaroon transition-all duration-200 text-white rounded-lg"
+          >
+            {loading ? <LoadingComponent/> : "Submit"}
+          </Button>
+        </div>
+      </Box>
     </>
   );
 };

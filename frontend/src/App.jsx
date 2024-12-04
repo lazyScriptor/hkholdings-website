@@ -4,7 +4,7 @@ import { QueryClient, QueryClientProvider } from "react-query";
 function App() {
   const queryClient = new QueryClient();
   return (
-    <div className="">
+    <div >
       <QueryClientProvider client={queryClient}>
         <RoutesCustomer />
       </QueryClientProvider>

@@ -78,7 +78,7 @@ app.post("/register", async (req, res) => {
 
 // Login endpoint (same as before)
 app.post("/login", (req, res) => {
-  console.log("object")
+
   const { email, password } = req.body;
 
   if (!email || !password) {
@@ -168,6 +168,88 @@ app.delete("/blogs/:id", (req, res) => {
       return;
     }
     res.json({ message: "Blog deleted successfully" });
+  });
+});
+
+
+
+// Endpoint to create an enquiry
+app.post("/enquiries", (req, res) => {
+  const { first_name, last_name, email_address, phone_number, message } = req.body;
+
+  const query = `INSERT INTO enquiries (first_name, last_name, email_address, phone_number, message) 
+                 VALUES (?, ?, ?, ?, ?)`;
+
+  db.query(query, [first_name, last_name, email_address, phone_number, message], (err, result) => {
+    if (err) {
+      return res.status(500).json({ error: "Error creating enquiry" });
+    }
+    res.status(201).json({ message: "Enquiry created successfully", enquiryId: result.insertId });
+  });
+});
+
+app.get("/enquiries", (req, res) => {
+  const { startDate, endDate } = req.query;
+  let query = "SELECT * FROM enquiries";
+  let queryParams = [];
+
+  // If both startDate and endDate are provided, apply the date range filter
+  if (startDate && endDate) {
+    query += " WHERE DATE(created_at) BETWEEN ? AND ?";
+    queryParams.push(startDate, endDate); // Add both dates to the query
+  }
+  // If only startDate is provided, filter by startDate
+  else if (startDate) {
+    query += " WHERE DATE(created_at) >= ?";
+    queryParams.push(startDate);
+  }
+  // If only endDate is provided, filter by endDate
+  else if (endDate) {
+    query += " WHERE DATE(created_at) <= ?";
+    queryParams.push(endDate);
+  }
+
+  db.query(query, queryParams, (err, results) => {
+    if (err) {
+      console.error("Error fetching enquiries:", err);
+      return res.status(500).json({ error: "Error fetching enquiries" });
+    }
+    res.json(results);
+  });
+});
+
+
+// Delete multiple enquiries
+app.delete("/enquiries", (req, res) => {
+  const { ids } = req.body;
+
+  // Ensure that ids is an array
+  if (!Array.isArray(ids) || ids.length === 0) {
+    return res.status(400).json({ error: "No enquiry IDs provided" });
+  }
+
+  const query = "DELETE FROM enquiries WHERE id IN (?)";
+
+  db.query(query, [ids], (err, result) => {
+    if (err) {
+      console.error("Error deleting multiple enquiries:", err);
+      return res.status(500).json({ error: "Error deleting multiple enquiries" });
+    }
+    res.status(200).json({ message: `${result.affectedRows} enquiries deleted successfully` });
+  });
+});
+
+// Delete a single enquiry by ID
+app.delete("/enquiries/:id", (req, res) => {
+  const { id } = req.params;
+  const query = "DELETE FROM enquiries WHERE id = ?";
+
+  db.query(query, [id], (err, result) => {
+    if (err) {
+      console.error("Error deleting enquiry:", err);
+      return res.status(500).json({ error: "Error deleting enquiry" });
+    }
+    res.status(200).json({ message: "Enquiry deleted successfully" });
   });
 });
 
