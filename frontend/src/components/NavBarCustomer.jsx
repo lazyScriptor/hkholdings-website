@@ -16,10 +16,10 @@ function NavBarCustomer({ children, number }) {
     <div className="relative">
       {/* Navbar */}
       <nav className="fixed  top-0 left-0 w-full text-white z-50 max-w-full bg-gradient-to-b from-brandBlack to-black/1">
-        <div className="container flex items-center  gap-12 h-16">
           <MobileNavigation />
+        <div className="container flex items-center  gap-12 h-16">
           {/* Left: Logo */}
-          <div className="text-xl font-bold">
+          <div className="text-xl hidden md:flex font-bold">
             <a href="/" className="hover:text-brandLightMaroon duration-200">
               <img src={logo} className="w-12" alt="" />
             </a>

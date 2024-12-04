@@ -3,6 +3,8 @@ import { Route, Routes, BrowserRouter } from "react-router-dom";
 import NavBarCustomer from "./components/NavBarCustomer";
 import { tailChase } from "ldrs";
 import AboutUsMain from "./pages/aboutus/AboutUsMain";
+import MobileNavigation from "./components/MobileNavigation";
+import Login from "./pages/login/Login";
 // Lazy load components for all routes
 const Home = React.lazy(() => import("./pages/home/Home"));
 const About = React.lazy(() => import("./pages/aboutus/AboutUsMain"));
@@ -24,10 +26,12 @@ function RoutesCustomer() {
         }
       >
         <Routes>
+          <Route path="/admin-panel" element={<Login />} />
           <Route
             path="/"
             element={
               <NavBarCustomer number={1}>
+                <MobileNavigation />
                 <Home />
               </NavBarCustomer>
             }
@@ -36,6 +40,7 @@ function RoutesCustomer() {
             path="/about"
             element={
               <NavBarCustomer number={2}>
+                <MobileNavigation />
                 <AboutUsMain />
               </NavBarCustomer>
             }
@@ -44,6 +49,8 @@ function RoutesCustomer() {
             path="/services"
             element={
               <NavBarCustomer number={3}>
+                <MobileNavigation />
+
                 <Services />
               </NavBarCustomer>
             }
@@ -54,6 +61,8 @@ function RoutesCustomer() {
             path="/blog"
             element={
               <NavBarCustomer number={4}>
+                <MobileNavigation />
+
                 <Blog />
               </NavBarCustomer>
             }
@@ -62,6 +71,8 @@ function RoutesCustomer() {
             path="/contact"
             element={
               <NavBarCustomer number={5}>
+                <MobileNavigation />
+
                 <Contact />
               </NavBarCustomer>
             }

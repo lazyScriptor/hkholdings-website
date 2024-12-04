@@ -5,71 +5,73 @@ import services2 from "../../assets/services2.png";
 import services3 from "../../assets/services3.png";
 import Footer from "../../components/Footer";
 import BottomFooter from "../../components/BottomFooter";
+import ServicesExpan from "./ServicesExpan";
 const BlogData = [
   {
     id: 1,
-    title: "How to Choose the Right Grade of Tool Steel",
+    title: "10 Tips for Building Your First Web Application",
     shortDescription:
-      "Starting a community doesn’t need to be complicated, but how do you get ",
+      "Learn the essential steps to develop your first web app, from planning to deployment.",
     image: services1,
   },
   {
     id: 2,
-    title: "How to Choose the Right Grade of Tool Steel",
+    title: "Understanding the Basics of Artificial Intelligence",
     shortDescription:
-      "Starting a community doesn’t need to be complicated, but how do you get ",
+      "A beginner's guide to AI concepts, algorithms, and real-world applications.",
     image: services2,
   },
   {
     id: 3,
-    title: "How to Choose the Right Grade of Tool Steel",
+    title: "Mastering React: A Guide to Components and State Management",
     shortDescription:
-      "Starting a community doesn’t need to be complicated, but how do you get ",
+      "Explore the core concepts of React, including components, hooks, and state.",
     image: services3,
   },
   {
     id: 4,
-    title: "How to Choose the Right Grade of Tool Steel",
+    title: "The Ultimate Guide to Responsive Web Design",
     shortDescription:
-      "Starting a community doesn’t need to be complicated, but how do you get ",
+      "Discover how to create stunning websites that look great on any device.",
     image: services1,
   },
   {
     id: 5,
-    title: "How to Choose the Right Grade of Tool Steel",
+    title: "How to Improve Your JavaScript Debugging Skills",
     shortDescription:
-      "Starting a community doesn’t need to be complicated, but how do you get ",
+      "Tips and tricks to efficiently debug JavaScript code and solve errors faster.",
     image: services2,
   },
   {
     id: 6,
-    title: "How to Choose the Right Grade of Tool Steel",
+    title: "Top 5 Programming Languages to Learn in 2024",
     shortDescription:
-      "Starting a community doesn’t need to be complicated, but how do you get ",
+      "An overview of the most in-demand programming languages for the upcoming year.",
     image: services3,
   },
   {
     id: 7,
-    title: "How to Choose the Right Grade of Tool Steel",
+    title: "What is Cloud Computing and How Does It Work?",
     shortDescription:
-      "Starting a community doesn’t need to be complicated, but how do you get ",
+      "Understand the basics of cloud computing and its advantages for businesses.",
     image: services1,
   },
   {
     id: 8,
-    title: "How to Choose the Right Grade of Tool Steel",
+    title: "SEO Tips for Beginners: How to Optimize Your Website",
     shortDescription:
-      "Starting a community doesn’t need to be complicated, but how do you get ",
+      "A beginner-friendly guide to improving your website's search engine rankings.",
     image: services2,
   },
   {
     id: 9,
-    title: "How to Choose the Right Grade of Tool Steel",
+    title: "The Importance of Cybersecurity in Today's Digital World",
     shortDescription:
-      "Starting a community doesn’t need to be complicated, but how do you get ",
+      "Learn about common cyber threats and how to protect your data online.",
     image: services3,
   },
 ];
+
 function BlogMain() {
   return (
     <>
@@ -96,6 +98,7 @@ function BlogMain() {
         {BlogData.map((item, index) => (
           <>
             <BlogSection
+              index={index}
               image={item.image}
               title={item.title}
               shortDescription={item.shortDescription}
@@ -112,16 +115,22 @@ function BlogMain() {
 
 export default BlogMain;
 
-const BlogSection = ({ image, title, shortDescription }) => {
+const BlogSection = ({ index, image, title, shortDescription }) => {
   return (
     <>
       <div className="p-8 shadow-2xl rounded-3xl flex flex-col gap-4">
         <img src={image} className="rounded-b-lg" alt="" />
-        <h2 className="text-xl font-semibold" >{title}</h2>
+        <h2 className="text-xl font-semibold">{title}</h2>
         <p>{shortDescription}</p>
-        <button className="px-8 py-2 bg-brandLightMaroon hover:bg-brandDarkMaroon transition-all self-start duration-200 text-white rounded-lg">
+        {/* <button className="px-8 py-2 bg-brandLightMaroon hover:bg-brandDarkMaroon transition-all self-start duration-200 text-white rounded-lg">
           View Content
-        </button>
+        </button> */}
+        <ServicesExpan
+          index={index}
+          image={image}
+          title={title}
+          shortDescription={shortDescription}
+        />
       </div>
     </>
   );
