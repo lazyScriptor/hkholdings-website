@@ -1,6 +1,21 @@
 import React, { useEffect, useState } from "react";
-import { Button, Table, TableBody, TableCell, TableContainer, TableHead, TableRow, TablePagination, Checkbox, FormControlLabel, TextField, Box } from "@mui/material";
+import {
+  Button,
+  Table,
+  TableBody,
+  TableCell,
+  TableContainer,
+  TableHead,
+  TableRow,
+  TablePagination,
+  Checkbox,
+  FormControlLabel,
+  TextField,
+  Box,
+} from "@mui/material";
 import axios from "axios";
+import Swal from "sweetalert2";
+
 import { useNavigate } from "react-router-dom";
 
 function Inquiries() {
@@ -12,18 +27,17 @@ function Inquiries() {
   const [loading, setLoading] = useState(false);
   const [startDate, setStartDate] = useState("");
   const [endDate, setEndDate] = useState("");
-  
+
   const navigate = useNavigate();
 
   const handleStartDateChange = (e) => {
     setStartDate(e.target.value);
   };
-  
+
   const handleEndDateChange = (e) => {
     setEndDate(e.target.value);
   };
 
-  
   useEffect(() => {
     const fetchEnquiries = async () => {
       setLoading(true);
@@ -38,11 +52,9 @@ function Inquiries() {
         setLoading(false);
       }
     };
-  
+
     fetchEnquiries();
   }, [startDate, endDate]);
-  
-
 
   const handleSelectAllClick = (event) => {
     if (event.target.checked) {
@@ -59,23 +71,68 @@ function Inquiries() {
       setSelected((prevSelected) => prevSelected.filter((item) => item !== id));
     }
   };
-
-  const handleDeleteSelected = async () => {
+  const handleDeleteSingle = async (id) => {
     try {
-      await axios.delete("http://localhost:3000/enquiries", { data: { ids: selected } });
-      setEnquiries((prevEnquiries) => prevEnquiries.filter((enquiry) => !selected.includes(enquiry.id)));
-      setSelected([]);
+      // Show SweetAlert confirmation
+      const result = await Swal.fire({
+        title: "Are you sure?",
+        text: "You won't be able to revert this!",
+        icon: "warning",
+        showCancelButton: true,
+        confirmButtonColor: "#d33",
+        cancelButtonColor: "#3085d6",
+        confirmButtonText: "Yes, delete it!",
+      });
+
+      // If confirmed, delete the enquiry
+      if (result.isConfirmed) {
+        await axios.delete(`http://localhost:3000/enquiries/${id}`);
+        setEnquiries((prevEnquiries) =>
+          prevEnquiries.filter((enquiry) => enquiry.id !== id)
+        );
+        Swal.fire("Deleted!", "The enquiry has been deleted.", "success");
+      }
     } catch (error) {
-      console.error("Error deleting enquiries:", error);
+      console.error("Error deleting enquiry:", error);
+      Swal.fire("Error!", "There was a problem deleting the enquiry.", "error");
     }
   };
 
-  const handleDeleteSingle = async (id) => {
+  const handleDeleteSelected = async () => {
     try {
-      await axios.delete(`http://localhost:3000/enquiries/${id}`);
-      setEnquiries((prevEnquiries) => prevEnquiries.filter((enquiry) => enquiry.id !== id));
+      // Show SweetAlert confirmation
+      const result = await Swal.fire({
+        title: "Are you sure?",
+        text: "You won't be able to revert this!",
+        icon: "warning",
+        showCancelButton: true,
+        confirmButtonColor: "#d33",
+        cancelButtonColor: "#3085d6",
+        confirmButtonText: "Yes, delete all selected!",
+      });
+
+      // If confirmed, delete selected enquiries
+      if (result.isConfirmed) {
+        await axios.delete("http://localhost:3000/enquiries", {
+          data: { ids: selected },
+        });
+        setEnquiries((prevEnquiries) =>
+          prevEnquiries.filter((enquiry) => !selected.includes(enquiry.id))
+        );
+        setSelected([]);
+        Swal.fire(
+          "Deleted!",
+          "The selected enquiries have been deleted.",
+          "success"
+        );
+      }
     } catch (error) {
-      console.error("Error deleting enquiry:", error);
+      console.error("Error deleting enquiries:", error);
+      Swal.fire(
+        "Error!",
+        "There was a problem deleting the enquiries.",
+        "error"
+      );
     }
   };
 
@@ -93,103 +150,128 @@ function Inquiries() {
   };
 
   return (
-    <div>
-      <Button variant="contained" color="primary" onClick={() => navigate("/admin")}>
-        Back to Admin
-      </Button>
-      <Box sx={{ my: 2 }}>
-      <TextField
-    label="Start Date"
-    type="date"
-    value={startDate}
-    onChange={handleStartDateChange}
-    InputLabelProps={{
-      shrink: true,
-    }}
-  />
-</Box>
-<Box sx={{ my: 2 }}>
-  <TextField
-    label="End Date"
-    type="date"
-    value={endDate}
-    onChange={handleEndDateChange}
-    InputLabelProps={{
-      shrink: true,
-    }}/>
-      </Box>
-      <Button
-        variant="contained"
-        color="secondary"
-        onClick={handleDeleteSelected}
-        disabled={selected.length === 0}
-      >
-        Delete Selected
-      </Button>
-      <TableContainer>
-        <Table>
-          <TableHead>
-            <TableRow>
-              <TableCell padding="checkbox">
-                <Checkbox
-                  onChange={handleSelectAllClick}
-                  checked={selected.length === enquiries.length}
-              />
-              </TableCell>
-              <TableCell>First Name</TableCell>
-              <TableCell>Last Name</TableCell>
-              <TableCell>Email</TableCell>
-              <TableCell>Phone</TableCell>
-              <TableCell>Message</TableCell>
-              <TableCell>Date</TableCell>
-              <TableCell>Action</TableCell>
-            </TableRow>
-          </TableHead>
-          <TableBody>
-            {loading ? (
+    <div className="p-4 h-screen">
+      <div className="bg-brandLightMaroon/30 rounded-xl h-[100%] p-4">
+        <Button
+          variant="contained"
+          color="primary"
+          onClick={() => navigate("/admin-dashboard")}
+        >
+          Back to Admin
+        </Button>
+        <div className="flex gap-4">
+          <Box sx={{ my: 2 }}>
+            <TextField
+              label="Start Date"
+              type="date"
+              value={startDate}
+              onChange={handleStartDateChange}
+              InputLabelProps={{
+                shrink: true,
+              }}
+            />
+          </Box>
+          <Box sx={{ my: 2 }}>
+            <TextField
+              label="End Date"
+              type="date"
+              value={endDate}
+              onChange={handleEndDateChange}
+              InputLabelProps={{
+                shrink: true,
+              }}
+            />
+          </Box>
+        </div>
+        <Button
+          variant="contained"
+          color="secondary"
+          onClick={handleDeleteSelected}
+          disabled={selected.length === 0}
+        >
+          Delete Selected
+        </Button>
+        <TableContainer>
+          <Table>
+            <TableHead>
               <TableRow>
-                <TableCell colSpan={8} align="center">
-                  Loading...
+                <TableCell padding="checkbox">
+                  <Checkbox
+                    onChange={handleSelectAllClick}
+                    checked={selected.length === enquiries.length}
+                  />
                 </TableCell>
+                <TableCell>First Name</TableCell>
+                <TableCell>Last Name</TableCell>
+                <TableCell>Email</TableCell>
+                <TableCell>Phone</TableCell>
+                <TableCell>Message</TableCell>
+                <TableCell>Date</TableCell>
+                <TableCell>Action</TableCell>
               </TableRow>
-            ) : (
-              enquiries.slice(page * rowsPerPage, page * rowsPerPage + rowsPerPage).map((enquiry) => (
-                <TableRow key={enquiry.id}>
-                  <TableCell padding="checkbox">
-                    <Checkbox
-                      checked={selected.indexOf(enquiry.id) !== -1}
-                      onChange={(event) => handleSelectClick(event, enquiry.id)}
-                    />
-                  </TableCell>
-                  <TableCell>{enquiry.first_name}</TableCell>
-                  <TableCell>{enquiry.last_name}</TableCell>
-                  <TableCell>{enquiry.email_address}</TableCell>
-                  <TableCell>{enquiry.phone_number}</TableCell>
-                  <TableCell>{enquiry.message}</TableCell>
-                  <TableCell>{ Date(enquiry.created_at).toLocaleDateString}</TableCell>
-                  <TableCell>
-                    <Button
-                      color="secondary"
-                      onClick={() => handleDeleteSingle(enquiry.id)}
-                    >
-                      Delete
-                    </Button>
+            </TableHead>
+            <TableBody>
+              {loading ? (
+                <TableRow>
+                  <TableCell colSpan={8} align="center">
+                    Loading...
                   </TableCell>
                 </TableRow>
-              ))
-            )}
-          </TableBody>
-        </Table>
-      </TableContainer>
-      <TablePagination
-        rowsPerPageOptions={[5, 10, 25]}
-        component="div"
-        count={enquiries.length}
-        rowsPerPage={rowsPerPage}
-        page={page}
-        onPageChange={handleChangePage}
-        onRowsPerPageChange={handleChangeRowsPerPage}
-      />
+              ) : (
+                enquiries
+                  .slice(page * rowsPerPage, page * rowsPerPage + rowsPerPage)
+                  .map((enquiry) => (
+                    <TableRow key={enquiry.id}>
+                      <TableCell padding="checkbox">
+                        <Checkbox
+                          checked={selected.indexOf(enquiry.id) !== -1}
+                          onChange={(event) =>
+                            handleSelectClick(event, enquiry.id)
+                          }
+                        />
+                      </TableCell>
+                      <TableCell>{enquiry.first_name}</TableCell>
+                      <TableCell>{enquiry.last_name}</TableCell>
+                      <TableCell>{enquiry.email_address}</TableCell>
+                      <TableCell>{enquiry.phone_number}</TableCell>
+                      <TableCell>{enquiry.message}</TableCell>
+                      <TableCell>
+                        {new Date(enquiry.created_at).toLocaleString("en-GB", {
+                          weekday: "short", // Example: "Wed"
+                          year: "numeric", // Example: "2024"
+                          month: "short", // Example: "Dec"
+                          day: "2-digit", // Example: "04"
+                          hour: "2-digit", // Example: "18"
+                          minute: "2-digit", // Example: "51"
+                          second: "2-digit", // Example: "22"
+                          hour12: false, // For 24-hour time format, set this to false
+                        })}
+                      </TableCell>
+
+                      <TableCell>
+                        <Button
+                          color="secondary"
+                          onClick={() => handleDeleteSingle(enquiry.id)}
+                        >
+                          Delete
+                        </Button>
+                      </TableCell>
+                    </TableRow>
+                  ))
+              )}
+            </TableBody>
+          </Table>
+        </TableContainer>
+        <TablePagination
+          rowsPerPageOptions={[5, 10, 25]}
+          component="div"
+          count={enquiries.length}
+          rowsPerPage={rowsPerPage}
+          page={page}
+          onPageChange={handleChangePage}
+          onRowsPerPageChange={handleChangeRowsPerPage}
+        />
+      </div>
     </div>
   );
 }
