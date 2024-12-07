@@ -1,7 +1,12 @@
+import Footer from "../../components/Footer";
+import BottomFooter from "../../components/BottomFooter";
 import React, { useState } from "react";
 import { useForm } from "react-hook-form";
 import * as Yup from "yup";
 import { yupResolver } from "@hookform/resolvers/yup";
+import heroImage from "../../assets/loginhero.png";
+import heroImage2 from "../../assets/hero4.webp";
+import logo from "../../assets/logo.webp";
 import {
   TextField,
   Button,
@@ -29,7 +34,7 @@ const loginUser = async (data) => {
     `${import.meta.env.VITE_API_URL}/login`,
     data
   );
-  console.log(response)
+  console.log(response);
   return response.data;
 };
 
@@ -65,7 +70,9 @@ export default function Login() {
     },
     onError: (error) => {
       // Handle any errors during login
-      setErrorMessage(error.response?.data?.error || "Login failed. Please try again.");
+      setErrorMessage(
+        error.response?.data?.error || "Login failed. Please try again."
+      );
     },
   });
 
@@ -76,66 +83,80 @@ export default function Login() {
   };
 
   return (
-    <Box
-      sx={{
-        maxWidth: 400,
-        mx: "auto",
-        mt: 4,
-        p: 2,
-        boxShadow: 3,
-        borderRadius: 2,
-      }}
-    >
-      <Typography variant="h5" component="h1" gutterBottom>
-        Login
-      </Typography>
-      <form onSubmit={handleSubmit(onSubmit)}>
-        {/* Email Field */}
-        <TextField
-          label="Email"
-          variant="outlined"
-          fullWidth
-          margin="normal"
-          {...register("email")}
-          error={!!errors.email}
-          helperText={errors.email?.message}
+    <>
+      <div
+        className="relative h-screen w-screen flex justify-center items-center p-8"
+        style={{ position: "relative" }}
+      >
+        {/* Background Image */}
+        <img
+          src={heroImage2}
+          alt="Background"
+          className="absolute h-full w-full object-cover blur-sm "
         />
 
-        {/* Password Field */}
-        <TextField
-          label="Password"
-          variant="outlined"
-          type="password"
-          fullWidth
-          margin="normal"
-          {...register("password")}
-          error={!!errors.password}
-          helperText={errors.password?.message}
-        />
-
-        {/* Error Message */}
-        {errorMessage && (
-          <Typography color="error" variant="body2" sx={{ mt: 2 }}>
-            {errorMessage}
-          </Typography>
-        )}
-
-        {/* Submit Button */}
-        <Button
-          variant="contained"
-          color="primary"
-          fullWidth
-          type="submit"
-          sx={{ mt: 2 }}
-          disabled={isLoading} // Disable button while loading
+        {/* Content */}
+        <Box
+          className="w-[90%] md:w-[60%] lg:w-[40%] xl:w-[30%]"
+          sx={{
+            position: "relative", // Ensure Box is above the background
+            backgroundColor: "white",
+            mx: "auto",
+            boxShadow: 3,
+            borderRadius: 4,
+          }}
         >
-          {isLoading ? (
-            <CircularProgress size={24} color="inherit" />
-          ) : (
-            "Login"
-          )}
-        </Button>
-      </form>
-    </Box>
+          <div className="container pt-4 pb-16 flex flex-col">
+            <img src={logo} className="w-32 self-center" alt="" />
+            <form
+              onSubmit={handleSubmit(onSubmit)}
+              className="gap-4 flex flex-col"
+            >
+              <TextField
+                label="Email"
+                variant="standard"
+                fullWidth
+                margin="normal"
+                {...register("email")}
+                error={!!errors.email}
+                helperText={errors.email?.message}
+              />
+              <TextField
+                label="Password"
+                variant="standard"
+                type="password"
+                fullWidth
+                margin="normal"
+                {...register("password")}
+                error={!!errors.password}
+                helperText={errors.password?.message}
+              />
+              {errorMessage && (
+                <Typography color="error" variant="body2" sx={{ mt: 2 }}>
+                  {errorMessage}
+                </Typography>
+              )}
+              <Button
+                variant="contained"
+                color="primary"
+                fullWidth
+                type="submit"
+                sx={{ mt: 2 }}
+                disabled={isLoading}
+              >
+                {isLoading ? (
+                  <CircularProgress size={24} color="inherit" />
+                ) : (
+                  "Login"
+                )}
+              </Button>
+            </form>
+          </div>
+        </Box>
+      </div>
+      
+      <Footer />
+      <BottomFooter />
+    </>
   );
 }

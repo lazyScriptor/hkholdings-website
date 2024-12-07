@@ -23,7 +23,7 @@ dotenv.config();
 
 const app = express();
 const port = 3000;
-app.use(cors({ origin: "http://localhost:5173" })); // Adjust port accordingly
+app.use(cors({ origin: "http://172.20.10.11:5173" })); // Adjust port accordingly
 
 // Middleware to parse JSON
 app.use(bodyParser.json());
@@ -64,7 +64,6 @@ const upload = multer({ storage });
 
 
 // Get image by blogId
-
 app.get("/blogs/:blogId/image", (req, res) => {
   const { blogId } = req.params;
 
