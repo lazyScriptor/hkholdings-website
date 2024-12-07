@@ -15,8 +15,10 @@ import {
 } from "@mui/material";
 import axios from "axios";
 import Swal from "sweetalert2";
+import { IoIosArrowBack } from "react-icons/io";
 
 import { useNavigate } from "react-router-dom";
+import SmallNavBar from "../../components/SmallNavBar";
 
 function Inquiries() {
   const [enquiries, setEnquiries] = useState([]);
@@ -150,129 +152,160 @@ function Inquiries() {
   };
 
   return (
-    <div className="p-4 h-screen">
-      <div className="bg-brandLightMaroon/30 rounded-xl h-[100%] p-4">
-        <Button
-          variant="contained"
-          color="primary"
-          onClick={() => navigate("/admin-dashboard")}
-        >
-          Back to Admin
-        </Button>
-        <div className="flex gap-4">
-          <Box sx={{ my: 2 }}>
-            <TextField
-              label="Start Date"
-              type="date"
-              value={startDate}
-              onChange={handleStartDateChange}
-              InputLabelProps={{
-                shrink: true,
-              }}
-            />
-          </Box>
-          <Box sx={{ my: 2 }}>
-            <TextField
-              label="End Date"
-              type="date"
-              value={endDate}
-              onChange={handleEndDateChange}
-              InputLabelProps={{
-                shrink: true,
-              }}
-            />
-          </Box>
-        </div>
-        <Button
-          variant="contained"
-          color="secondary"
-          onClick={handleDeleteSelected}
-          disabled={selected.length === 0}
-        >
-          Delete Selected
-        </Button>
-        <TableContainer>
-          <Table>
-            <TableHead>
-              <TableRow>
-                <TableCell padding="checkbox">
-                  <Checkbox
-                    onChange={handleSelectAllClick}
-                    checked={selected.length === enquiries.length}
-                  />
-                </TableCell>
-                <TableCell>First Name</TableCell>
-                <TableCell>Last Name</TableCell>
-                <TableCell>Email</TableCell>
-                <TableCell>Phone</TableCell>
-                <TableCell>Message</TableCell>
-                <TableCell>Date</TableCell>
-                <TableCell>Action</TableCell>
-              </TableRow>
-            </TableHead>
-            <TableBody>
-              {loading ? (
-                <TableRow>
-                  <TableCell colSpan={8} align="center">
-                    Loading...
-                  </TableCell>
-                </TableRow>
-              ) : (
-                enquiries
-                  .slice(page * rowsPerPage, page * rowsPerPage + rowsPerPage)
-                  .map((enquiry) => (
-                    <TableRow key={enquiry.id}>
-                      <TableCell padding="checkbox">
-                        <Checkbox
-                          checked={selected.indexOf(enquiry.id) !== -1}
-                          onChange={(event) =>
-                            handleSelectClick(event, enquiry.id)
-                          }
-                        />
-                      </TableCell>
-                      <TableCell>{enquiry.first_name}</TableCell>
-                      <TableCell>{enquiry.last_name}</TableCell>
-                      <TableCell>{enquiry.email_address}</TableCell>
-                      <TableCell>{enquiry.phone_number}</TableCell>
-                      <TableCell>{enquiry.message}</TableCell>
-                      <TableCell>
-                        {new Date(enquiry.created_at).toLocaleString("en-GB", {
-                          weekday: "short", // Example: "Wed"
-                          year: "numeric", // Example: "2024"
-                          month: "short", // Example: "Dec"
-                          day: "2-digit", // Example: "04"
-                          hour: "2-digit", // Example: "18"
-                          minute: "2-digit", // Example: "51"
-                          second: "2-digit", // Example: "22"
-                          hour12: false, // For 24-hour time format, set this to false
-                        })}
-                      </TableCell>
+    <>
+      <div className="p-4 min-h-screen bg-brandDarkMaroon">
+        <SmallNavBar />
+        <div className="bg-brandLightMaroon/30 border h-[100%] p-16 container ">
+          <div className="flex justify-between ">
+            <div className="flex items-center gap-4">
+              <button
+                className=" px-2 py-1 text-brandWhite"
+                onClick={() => navigate("/admin-dashboard")}
+              >
+                <IoIosArrowBack />
+              </button>
 
-                      <TableCell>
-                        <Button
-                          color="secondary"
-                          onClick={() => handleDeleteSingle(enquiry.id)}
+              <h2 className="text-brandWhite text-4xl ">Inquiry Management</h2>
+            </div>
+            <div className="flex gap-4 ">
+              <Box sx={{ my: 2 }}>
+                <TextField
+                  label="Start Date"
+                  type="date"
+                  value={startDate}
+                  onChange={handleStartDateChange}
+                  InputLabelProps={{
+                    shrink: true,
+                  }}
+                />
+              </Box>
+              <Box sx={{ my: 2 }}>
+                <TextField
+                  label="End Date"
+                  type="date"
+                  value={endDate}
+                  onChange={handleEndDateChange}
+                  InputLabelProps={{
+                    shrink: true,
+                  }}
+                />
+              </Box>
+            </div>
+          </div>
+
+          <Button
+            variant="contained"
+            color="secondary"
+            onClick={handleDeleteSelected}
+            disabled={selected.length === 0}
+          >
+            Delete Selected
+          </Button>
+          <TableContainer>
+            <Table>
+              <TableHead>
+                <TableRow>
+                  <TableCell padding="checkbox" className="text-gray-500">
+                    <Checkbox
+                      onChange={handleSelectAllClick}
+                      checked={selected.length === enquiries.length}
+                    />
+                  </TableCell>
+                  <TableCell className="text-gray-500">First Name</TableCell>
+                  <TableCell className="text-gray-500">Last Name</TableCell>
+                  <TableCell className="text-gray-500">Email</TableCell>
+                  <TableCell className="text-gray-500">Phone</TableCell>
+                  <TableCell className="text-gray-500">Message</TableCell>
+                  <TableCell className="text-gray-500">Date</TableCell>
+                  <TableCell className="text-gray-500">Action</TableCell>
+                </TableRow>
+              </TableHead>
+              <TableBody>
+                {loading ? (
+                  <TableRow>
+                    <TableCell
+                      colSpan={8}
+                      align="center"
+                      className="text-white"
+                    >
+                      Loading...
+                    </TableCell>
+                  </TableRow>
+                ) : (
+                  enquiries
+                    .slice(page * rowsPerPage, page * rowsPerPage + rowsPerPage)
+                    .map((enquiry) => (
+                      <TableRow key={enquiry.id}>
+                        <TableCell padding="checkbox" className="text-white">
+                          <Checkbox
+                            checked={selected.indexOf(enquiry.id) !== -1}
+                            onChange={(event) =>
+                              handleSelectClick(event, enquiry.id)
+                            }
+                          />
+                        </TableCell>
+                        <TableCell className="text-white">
+                          {enquiry.first_name}
+                        </TableCell>
+                        <TableCell className="text-white">
+                          {enquiry.last_name}
+                        </TableCell>
+                        <TableCell className="text-white">
+                          {enquiry.email_address}
+                        </TableCell>
+                        <TableCell className="text-white">
+                          {enquiry.phone_number}
+                        </TableCell>
+                        <TableCell
+                          className="text-white"
+                          sx={{ maxWidth: 200 }}
                         >
-                          Delete
-                        </Button>
-                      </TableCell>
-                    </TableRow>
-                  ))
-              )}
-            </TableBody>
-          </Table>
-        </TableContainer>
-        <TablePagination
-          rowsPerPageOptions={[5, 10, 25]}
-          component="div"
-          count={enquiries.length}
-          rowsPerPage={rowsPerPage}
-          page={page}
-          onPageChange={handleChangePage}
-          onRowsPerPageChange={handleChangeRowsPerPage}
-        />
+                          {enquiry.message}
+                        </TableCell>
+                        <TableCell
+                          className="text-white"
+                          sx={{ maxWidth: 100 }}
+                        >
+                          {new Date(enquiry.created_at).toLocaleString(
+                            "en-GB",
+                            {
+                              weekday: "short",
+                              year: "numeric",
+                              month: "short",
+                              day: "2-digit",
+                              hour: "2-digit",
+                              minute: "2-digit",
+                              second: "2-digit",
+                              hour12: false,
+                            }
+                          )}
+                        </TableCell>
+                        <TableCell>
+                          <Button
+                            color="secondary"
+                            onClick={() => handleDeleteSingle(enquiry.id)}
+                          >
+                            Delete
+                          </Button>
+                        </TableCell>
+                      </TableRow>
+                    ))
+                )}
+              </TableBody>
+            </Table>
+          </TableContainer>
+          <TablePagination
+            rowsPerPageOptions={[5, 10, 25]}
+            component="div"
+            count={enquiries.length}
+            rowsPerPage={rowsPerPage}
+            page={page}
+            onPageChange={handleChangePage}
+            onRowsPerPageChange={handleChangeRowsPerPage}
+          />
+        </div>
       </div>
-    </div>
+    </>
   );
 }
 

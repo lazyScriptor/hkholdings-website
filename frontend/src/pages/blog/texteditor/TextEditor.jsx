@@ -8,9 +8,13 @@ function TextEditor() {
   const [body, setBody] = useState("");
   const [image, setImage] = useState("");
   const [blogId, setBlogId] = useState(null);
-  const [error, setError] = useState("");  // Error state for better error handling
-
-  // Fetch blog data when blogId changes
+  const [error, setError] = useState("");
+  const [isEditMode, setIsEditMode] = useState(false);
+  const [imageUrl, setImageUrl] = useState(null);
+  const [completeDataObject, setCompleteDataObject] = useState({
+    title: "",
+    shortDescription: "",
+  });
   useEffect(() => {
     if (blogId) {
       const fetchBlog = async () => {
@@ -18,10 +22,16 @@ function TextEditor() {
           const response = await axios.get(
             `http://localhost:3000/blogs/${blogId}`
           );
-          const { title, short_description, image: imageUrl } = response.data;
-          setTitle(title);
-          setBody(short_description);
-          setImage(imageUrl); // Set image URL after fetching blog data
+          const { jsonData, title, short_description, image } = response.data;
+
+          setTitle(title || ""); // Update `title` state
+          setBody(short_description || ""); // Update `body` state
+          setImage(image || ""); // Update `image` state
+
+          const parsedData =
+            typeof jsonData === "string" ? JSON.parse(jsonData) : jsonData;
+          setCompleteDataObject(parsedData); // Keep the full object for other purposes
+          setIsEditMode(true);
         } catch (err) {
           setError("Failed to fetch blog data.");
           console.error("Error fetching blog data:", err);
@@ -31,20 +41,34 @@ function TextEditor() {
     }
   }, [blogId]);
 
-  // Handle title and body changes
-  const handleChangeTitle = (value) => setTitle(value);
-  const handleChangeBody = (value) => setBody(value);
 
-  // Create a blog (Step 1)
+  useEffect(() => {
+    // Construct the URL
+    const fetchImage = async () => {
+        try {
+            const url = `http://localhost:3000/uploads/${blogId}`; // Adjust based on your backend
+            setImageUrl(url);
+        } catch (error) {
+            console.error('Error fetching image:', error);
+        }
+    };
+
+    fetchImage();
+}, [blogId]);
+
+
+
   const handleCreateBlog = async () => {
+    const jsonData = { title, shortDescription: body };
+    const fullData = { title, shortDescription: body, image, jsonData };
+
     try {
-      const response = await axios.post("http://localhost:3000/blogs", {
-        title,
-        shortDescription: body,
-        image: null, // Initial image is null
-      });
+      const response = await axios.post(
+        "http://localhost:3000/blogs",
+        fullData
+      );
       setBlogId(response.data.blogId); // Set the returned blog ID
-      setError("");  // Reset any previous errors
+      setError("");
       alert("Blog created successfully!");
     } catch (err) {
       setError("Failed to create the blog. Please try again.");
@@ -52,11 +76,24 @@ function TextEditor() {
     }
   };
 
-  // Handle image upload (Step 2)
+  const handleUpdateBlog = async () => {
+    const jsonData = { title, shortDescription: body };
+    const fullData = { title, shortDescription: body, image, jsonData };
+
+    try {
+      await axios.put(`http://localhost:3000/blogs/${blogId}`, fullData);
+      setError("");
+      alert("Blog updated successfully!");
+    } catch (err) {
+      setError("Failed to update the blog. Please try again.");
+      console.error("Error updating blog:", err);
+    }
+  };
+
   const handleFileChange = async (e) => {
     const file = e.target.files[0];
-    if (!file || !blogId) {
-      setError("Please create the blog first!");
+    if (!file) {
+      setError("Please choose an image to upload.");
       return;
     }
 
@@ -68,9 +105,7 @@ function TextEditor() {
         `http://localhost:3000/blogs/${blogId}/upload`,
         formData,
         {
-          headers: {
-            "Content-Type": "multipart/form-data",
-          },
+          headers: { "Content-Type": "multipart/form-data" },
         }
       );
       setImage(response.data.imageUrl); // Update the image URL in state
@@ -81,39 +116,51 @@ function TextEditor() {
     }
   };
 
-  // Fetch blog details based on blogId entered in input field
   const handleBlogIdChange = (e) => {
-    const enteredBlogId = e.target.value;
-    setBlogId(enteredBlogId); // Set blog ID to trigger useEffect
+    setBlogId(e.target.value);
   };
 
   return (
-    <div>
-      <h1>Create or Edit Blog</h1>
+    <div className="bg-brandLightMaroon/30 border h-[100%] p-16 container flex flex-col gap-4">
+      <h1>{isEditMode ? "Edit Blog" : "Create Blog"}</h1>
 
       {/* Title Editor */}
-      <div>
+      {/* Title Editor */}
+      <div className="bg-brandWhite bg-opacity-50 p-8 rounded-md">
         <h3>Set the title</h3>
-        <ReactQuill value={title} onChange={handleChangeTitle} />
+        <ReactQuill
+          value={title} // Bind to `title` state directly
+          onChange={(value) => setTitle(value)} // Update `title` state
+        />
       </div>
 
       {/* Body Editor */}
-      <div>
+      <div className="bg-brandWhite bg-opacity-50 p-8 rounded-md">
         <p>Set the body</p>
-        <ReactQuill value={body} onChange={handleChangeBody} />
+        <ReactQuill
+          value={body} // Bind to `body` state directly
+          onChange={(value) => setBody(value)} // Update `body` state
+        />
       </div>
 
-      {/* Create Blog Button */}
-      <button onClick={handleCreateBlog}>Create Blog</button>
+      {/* Create or Edit Button */}
+      <button
+        className="mt-6 px-8 py-2 bg-brandLightMaroon hover:bg-brandDarkMaroon self-center transition-all duration-200 text-white rounded-lg"
+        onClick={isEditMode ? handleUpdateBlog : handleCreateBlog}
+      >
+        {isEditMode ? "Update Blog" : "Create Blog"}
+      </button>
 
-      {/* Display Error Messages */}
+      {/* Error Messages */}
       {error && <p style={{ color: "red" }}>{error}</p>}
 
       {/* Image Upload */}
       <div>
         <p>Upload the image</p>
         <input type="file" onChange={handleFileChange} />
-        {image && <img src={image} alt="Uploaded" style={{ maxWidth: "100%" }} />}
+        {image && (
+          <img src={image} alt="Uploaded" style={{ maxWidth: "100%" }} />
+        )}
       </div>
 
       {/* Fetch Blog Details by Blog ID */}
@@ -125,6 +172,17 @@ function TextEditor() {
           className="bg-green-300 w-44 border-2 border-red-400"
         />
       </div>
+  
+      <div>
+            {imageUrl ? (
+                <img src={imageUrl} alt={`Blog ${blogId}`} style={{ width: '100%', height: 'auto' }} />
+            ) : (
+                <p>Image not available.</p>
+            )}
+        </div>
+
+
+
     </div>
   );
 }

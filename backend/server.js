@@ -23,7 +23,7 @@ dotenv.config();
 
 const app = express();
 const port = 3000;
-app.use(cors({ origin: "http://172.20.10.11:5173" })); // Adjust port accordingly
+app.use(cors({ origin: "*" })); // Adjust port accordingly
 
 // Middleware to parse JSON
 app.use(bodyParser.json());
@@ -58,9 +58,30 @@ const storage = multer.diskStorage({
     cb(null, `blog-${blogId}${path.extname(file.originalname)}`); // Save with blog ID as filename
   },
 });
-app.use('/uploads', express.static(path.join(__dirname, 'uploads')));
+app.use("/uploads", express.static(path.join(__dirname, "uploads")));
 
 const upload = multer({ storage });
+
+
+
+
+
+app.get('/uploads/:blogId', (req, res) => {
+  const blogId = req.params.blogId;
+  const filePath = path.join(__dirname, 'uploads', `blog-${blogId}.jpeg`);
+
+  // Check if the file exists and send it
+  res.sendFile(filePath, (err) => {
+      if (err) {
+          res.status(404).send('Image not found.');
+          console.log("not found")
+      }
+  });
+});
+
+
+
+
 
 
 // Get image by blogId
@@ -84,11 +105,6 @@ app.get("/blogs/:blogId/image", (req, res) => {
     res.json({ imageUrl });
   });
 });
-
-
-
-
-
 
 // Create an endpoint for image uploads
 app.post("/upload", upload.single("image"), async (req, res) => {
@@ -125,13 +141,10 @@ app.post("/upload", upload.single("image"), async (req, res) => {
   }
 });
 
-
 // Serve static files
 app.use("/uploads", express.static(path.join(__dirname, "uploads")));
 
-app.get("/", (req, res) => {
-  res.send("hello world");
-});
+
 // User Registration (Create User)
 app.post("/register", async (req, res) => {
   const { email, password, role } = req.body;
@@ -233,6 +246,79 @@ app.get("/blogs", (req, res) => {
   });
 });
 
+
+
+app.put("/blogs/:id", async (req, res) => {
+  const { id } = req.params;
+  const { title, shortDescription, image } = req.body; // `jsonData` removed from request body
+  console.log("title", title, "shortDe", shortDescription, "image", image);
+  const imageFile = req.file;
+
+  // Check if the blog exists
+  const selectSql = "SELECT * FROM blogs WHERE id = ?";
+  db.query(selectSql, [id], async (err, results) => {
+    if (err) {
+      console.error("Error fetching blog:", err);
+      return res.status(500).json({ error: "Failed to fetch blog" });
+    }
+
+    if (results.length === 0) {
+      return res.status(404).json({ message: "Blog not found" });
+    }
+
+    try {
+      let imageUrl = results[0].image; // Keep the existing image path by default
+
+      // If a new image is uploaded
+      if (imageFile) {
+        const outputFileName = `blog-${id}.jpeg`;
+        const outputPath = path.join(__dirname, "uploads", outputFileName);
+
+        // Process the image using Sharp (resize, convert to JPEG)
+        await sharp(imageFile.path)
+          .resize({ width: 800 })
+          .jpeg({ quality: 80 })
+          .toFile(outputPath);
+
+        // Delete the original uploaded file to save space
+        fs.unlinkSync(imageFile.path);
+
+        imageUrl = `/uploads/${outputFileName}`; // Update with new image URL
+      }
+
+      // Construct `jsonData` dynamically
+      const jsonData = JSON.stringify({
+        title: title || results[0].title,
+        short_description: shortDescription || results[0].short_description,
+        image: imageUrl || results[0].image,
+      });
+
+      // Update the blog in the database
+      const updateSql =
+        "UPDATE blogs SET title = ?, short_description = ?, image = ?, jsonData = ? WHERE id = ?";
+      db.query(
+        updateSql,
+        [title, shortDescription, imageUrl, jsonData, id],
+        (updateErr) => {
+          if (updateErr) {
+            console.error("Error updating blog:", updateErr);
+            return res.status(500).json({ error: "Failed to update blog" });
+          }
+
+          res.status(200).json({
+            message: "Blog updated successfully",
+            imageUrl: `http://localhost:3000${imageUrl}`,
+            jsonData: JSON.parse(jsonData),
+          });
+        }
+      );
+    } catch (error) {
+      console.error("Error during image processing:", error);
+      res.status(500).json({ error: "Failed to process image" });
+    }
+  });
+});
+
 // GET a specific blog by ID
 app.get("/blogs/:blogId", (req, res) => {
   const { blogId } = req.params; // Extract the blogId from the request parameters
@@ -257,17 +343,30 @@ app.get("/blogs/:blogId", (req, res) => {
 // CREATE a new blog
 app.post("/blogs", (req, res) => {
   const { title, shortDescription, image } = req.body;
-  const sql =
-    "INSERT INTO blogs (title, short_description, image, inserted_at) VALUES (?, ?, ?, NOW())";
-  db.query(sql, [title, shortDescription, image], (err, result) => {
+
+  // Prepare jsonData as a JSON string
+  const jsonData = JSON.stringify({ title, shortDescription });
+
+  const sql = `
+    INSERT INTO blogs (title, short_description, image, jsonData, inserted_at) 
+    VALUES (?, ?, ?, ?, NOW())
+  `;
+
+  db.query(sql, [title, shortDescription, image, jsonData], (err, result) => {
     if (err) {
       console.error("Error inserting data:", err);
       res.status(500).json({ error: "Failed to insert data" });
       return;
     }
-    res.json({ message: "Blog created successfully", blogId: result.insertId });
+
+    res.json({
+      message: "Blog created successfully",
+      blogId: result.insertId, // Return the inserted blog's ID
+    });
   });
 });
+
+//image upload update
 app.post("/blogs/:blogId/upload", upload.single("image"), async (req, res) => {
   const { blogId } = req.params;
 
@@ -284,9 +383,15 @@ app.post("/blogs/:blogId/upload", upload.single("image"), async (req, res) => {
     }
 
     try {
-      const inputPath = req.file.path;
+      // Ensure uploads directory exists
+      const uploadsDir = path.join(__dirname, "uploads");
+      if (!fs.existsSync(uploadsDir)) {
+        fs.mkdirSync(uploadsDir, { recursive: true });
+      }
+
+      const inputPath = path.resolve(req.file.path);
       const outputFileName = `blog-${blogId}.jpeg`;
-      const outputPath = path.join(__dirname, "uploads", outputFileName);
+      const outputPath = path.join(uploadsDir, outputFileName);
 
       // Process the image using Sharp
       await sharp(inputPath)
@@ -310,9 +415,11 @@ app.post("/blogs/:blogId/upload", upload.single("image"), async (req, res) => {
           }
         });
 
+        // Respond with the image URL
+        const baseUrl = process.env.BASE_URL || `http://localhost:3000`;
         res.status(200).json({
           message: "Image uploaded, processed, and saved successfully!",
-          imageUrl: `http://localhost:3000${imagePath}`,
+          imageUrl: `${baseUrl}${imagePath}`,
         });
       });
     } catch (error) {
@@ -325,17 +432,31 @@ app.post("/blogs/:blogId/upload", upload.single("image"), async (req, res) => {
 // EDIT a blog
 app.put("/blogs/:id", (req, res) => {
   const { id } = req.params;
-  const { title, shortDescription, image } = req.body;
+  const { title, shortDescription, image ,jsonData} = req.body;
+
+  // Explicitly map camelCase to snake_case for `short_description`
+  const short_description = shortDescription;
+
+  // Create the JSON object for the `jsonData` column
+
+
+  // Update query to include `jsonData`
   const sql =
-    "UPDATE blogs SET title = ?, shortDescription = ?, image = ? WHERE id = ?";
-  db.query(sql, [title, shortDescription, image, id], (err, result) => {
-    if (err) {
-      console.error("Error updating data:", err);
-      res.status(500).json({ error: "Failed to update data" });
-      return;
+    "UPDATE blogs SET title = ?, short_description = ?, image = ?, jsonData = ? WHERE id = ?";
+
+  // Execute the query with the parameters
+  db.query(
+    sql,
+    [title, short_description, image, jsonData, id],
+    (err, result) => {
+      if (err) {
+        console.error("Error updating data:", err);
+        res.status(500).json({ error: "Failed to update data" });
+        return;
+      }
+      res.json({ message: "Blog updated successfully" });
     }
-    res.json({ message: "Blog updated successfully" });
-  });
+  );
 });
 
 // DELETE a blog
