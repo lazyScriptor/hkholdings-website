@@ -85,15 +85,15 @@ export default function Login() {
   return (
     <>
       <div
-        className="relative h-screen w-screen flex justify-center items-center p-8"
+        className="relative bg-brandDarkMaroon h-screen w-screen flex justify-center items-center p-8"
         style={{ position: "relative" }}
       >
-        {/* Background Image */}
+        {/* Background Image
         <img
           src={heroImage2}
           alt="Background"
           className="absolute h-full w-full object-cover blur-sm "
-        />
+        /> */}
 
         {/* Content */}
         <Box
@@ -154,7 +154,8 @@ export default function Login() {
           </div>
         </Box>
       </div>
-      
+      <div className="h-8  bg-brandLightMaroon"></div>
+
       <Footer />
       <BottomFooter />
     </>

@@ -5,6 +5,7 @@ import Swal from "sweetalert2";
 import { IoIosArrowBack } from "react-icons/io";
 import SmallNavBar from "../../components/SmallNavBar";
 import { BlogSectionAdmin } from "../blog/BlogMain";
+import { IoCreateOutline } from "react-icons/io5";
 
 function BlogPostAdmin() {
   const navigate = useNavigate();
@@ -35,17 +36,24 @@ function BlogPostAdmin() {
         <div className="bg-brandLightMaroon/30 border h-[100%] p-16 container ">
           <div className="flex justify-between ">
             <div className="flex items-center gap-4">
-              <button className=" px-2 py-1 text-brandWhite">
+              <button
+                onClick={() => {
+                  navigate("/admin-dashboard");
+                }}
+                className=" px-2 py-1 text-brandWhite"
+              >
                 <IoIosArrowBack />
               </button>
-              <h2 className="text-brandWhite text-4xl ">Blog Post Management</h2>
+              <h2 className="text-brandWhite text-4xl ">
+                Blog Post Management
+              </h2>
             </div>
             <div className="flex gap-4 ">
               <button
                 onClick={() => navigate("/admin-blogs-create")}
-                className="text-brandWhite bg-brandLightMaroon p-1"
+                className="text-brandWhite flex items-center gap-2 bg-brandLightMaroon p-2 px-4 rounded-xl"
               >
-                Create
+                <IoCreateOutline /> Create
               </button>
             </div>
           </div>

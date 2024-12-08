@@ -16,6 +16,8 @@ import {
 import axios from "axios";
 import Swal from "sweetalert2";
 import { IoIosArrowBack } from "react-icons/io";
+import { MdOutlineDelete } from "react-icons/md";
+import { MdOutlineDeleteSweep } from "react-icons/md";
 
 import { useNavigate } from "react-router-dom";
 import SmallNavBar from "../../components/SmallNavBar";
@@ -152,160 +154,185 @@ function Inquiries() {
   };
 
   return (
-    <>
-      <div className="p-4 min-h-screen bg-brandDarkMaroon">
-        <SmallNavBar />
-        <div className="bg-brandLightMaroon/30 border h-[100%] p-16 container ">
-          <div className="flex justify-between ">
-            <div className="flex items-center gap-4">
-              <button
-                className=" px-2 py-1 text-brandWhite"
-                onClick={() => navigate("/admin-dashboard")}
-              >
-                <IoIosArrowBack />
-              </button>
-
-              <h2 className="text-brandWhite text-4xl ">Inquiry Management</h2>
-            </div>
-            <div className="flex gap-4 ">
-              <Box sx={{ my: 2 }}>
-                <TextField
-                  label="Start Date"
-                  type="date"
-                  value={startDate}
-                  onChange={handleStartDateChange}
-                  InputLabelProps={{
-                    shrink: true,
-                  }}
-                />
-              </Box>
-              <Box sx={{ my: 2 }}>
-                <TextField
-                  label="End Date"
-                  type="date"
-                  value={endDate}
-                  onChange={handleEndDateChange}
-                  InputLabelProps={{
-                    shrink: true,
-                  }}
-                />
-              </Box>
-            </div>
+    <div
+      className="p-4 bg-brandDarkMaroon"
+      style={{
+        minHeight: "100vh",
+      }}
+    >
+      <SmallNavBar />
+      <div className="bg-brandLightMaroon/30 container p-16 border " style={{}}>
+        <div style={{ display: "flex", justifyContent: "space-between" }}>
+          <div style={{ display: "flex", alignItems: "center", gap: "16px" }}>
+            <button
+              style={{
+                background: "none",
+                border: "none",
+                color: "#FFFFFF", // White
+                cursor: "pointer",
+                fontSize: "20px",
+              }}
+              onClick={() => navigate("/admin-dashboard")}
+            >
+              <IoIosArrowBack />
+            </button>
+            <h2 style={{ color: "#FFFFFF", fontSize: "32px" }}>
+              Inquiry Management
+            </h2>
           </div>
-
-          <Button
-            variant="contained"
-            color="secondary"
-            onClick={handleDeleteSelected}
-            disabled={selected.length === 0}
-          >
-            Delete Selected
-          </Button>
-          <TableContainer>
-            <Table>
-              <TableHead>
-                <TableRow>
-                  <TableCell padding="checkbox" className="text-gray-500">
-                    <Checkbox
-                      onChange={handleSelectAllClick}
-                      checked={selected.length === enquiries.length}
-                    />
-                  </TableCell>
-                  <TableCell className="text-gray-500">First Name</TableCell>
-                  <TableCell className="text-gray-500">Last Name</TableCell>
-                  <TableCell className="text-gray-500">Email</TableCell>
-                  <TableCell className="text-gray-500">Phone</TableCell>
-                  <TableCell className="text-gray-500">Message</TableCell>
-                  <TableCell className="text-gray-500">Date</TableCell>
-                  <TableCell className="text-gray-500">Action</TableCell>
-                </TableRow>
-              </TableHead>
-              <TableBody>
-                {loading ? (
-                  <TableRow>
-                    <TableCell
-                      colSpan={8}
-                      align="center"
-                      className="text-white"
-                    >
-                      Loading...
-                    </TableCell>
-                  </TableRow>
-                ) : (
-                  enquiries
-                    .slice(page * rowsPerPage, page * rowsPerPage + rowsPerPage)
-                    .map((enquiry) => (
-                      <TableRow key={enquiry.id}>
-                        <TableCell padding="checkbox" className="text-white">
-                          <Checkbox
-                            checked={selected.indexOf(enquiry.id) !== -1}
-                            onChange={(event) =>
-                              handleSelectClick(event, enquiry.id)
-                            }
-                          />
-                        </TableCell>
-                        <TableCell className="text-white">
-                          {enquiry.first_name}
-                        </TableCell>
-                        <TableCell className="text-white">
-                          {enquiry.last_name}
-                        </TableCell>
-                        <TableCell className="text-white">
-                          {enquiry.email_address}
-                        </TableCell>
-                        <TableCell className="text-white">
-                          {enquiry.phone_number}
-                        </TableCell>
-                        <TableCell
-                          className="text-white"
-                          sx={{ maxWidth: 200 }}
-                        >
-                          {enquiry.message}
-                        </TableCell>
-                        <TableCell
-                          className="text-white"
-                          sx={{ maxWidth: 100 }}
-                        >
-                          {new Date(enquiry.created_at).toLocaleString(
-                            "en-GB",
-                            {
-                              weekday: "short",
-                              year: "numeric",
-                              month: "short",
-                              day: "2-digit",
-                              hour: "2-digit",
-                              minute: "2-digit",
-                              second: "2-digit",
-                              hour12: false,
-                            }
-                          )}
-                        </TableCell>
-                        <TableCell>
-                          <Button
-                            color="secondary"
-                            onClick={() => handleDeleteSingle(enquiry.id)}
-                          >
-                            Delete
-                          </Button>
-                        </TableCell>
-                      </TableRow>
-                    ))
-                )}
-              </TableBody>
-            </Table>
-          </TableContainer>
-          <TablePagination
-            rowsPerPageOptions={[5, 10, 25]}
-            component="div"
-            count={enquiries.length}
-            rowsPerPage={rowsPerPage}
-            page={page}
-            onPageChange={handleChangePage}
-            onRowsPerPageChange={handleChangeRowsPerPage}
-          />
+          <div style={{ display: "flex", gap: "16px" }}>
+            <Box>
+              <TextField
+                label="Start Date"
+                type="date"
+                value={startDate}
+                onChange={handleStartDateChange}
+                InputLabelProps={{
+                  shrink: true,
+                }}
+                sx={{
+                  input: { color: "#FFFFFF" },
+                  label: { color: "#FFFFFF" },
+                }}
+              />
+            </Box>
+            <Box>
+              <TextField
+                label="End Date"
+                type="date"
+                value={endDate}
+                onChange={handleEndDateChange}
+                InputLabelProps={{
+                  shrink: true,
+                }}
+                sx={{
+                  input: { color: "#FFFFFF" },
+                  label: { color: "#FFFFFF" },
+                }}
+              />
+            </Box>
+          </div>
         </div>
+
+        <button
+          disabled={selected.length === 0}
+          className="p-2 ml-2 bg-red-600 hover:bg-red-500 disabled:hover:bg-opacity-25 disabled:hover:cursor-not-allowed text-xl disabled:bg-opacity-25 transition-all duration-200  rounded-xl text-brandWhite"
+          onClick={handleDeleteSelected}
+        >
+          <MdOutlineDeleteSweep />
+        </button>
+
+        <TableContainer>
+          <Table>
+            <TableHead>
+              <TableRow>
+                <TableCell padding="checkbox" sx={{ color: "#AAAAAA" }}>
+                  <Checkbox
+                    onChange={handleSelectAllClick}
+                    checked={selected.length === enquiries.length}
+                  />
+                </TableCell>
+                <TableCell sx={{ color: "#FFFFFF" }}>First Name</TableCell>
+                <TableCell sx={{ color: "#FFFFFF" }}>Last Name</TableCell>
+                <TableCell sx={{ color: "#FFFFFF" }}>Email</TableCell>
+                <TableCell sx={{ color: "#FFFFFF" }}>Phone</TableCell>
+                <TableCell sx={{ color: "#FFFFFF" }}>Message</TableCell>
+                <TableCell sx={{ color: "#FFFFFF" }}>Date</TableCell>
+                <TableCell sx={{ color: "#FFFFFF" }}>Action</TableCell>
+              </TableRow>
+            </TableHead>
+            <TableBody>
+              {loading ? (
+                <TableRow>
+                  <TableCell
+                    colSpan={8}
+                    align="center"
+                    sx={{ color: "#FFFFFF" }}
+                  >
+                    Loading...
+                  </TableCell>
+                </TableRow>
+              ) : (
+                enquiries
+                  .slice(page * rowsPerPage, page * rowsPerPage + rowsPerPage)
+                  .map((enquiry) => (
+                    <TableRow key={enquiry.id}>
+                      <TableCell padding="checkbox" sx={{ color: "#FFFFFF" }}>
+                        <Checkbox
+                          checked={selected.indexOf(enquiry.id) !== -1}
+                          onChange={(event) =>
+                            handleSelectClick(event, enquiry.id)
+                          }
+                        />
+                      </TableCell>
+                      <TableCell sx={{ color: "#FFFFFF" }}>
+                        {enquiry.first_name}
+                      </TableCell>
+                      <TableCell sx={{ color: "#FFFFFF" }}>
+                        {enquiry.last_name}
+                      </TableCell>
+                      <TableCell sx={{ color: "#FFFFFF" }}>
+                        {enquiry.email_address}
+                      </TableCell>
+                      <TableCell sx={{ color: "#FFFFFF" }}>
+                        {enquiry.phone_number}
+                      </TableCell>
+                      <TableCell
+                        sx={{
+                          color: "#FFFFFF",
+                          maxWidth: "200px",
+                          overflow: "hidden",
+                          textOverflow: "ellipsis",
+                        }}
+                      >
+                        {enquiry.message}
+                      </TableCell>
+                      <TableCell
+                        sx={{
+                          color: "#FFFFFF",
+                          maxWidth: "100px",
+                          overflow: "hidden",
+                          textOverflow: "ellipsis",
+                        }}
+                      >
+                        {new Date(enquiry.created_at).toLocaleString("en-GB", {
+                          weekday: "short",
+                          year: "numeric",
+                          month: "short",
+                          day: "2-digit",
+                          hour: "2-digit",
+                          minute: "2-digit",
+                          second: "2-digit",
+                          hour12: false,
+                        })}
+                      </TableCell>
+                      <TableCell>
+         
+
+                        <button
+                          className="p-2 ml-2 bg-red-600 hover:bg-red-500 disabled:hover:bg-opacity-25 disabled:hover:cursor-not-allowed text-xl disabled:bg-opacity-25 transition-all duration-200  rounded-xl text-brandWhite"
+                          onClick={() => handleDeleteSingle(enquiry.id)}
+                        >
+                          <MdOutlineDelete />
+                        </button>
+                      </TableCell>
+                    </TableRow>
+                  ))
+              )}
+            </TableBody>
+          </Table>
+        </TableContainer>
+        <TablePagination
+          rowsPerPageOptions={[5, 10, 25]}
+          component="div"
+          count={enquiries.length}
+          rowsPerPage={rowsPerPage}
+          page={page}
+          onPageChange={handleChangePage}
+          onRowsPerPageChange={handleChangeRowsPerPage}
+        />
       </div>
-    </>
+    </div>
   );
 }
 

@@ -7,7 +7,9 @@ import Footer from "../../components/Footer";
 import BottomFooter from "../../components/BottomFooter";
 import ServicesExpan from "./ServicesExpan";
 import axios from "axios";
-import Swal from 'sweetalert2';
+import Swal from 'sweetalert2'
+import { CiEdit } from "react-icons/ci";
+import { MdOutlineDelete } from "react-icons/md";
 
 import LoadingComponent from "../../components/LoadingComponent";
 import { useNavigate } from "react-router-dom";
@@ -281,9 +283,10 @@ export const BlogSectionAdmin = ({
         dangerouslySetInnerHTML={{ __html: short_description }}
         className="text-md line-clamp-2"
       />
-      <div className="flex justify-center gap-4">
-        <button onClick={handleEdit}>Edit</button>
-        <button onClick={handleDelete}>Delete</button>
+      <div className="flex justify-center gap-2">
+        <button className="p-2 bg-blue-600 text-xl  rounded-xl text-brandWhite" onClick={handleEdit}><CiEdit/></button>
+        <button className="p-2 bg-red-600 text-xl rounded-xl text-brandWhite" onClick={handleDelete}><MdOutlineDelete/></button>
+
       </div>
     </div>
   );
