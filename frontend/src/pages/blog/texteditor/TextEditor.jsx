@@ -2,6 +2,7 @@ import React, { useState, useEffect } from "react";
 import ReactQuill from "react-quill";
 import "react-quill/dist/quill.snow.css";
 import axios from "axios";
+import { useParams } from "react-router-dom";
 
 function TextEditor() {
   const [title, setTitle] = useState("");
@@ -15,7 +16,10 @@ function TextEditor() {
     title: "",
     shortDescription: "",
   });
+  const {id}=useParams();
   useEffect(() => {
+   console.log("this is the id",id)
+   setBlogId(id)
     if (blogId) {
       const fetchBlog = async () => {
         try {
@@ -41,22 +45,19 @@ function TextEditor() {
     }
   }, [blogId]);
 
-
   useEffect(() => {
     // Construct the URL
     const fetchImage = async () => {
-        try {
-            const url = `http://localhost:3000/uploads/${blogId}`; // Adjust based on your backend
-            setImageUrl(url);
-        } catch (error) {
-            console.error('Error fetching image:', error);
-        }
+      try {
+        const url = `http://localhost:3000/uploads/${blogId}`; // Adjust based on your backend
+        setImageUrl(url);
+      } catch (error) {
+        console.error("Error fetching image:", error);
+      }
     };
 
     fetchImage();
-}, [blogId]);
-
-
+  }, [blogId]);
 
   const handleCreateBlog = async () => {
     const jsonData = { title, shortDescription: body };
@@ -164,25 +165,26 @@ function TextEditor() {
       </div>
 
       {/* Fetch Blog Details by Blog ID */}
-      <div>
+      {/* <div>
         <p>Enter Blog ID to Fetch Details</p>
         <input
           type="text"
           onChange={handleBlogIdChange}
           className="bg-green-300 w-44 border-2 border-red-400"
         />
-      </div>
-  
+      </div> */}
+
       <div>
-            {imageUrl ? (
-                <img src={imageUrl} alt={`Blog ${blogId}`} style={{ width: '100%', height: 'auto' }} />
-            ) : (
-                <p>Image not available.</p>
-            )}
-        </div>
-
-
-
+        {imageUrl ? (
+          <img
+            src={imageUrl}
+            alt={`Blog ${blogId}`}
+            style={{ width: "100%", height: "auto" }}
+          />
+        ) : (
+          <p>Image not available.</p>
+        )}
+      </div>
     </div>
   );
 }

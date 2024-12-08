@@ -13,7 +13,8 @@ import MenuItem from "@mui/material/MenuItem";
 import Select from "@mui/material/Select";
 import Switch from "@mui/material/Switch";
 import { Typography } from "@mui/material";
-
+import { decode } from "he";
+import DOMPurify from "dompurify";
 export default function ServicesExpan({
   index,
   image,
@@ -43,6 +44,55 @@ export default function ServicesExpan({
     setFullWidth(event.target.checked);
   };
 
+  const sanitizedContent = DOMPurify.sanitize(shortDescription, {
+    ALLOWED_TAGS: [
+      "p",
+      "br",
+      "span",
+      "strong",
+      "b",
+      "i",
+      "em",
+      "u",
+      "small",
+      "sub",
+      "sup",
+      "h1",
+      "h2",
+      "h3",
+      "h4",
+      "h5",
+      "h6",
+      "li",
+      "a",
+      "img",
+      "figure",
+      "figcaption",
+      "table",
+      "thead",
+      "tbody",
+      "tfoot",
+      "tr",
+      "th",
+      "td",
+      "div",
+      "hr",
+      "blockquote",
+      "code",
+      "pre",
+      "abbr",
+      "cite",
+      "dl",
+      "dt",
+      "dd",
+      "details",
+      "summary",
+      "audio",
+      "video",
+    ],
+    ALLOWED_ATTR: ["href", "rel", "target"],
+  });
+
   return (
     <React.Fragment>
       <Button variant="outlined" onClick={handleClickOpen}>
@@ -57,16 +107,22 @@ export default function ServicesExpan({
         <img
           src={image}
           alt="no "
-          className="flex self-center w-[70%] rounded-b-lg"
+          className="flex self-center w-[70%] md:w-[60%] lg:w-[50%] rounded-b-lg"
         />
-        <Box sx={{pl:2}}>
-        <Typography>Created At:</Typography>
-        <Typography>Last Update on:</Typography>
-
+        <Box sx={{ pl: 2 }}>
+          <Typography>Created At:</Typography>
+          <Typography>Last Update on:</Typography>
         </Box>
-        <DialogTitle >{title}</DialogTitle>
+
+        <DialogTitle>
+          <span dangerouslySetInnerHTML={{ __html: title }} />
+        </DialogTitle>
+
         <DialogContent position={"relative"}>
-          <DialogContentText>{shortDescription}</DialogContentText>
+          <DialogContentText>
+            <div dangerouslySetInnerHTML={{ __html: sanitizedContent }}></div>
+            {/* ;{shortDescription} */}
+          </DialogContentText>
           <Box
             noValidate
             component="form"
@@ -75,9 +131,10 @@ export default function ServicesExpan({
               display: "flex",
               m: "auto",
               width: "fit-content",
-             
             }}
           >
+            <div className="hidden md:block lg:absolute top-0 right-4">
+
             <FormControl sx={{ mt: 2, minWidth: 120 }}>
               <InputLabel htmlFor="max-width">Adjust blog width</InputLabel>
               <Select
@@ -90,14 +147,14 @@ export default function ServicesExpan({
                   id: "max-width",
                 }}
               >
-                <MenuItem value={false}>false</MenuItem>
-                <MenuItem value="xs">xs</MenuItem>
-                <MenuItem value="sm">sm</MenuItem>
-                <MenuItem value="md">md</MenuItem>
-                <MenuItem value="lg">lg</MenuItem>
+                <MenuItem value={false}>full screen</MenuItem>
+                <MenuItem value="xs">x-tra small</MenuItem>
+                <MenuItem value="sm">small</MenuItem>
+                <MenuItem value="md">medium</MenuItem>
+                <MenuItem value="lg">large</MenuItem>
                 <MenuItem value="xl">xl</MenuItem>
               </Select>
-              <FormControlLabel
+              {/* <FormControlLabel
                 sx={{ mt: 1 }}
                 control={
                   <Switch
@@ -106,8 +163,9 @@ export default function ServicesExpan({
                   />
                 }
                 label="Full width"
-              />
+              /> */}
             </FormControl>
+            </div>
           </Box>
         </DialogContent>
         <DialogActions>
@@ -115,5 +173,5 @@ export default function ServicesExpan({
         </DialogActions>
       </Dialog>
     </React.Fragment>
-  );
+  )
 }

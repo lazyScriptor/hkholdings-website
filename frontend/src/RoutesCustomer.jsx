@@ -8,6 +8,7 @@ import Login from "./pages/login/Login";
 import MainScreen from "./pages/adminpanel/MainScreen";
 import Inquiries from "./pages/adminpanel/Inquiries";
 import MainTextEditorPage from "./pages/blog/texteditor/MainTextEditorPage";
+import BlogPostAdmin from "./pages/adminpanel/BlogPostAdmin";
 // Lazy load components for all routes
 const Home = React.lazy(() => import("./pages/home/Home"));
 const About = React.lazy(() => import("./pages/aboutus/AboutUsMain"));
@@ -32,7 +33,9 @@ function RoutesCustomer() {
           <Route path="/admin-panel" element={<Login />} />
           <Route path="/admin-dashboard" element={<MainScreen />} />
           <Route path="/admin-inquiries" element={<Inquiries />} />
-          <Route path="/admin-blogs" element={<MainTextEditorPage />} />
+          <Route path="/admin-blogs" element={<BlogPostAdmin />} />
+          <Route path="/admin-blogs-create" element={<MainTextEditorPage />} />
+          <Route path="/admin-blogs-edit/:id" element={<MainTextEditorPage />} />
           <Route
             path="/"
             element={

@@ -58,32 +58,23 @@ const storage = multer.diskStorage({
     cb(null, `blog-${blogId}${path.extname(file.originalname)}`); // Save with blog ID as filename
   },
 });
-app.use("/uploads", express.static(path.join(__dirname, "uploads")));
+app.use("/uploads", express.static("uploads"));
 
 const upload = multer({ storage });
 
-
-
-
-
-app.get('/uploads/:blogId', (req, res) => {
+app.get("/uploads/:blogId", (req, res) => {
   const blogId = req.params.blogId;
-  const filePath = path.join(__dirname, 'uploads', `blog-${blogId}.jpeg`);
+  const filePath = path.join(__dirname, "uploads", `blog-${blogId}.jpeg`);
 
   // Check if the file exists and send it
   res.sendFile(filePath, (err) => {
-      if (err) {
-          res.status(404).send('Image not found.');
-          console.log("not found")
-      }
+    if (err) {
+      res.status(404).send("Image not found.");
+    }
   });
 });
 
-
-
-
-
-
+// Get image by blogId
 // Get image by blogId
 app.get("/blogs/:blogId/image", (req, res) => {
   const { blogId } = req.params;
@@ -98,9 +89,11 @@ app.get("/blogs/:blogId/image", (req, res) => {
       return res.status(404).json({ message: "Blog not found" });
     }
 
-    const imageFileName = results[0].image;
-    // Return the image URL (it will be served as a static file)
-    const imageUrl = `/uploads/${imageFileName}`;
+    // Ensure the image path is correct
+    const imageUrl = results[0].image;
+    // const imageUrl = imageFileName.startsWith("/uploads")
+    //   ? imageFileName
+    //   : `/uploads/${imageFileName}`;
 
     res.json({ imageUrl });
   });
@@ -143,7 +136,6 @@ app.post("/upload", upload.single("image"), async (req, res) => {
 
 // Serve static files
 app.use("/uploads", express.static(path.join(__dirname, "uploads")));
-
 
 // User Registration (Create User)
 app.post("/register", async (req, res) => {
@@ -233,7 +225,6 @@ app.post("/login", (req, res) => {
   });
 });
 
-// GET all blogs
 app.get("/blogs", (req, res) => {
   const sql = "SELECT * FROM blogs";
   db.query(sql, (err, results) => {
@@ -242,16 +233,14 @@ app.get("/blogs", (req, res) => {
       res.status(500).json({ error: "Failed to fetch data" });
       return;
     }
-    res.json(results);
+    res.setHeader("Content-Type", "application/json");
+    return res.json(results);
   });
 });
-
-
 
 app.put("/blogs/:id", async (req, res) => {
   const { id } = req.params;
   const { title, shortDescription, image } = req.body; // `jsonData` removed from request body
-  console.log("title", title, "shortDe", shortDescription, "image", image);
   const imageFile = req.file;
 
   // Check if the blog exists
@@ -429,16 +418,36 @@ app.post("/blogs/:blogId/upload", upload.single("image"), async (req, res) => {
   });
 });
 
+app.delete("/blogs/:id", (req, res) => {
+  const {id}=req.params;
+  const sql = `
+    DELETE 
+    FROM blogs
+    WHERE id = ?
+  `;
+
+  db.query(sql, [id], (err, result) => {
+    if (err) {
+      console.error("Error deleting data:", err);
+      res.status(500).json({ error: "Failed to delete data" });
+      return;
+    }
+
+    res.json({
+      message: "Blog deleted successfully",
+      blogId: id
+    });
+  });
+});
 // EDIT a blog
 app.put("/blogs/:id", (req, res) => {
   const { id } = req.params;
-  const { title, shortDescription, image ,jsonData} = req.body;
+  const { title, shortDescription, image, jsonData } = req.body;
 
   // Explicitly map camelCase to snake_case for `short_description`
   const short_description = shortDescription;
 
   // Create the JSON object for the `jsonData` column
-
 
   // Update query to include `jsonData`
   const sql =
