@@ -165,20 +165,12 @@ function Inquiries() {
         <div style={{ display: "flex", justifyContent: "space-between" }}>
           <div style={{ display: "flex", alignItems: "center", gap: "16px" }}>
             <button
-              style={{
-                background: "none",
-                border: "none",
-                color: "#FFFFFF", // White
-                cursor: "pointer",
-                fontSize: "20px",
-              }}
+              className=" px-2 py-1 text-brandWhite"
               onClick={() => navigate("/admin-dashboard")}
             >
               <IoIosArrowBack />
             </button>
-            <h2 style={{ color: "#FFFFFF", fontSize: "32px" }}>
-              Inquiry Management
-            </h2>
+            <h2 className="text-brandWhite text-4xl ">Inquiry Management</h2>
           </div>
           <div style={{ display: "flex", gap: "16px" }}>
             <Box>
@@ -307,8 +299,6 @@ function Inquiries() {
                         })}
                       </TableCell>
                       <TableCell>
-         
-
                         <button
                           className="p-2 ml-2 bg-red-600 hover:bg-red-500 disabled:hover:bg-opacity-25 disabled:hover:cursor-not-allowed text-xl disabled:bg-opacity-25 transition-all duration-200  rounded-xl text-brandWhite"
                           onClick={() => handleDeleteSingle(enquiry.id)}

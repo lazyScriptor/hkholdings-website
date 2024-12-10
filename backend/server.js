@@ -419,7 +419,7 @@ app.post("/blogs/:blogId/upload", upload.single("image"), async (req, res) => {
 });
 
 app.delete("/blogs/:id", (req, res) => {
-  const {id}=req.params;
+  const { id } = req.params;
   const sql = `
     DELETE 
     FROM blogs
@@ -435,7 +435,7 @@ app.delete("/blogs/:id", (req, res) => {
 
     res.json({
       message: "Blog deleted successfully",
-      blogId: id
+      blogId: id,
     });
   });
 });

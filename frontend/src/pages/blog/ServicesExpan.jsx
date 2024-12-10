@@ -15,6 +15,8 @@ import Switch from "@mui/material/Switch";
 import { Typography } from "@mui/material";
 import { decode } from "he";
 import DOMPurify from "dompurify";
+import "react-quill/dist/quill.snow.css";
+import { GrView } from "react-icons/gr";
 export default function ServicesExpan({
   index,
   image,
@@ -95,9 +97,14 @@ export default function ServicesExpan({
 
   return (
     <React.Fragment>
-      <Button variant="outlined" onClick={handleClickOpen}>
-        See more
-      </Button>
+      <button
+        className="mt-6 relative group flex justify-center hover:border-brandLightMaroon hover:border w-[40%] h-8 hover:w-12 items-center gap-2 px-4  bg-brandLightMaroon hover:bg-brandDarkMaroon/10 self-center transition-all duration-600 text-white rounded-lg "
+        variant="outlined"
+        onClick={handleClickOpen}
+      >
+        <GrView className="group-hover:absolute group-hover:text-brandLightMaroon  transition-all duration-1000" />
+        <p className="group-hover:text-transparent transition-all duration-1000 truncate">See more</p>
+      </button>
       <Dialog
         fullWidth={fullWidth}
         maxWidth={maxWidth}
@@ -115,12 +122,16 @@ export default function ServicesExpan({
         </Box>
 
         <DialogTitle>
-          <span dangerouslySetInnerHTML={{ __html: title }} />
+          <div className="prose">
+            <div dangerouslySetInnerHTML={{ __html: title }}></div>
+          </div>
         </DialogTitle>
 
         <DialogContent position={"relative"}>
           <DialogContentText>
-            <div dangerouslySetInnerHTML={{ __html: sanitizedContent }}></div>
+            <div className="prose">
+              <div dangerouslySetInnerHTML={{ __html: sanitizedContent }}></div>
+            </div>
             {/* ;{shortDescription} */}
           </DialogContentText>
           <Box
@@ -134,27 +145,26 @@ export default function ServicesExpan({
             }}
           >
             <div className="hidden md:block lg:absolute top-0 right-4">
-
-            <FormControl sx={{ mt: 2, minWidth: 120 }}>
-              <InputLabel htmlFor="max-width">Adjust blog width</InputLabel>
-              <Select
-                autoFocus
-                value={maxWidth}
-                onChange={handleMaxWidthChange}
-                label="maxWidth"
-                inputProps={{
-                  name: "max-width",
-                  id: "max-width",
-                }}
-              >
-                <MenuItem value={false}>full screen</MenuItem>
-                <MenuItem value="xs">x-tra small</MenuItem>
-                <MenuItem value="sm">small</MenuItem>
-                <MenuItem value="md">medium</MenuItem>
-                <MenuItem value="lg">large</MenuItem>
-                <MenuItem value="xl">xl</MenuItem>
-              </Select>
-              {/* <FormControlLabel
+              <FormControl sx={{ mt: 2, minWidth: 120 }}>
+                <InputLabel htmlFor="max-width">Adjust blog width</InputLabel>
+                <Select
+                  autoFocus
+                  value={maxWidth}
+                  onChange={handleMaxWidthChange}
+                  label="maxWidth"
+                  inputProps={{
+                    name: "max-width",
+                    id: "max-width",
+                  }}
+                >
+                  <MenuItem value={false}>full screen</MenuItem>
+                  <MenuItem value="xs">x-tra small</MenuItem>
+                  <MenuItem value="sm">small</MenuItem>
+                  <MenuItem value="md">medium</MenuItem>
+                  <MenuItem value="lg">large</MenuItem>
+                  <MenuItem value="xl">xl</MenuItem>
+                </Select>
+                {/* <FormControlLabel
                 sx={{ mt: 1 }}
                 control={
                   <Switch
@@ -164,7 +174,7 @@ export default function ServicesExpan({
                 }
                 label="Full width"
               /> */}
-            </FormControl>
+              </FormControl>
             </div>
           </Box>
         </DialogContent>
@@ -173,5 +183,5 @@ export default function ServicesExpan({
         </DialogActions>
       </Dialog>
     </React.Fragment>
-  )
+  );
 }

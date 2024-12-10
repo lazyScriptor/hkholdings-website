@@ -14,11 +14,11 @@ export default {
     },
     extend: {
       colors: {
-       brandDarkMaroon:"#40342F",
-       brandLightMaroon:"#AD8E61",
-       brandWhite:"#FEFEFE",
-       brandBlack:"#241C1A",
-       brandGrey:"#8B8V8A",
+        brandDarkMaroon: "#40342F",
+        brandLightMaroon: "#AD8E61",
+        brandWhite: "#FEFEFE",
+        brandBlack: "#241C1A",
+        brandGrey: "#8B8V8A",
       },
       fontFamily: {
         roboto: ["Roboto", "sans-serif"],
@@ -26,11 +26,11 @@ export default {
         // Add other trending fonts here
       },
       textColor: {
-        DEFAULT: '#6B7280', 
+        DEFAULT: "#6B7280",
       },
     },
   },
   plugins: [
-    require('@tailwindcss/line-clamp'),
+    require('@tailwindcss/typography'),
   ],
 };

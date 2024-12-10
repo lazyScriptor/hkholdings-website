@@ -4,7 +4,9 @@ import "react-quill/dist/quill.snow.css";
 import axios from "axios";
 import { useParams } from "react-router-dom";
 
+import Swal from "sweetalert2";
 function TextEditor() {
+  const [uploadBtnStatus, setUploadBtnStatus] = useState(true);
   const [title, setTitle] = useState("");
   const [body, setBody] = useState("");
   const [image, setImage] = useState("");
@@ -16,10 +18,11 @@ function TextEditor() {
     title: "",
     shortDescription: "",
   });
-  const {id}=useParams();
+  const { id } = useParams();
   useEffect(() => {
-   console.log("this is the id",id)
-   setBlogId(id)
+    setUploadBtnStatus(true);
+    console.log("this is the id", id);
+    setBlogId(id);
     if (blogId) {
       const fetchBlog = async () => {
         try {
@@ -70,7 +73,7 @@ function TextEditor() {
       );
       setBlogId(response.data.blogId); // Set the returned blog ID
       setError("");
-      alert("Blog created successfully!");
+      Swal.fire("Success!", "Blog created successfully!", "success");
     } catch (err) {
       setError("Failed to create the blog. Please try again.");
       console.error("Error creating blog:", err);
@@ -84,9 +87,13 @@ function TextEditor() {
     try {
       await axios.put(`http://localhost:3000/blogs/${blogId}`, fullData);
       setError("");
-      alert("Blog updated successfully!");
+      Swal.fire("Success!", "Blog updated successfully!", "success");
     } catch (err) {
-      setError("Failed to update the blog. Please try again.");
+      Swal.fire(
+        "Error",
+        "Failed to update the blog. Please try again.",
+        "error"
+      );
       console.error("Error updating blog:", err);
     }
   };
@@ -95,6 +102,7 @@ function TextEditor() {
     const file = e.target.files[0];
     if (!file) {
       setError("Please choose an image to upload.");
+      Swal.fire("Warning", "Please choose an image to upload.", "warning");
       return;
     }
 
@@ -109,10 +117,20 @@ function TextEditor() {
           headers: { "Content-Type": "multipart/form-data" },
         }
       );
-      setImage(response.data.imageUrl); // Update the image URL in state
-      alert("Image uploaded successfully!");
+
+      // Assuming the backend returns the updated image URL
+      const uploadedImageUrl = response.data.imageUrl;
+      setImage(uploadedImageUrl); // Update the image state
+      setImageUrl(uploadedImageUrl); // Set the updated image URL
+      Swal.fire("Success!", "Image uploaded successfully!", "success");
+      setUploadBtnStatus(false);
     } catch (err) {
       setError("Failed to upload the image. Please try again.");
+      Swal.fire(
+        "Error",
+        "Failed to upload the image. Please try again.",
+        "error"
+      );
       console.error("Error uploading image:", err);
     }
   };
@@ -123,7 +141,9 @@ function TextEditor() {
 
   return (
     <div className="bg-brandLightMaroon/30 border h-[100%] p-16 container flex flex-col gap-4">
-      <h1>{isEditMode ? "Edit Blog" : "Create Blog"}</h1>
+      <h1 className="text-brandWhite text-4xl py-4">
+        {isEditMode ? "Edit Blog" : "Create Blog"}
+      </h1>
 
       {/* Title Editor */}
       {/* Title Editor */}
@@ -157,11 +177,51 @@ function TextEditor() {
 
       {/* Image Upload */}
       <div>
-        <p>Upload the image</p>
-        <input type="file" onChange={handleFileChange} />
-        {image && (
-          <img src={image} alt="Uploaded" style={{ maxWidth: "100%" }} />
+        {isEditMode ? (
+          <h2 className="text-brandWhite text-4xl py-8 ">Upload the Image</h2>
+        ) : (
+          <>
+            <h2 className="text-brandWhite text-4xl py-8 ">Upload the Image</h2>
+            <ul className="list-disc pl-5 pb-8">
+              <li className="text-sm text-gray-300">
+                <p>Please create the blog before uploading an image.</p>
+              </li>
+              <li className="text-sm text-gray-300">
+                <p>
+                  You can upload or update the image at any time later by
+                  clicking the edit button.
+                </p>
+              </li>
+            </ul>
+          </>
         )}
+        {isEditMode && uploadBtnStatus ? (
+          <>
+            <label
+              htmlFor="customFileInput"
+              className="cursor-pointer px-8 py-2 bg-brandLightMaroon hover:bg-brandDarkMaroon transition-all duration-200 text-white rounded-lg"
+            >
+              Upload Image
+            </label>
+            <input
+              id="customFileInput"
+              type="file"
+              className="hidden"
+              disabled={!isEditMode}
+              onChange={handleFileChange}
+            />
+          </>
+        ) : (
+          ""
+        )}
+
+        {/* {image && (
+          <img
+            src={imageUrl}
+            alt="Uploaded"
+            className="mt-4 max-w-full rounded-lg"
+          />
+        )} */}
       </div>
 
       {/* Fetch Blog Details by Blog ID */}
@@ -174,12 +234,12 @@ function TextEditor() {
         />
       </div> */}
 
-      <div>
-        {imageUrl ? (
+      <div className="flex justify-center ">
+        {imageUrl && isEditMode ? (
           <img
             src={imageUrl}
-            alt={`Blog ${blogId}`}
-            style={{ width: "100%", height: "auto" }}
+            // alt={`Blog ${blogId}`}
+            className="w-full md:w-[80%] lg:w-[40%] rounded-md"
           />
         ) : (
           <p>Image not available.</p>
