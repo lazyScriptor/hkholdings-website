@@ -102,8 +102,20 @@ function Footer() {
             <div className="flex flex-col gap-2 py-4 items-center md:items-start">
               <div className="flex justify-center items-center gap-2 text-xs group">
                 <BiSolidPhoneCall className="text-gray-400 group-hover:text-brandLightMaroon transition-all duration-200" />
-                <p className="text-gray-400 group-hover:text-brandLightMaroon text-xs transition-all duration-200 cursor-pointer">
-                  0705123804 / 0716795913
+                <p className="text-gray-400  text-xs transition-all duration-200 cursor-pointer">
+                  <a
+                    className="hover:text-brandLightMaroon"
+                    href="tel:0716195913"
+                  >
+                    071 6195913
+                  </a>{" "}
+                  /{" "}
+                  <a
+                    className="hover:text-brandLightMaroon"
+                    href="tel:0113425370"
+                  >
+                    011 3425370
+                  </a>
                 </p>
               </div>
 
@@ -117,7 +129,7 @@ function Footer() {
               <div className="flex justify-center items-center gap-2 text-xs group">
                 <MdOutlineLocationOn className="text-gray-400 group-hover:text-brandLightMaroon transition-all duration-200" />
                 <p className="text-gray-400 group-hover:text-brandLightMaroon text-xs transition-all duration-200 cursor-pointer">
-                  Elpitiwala, Ragama
+                  No. 86/A 1/1, Elapitiwala, Ragama
                 </p>
               </div>
             </div>

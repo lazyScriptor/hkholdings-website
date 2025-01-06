@@ -177,7 +177,7 @@ function Inquiries() {
               <IoIosArrowBack />
             </button>
             <h2 style={{ color: "#FFFFFF", fontSize: "32px" }}>
-              Inquiry Management
+              Enquiry Management
             </h2>
           </div>
           <div style={{ display: "flex", gap: "16px" }}>

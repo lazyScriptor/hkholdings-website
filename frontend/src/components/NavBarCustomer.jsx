@@ -16,7 +16,7 @@ function NavBarCustomer({ children, number }) {
     <div className="relative">
       {/* Navbar */}
       <nav className="fixed  top-0 left-0 w-full text-white z-50 max-w-full bg-gradient-to-b from-brandBlack to-black/1">
-          <MobileNavigation />
+        <MobileNavigation />
         <div className="container flex items-center  gap-12 h-16">
           {/* Left: Logo */}
           <div className="text-xl hidden md:flex font-bold">
@@ -41,14 +41,15 @@ function NavBarCustomer({ children, number }) {
 
           {/* Right: Button (absolute positioning) */}
           <div className="hidden md:block absolute group top-2 right-4">
-            <a href="tel:0778408764">
-              <button className="flex rounded-full w-[200px] hover:w-[100px] text-white hover:text-brandWhite items-center gap-2 bg-green-800 hover:bg-green-600 hover:rounded-full font-bold py-2 px-8 duration-700 transition-all overflow-hidden">
+            <a href="tel:0716195913">
+              <button className="flex rounded-full w-[200px] h-10  text-white hover:text-brandWhite items-center gap-2 border border-green-800 hover:bg-green-600 hover:rounded-full font-bold py-2 px-8 duration-700 transition-all overflow-hidden">
                 {/* Icon */}
-                <LuPhoneCall className="transition-all duration-300 group-hover:translate-x-0 group-hover:mx-auto" />
+                <LuPhoneCall className=" group-hover:text-green-100 transition-all duration-300 " />
                 {/* Text */}
-                <p className=" group-hover:w-0 group-hover:opacity-0 transition-all duration-400 whitespace-nowrap">
-                  0705123804
+                <p className="group-hover:text-green-20 group-hover:border-0 transition-all duration-400 ">
+                  071 6195913
                 </p>
+
               </button>
             </a>
           </div>

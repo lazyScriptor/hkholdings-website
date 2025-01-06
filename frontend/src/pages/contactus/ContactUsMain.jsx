@@ -8,8 +8,9 @@ import Footer from "../../components/Footer";
 import BottomFooter from "../../components/BottomFooter";
 import { Box, Button } from "@mui/material";
 import axios from "axios";
-import LoadingComponent from '../../components/LoadingComponent'
+import LoadingComponent from "../../components/LoadingComponent";
 import TextEditor from "../blog/texteditor/TextEditor";
+
 function ContactUsMain() {
   return (
     <div>
@@ -19,12 +20,13 @@ function ContactUsMain() {
         <img
           src={commonHeroImage}
           alt="Background"
-          className="absolute w-screen h-[100vh]"
+          className="absolute z-0 w-screen h-[100vh]"
         />
 
         {/* Overlay Content */}
         <div className="relative z-10 flex flex-col items-center justify-center w-full h-[60vh] text-brandWhite gap-4">
           <h1 className="text-4xl font-semibold">Contact</h1>
+
           <p className="max-w-[60%] text-center text-sm">
             Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do
             eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim
@@ -37,6 +39,12 @@ function ContactUsMain() {
       <Strip2 />
       <div className="h-8 bg-brandLightMaroon"></div>
       <Footer />
+      <div className="h-[100vh] relative">
+        <div className="absolute t-0">
+         
+        </div>
+        <div className="absolute bottom-0 w-full bg-brandLightMaroon h-40"></div>
+      </div>
       <BottomFooter />
     </div>
   );
@@ -54,7 +62,10 @@ const Strip1 = () => {
             <h2 className="text-center text-6xl font-extralight">| </h2>
             <div className="flex flex-col justify-start items-start">
               <h4 className="text-2xl font-semibold">PHONE:</h4>
-              <p className="">+94 11 2 89654511</p>
+              <p className="z-50">
+                <a href="tel:0716195913">071 6195913</a> /{" "}
+                <a href="tel:0113425370">011 3425370</a>
+              </p>
             </div>
           </div>
 
@@ -63,9 +74,7 @@ const Strip1 = () => {
             <h2 className="text-center text-6xl font-extralight">| </h2>
             <div className="flex flex-col justify-start items-start">
               <h4 className="text-2xl font-semibold">LOCATION:</h4>
-              <p className="">
-                404/4A/1, Maithreedasa Mawatha, Pitipana North, Homagama
-              </p>
+              <p className="">No. 86/A 1/1, Elapitiwala, Ragama</p>
             </div>
           </div>
 
@@ -148,7 +157,6 @@ const ContactForm = () => {
   };
 
   const handleSubmit = async (e) => {
-  
     e.preventDefault();
     setLoading(true);
     setErrorMessage(null);
@@ -168,12 +176,12 @@ const ContactForm = () => {
     }
 
     try {
-      console.log("d")
+      console.log("d");
       const response = await axios.post(
         `${import.meta.env.VITE_API_URL}/enquiries`,
         formData
       );
-      console.log(response,"Dd")
+      console.log(response, "Dd");
       setSuccessMessage("Your enquiry has been submitted successfully!");
       setFormData({
         first_name: "",
@@ -276,7 +284,7 @@ const ContactForm = () => {
             disabled={loading}
             className="mt-4 bg-brandLightMaroon hover:bg-brandDarkMaroon transition-all duration-200 text-white rounded-lg"
           >
-            {loading ? <LoadingComponent/> : "Submit"}
+            {loading ? <LoadingComponent /> : "Submit"}
           </Button>
         </div>
       </Box>

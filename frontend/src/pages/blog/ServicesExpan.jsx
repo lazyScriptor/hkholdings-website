@@ -95,9 +95,15 @@ export default function ServicesExpan({
 
   return (
     <React.Fragment>
-      <Button variant="outlined" onClick={handleClickOpen}>
+      <div className="w-full flex justify-center">
+
+      <button
+        onClick={handleClickOpen}
+        className="px-4  md:self-auto py-2 w-44 rounded-lg bg-brandLightMaroon hover:bg-brandDarkMaroon transition-all duration-200 text-white  shadow-lg"
+      >
         See more
-      </Button>
+      </button>
+      </div>
       <Dialog
         fullWidth={fullWidth}
         maxWidth={maxWidth}
@@ -134,27 +140,26 @@ export default function ServicesExpan({
             }}
           >
             <div className="hidden md:block lg:absolute top-0 right-4">
-
-            <FormControl sx={{ mt: 2, minWidth: 120 }}>
-              <InputLabel htmlFor="max-width">Adjust blog width</InputLabel>
-              <Select
-                autoFocus
-                value={maxWidth}
-                onChange={handleMaxWidthChange}
-                label="maxWidth"
-                inputProps={{
-                  name: "max-width",
-                  id: "max-width",
-                }}
-              >
-                <MenuItem value={false}>full screen</MenuItem>
-                <MenuItem value="xs">x-tra small</MenuItem>
-                <MenuItem value="sm">small</MenuItem>
-                <MenuItem value="md">medium</MenuItem>
-                <MenuItem value="lg">large</MenuItem>
-                <MenuItem value="xl">xl</MenuItem>
-              </Select>
-              {/* <FormControlLabel
+              <FormControl sx={{ mt: 2, minWidth: 120 }}>
+                <InputLabel htmlFor="max-width">Adjust blog width</InputLabel>
+                <Select
+                  autoFocus
+                  value={maxWidth}
+                  onChange={handleMaxWidthChange}
+                  label="maxWidth"
+                  inputProps={{
+                    name: "max-width",
+                    id: "max-width",
+                  }}
+                >
+                  <MenuItem value={false}>full screen</MenuItem>
+                  <MenuItem value="xs">x-tra small</MenuItem>
+                  <MenuItem value="sm">small</MenuItem>
+                  <MenuItem value="md">medium</MenuItem>
+                  <MenuItem value="lg">large</MenuItem>
+                  <MenuItem value="xl">xl</MenuItem>
+                </Select>
+                {/* <FormControlLabel
                 sx={{ mt: 1 }}
                 control={
                   <Switch
@@ -164,7 +169,7 @@ export default function ServicesExpan({
                 }
                 label="Full width"
               /> */}
-            </FormControl>
+              </FormControl>
             </div>
           </Box>
         </DialogContent>
@@ -173,5 +178,5 @@ export default function ServicesExpan({
         </DialogActions>
       </Dialog>
     </React.Fragment>
-  )
+  );
 }

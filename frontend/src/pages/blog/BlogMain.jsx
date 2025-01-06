@@ -155,7 +155,7 @@ export const BlogSection = ({ id, index, image, title, short_description }) => {
   }, [id]);
 
   return (
-    <div className="p-8 shadow-2xl rounded-3xl flex flex-col gap-4">
+    <div className="p-8 shadow-lg hover:shadow-2xl transition-all duration-300 rounded-3xl flex flex-col gap-4" >
       {imageUrl ? (
         <img src={imageUrl} className="rounded-b-lg" alt={`Blog ${id}`} />
       ) : (

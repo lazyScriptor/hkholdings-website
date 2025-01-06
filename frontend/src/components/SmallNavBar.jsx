@@ -16,7 +16,7 @@ function SmallNavBar() {
       />
       <div className="flex gap-4 text-brandWhite items-center">
         <button className="px-8" onClick={()=>{navigate('/admin-blogs')}}> Blog Post Management</button>
-        <button className="px-8" onClick={()=>{navigate('/admin-inquiries')}}> Inquiry Management</button>
+        <button className="px-8" onClick={()=>{navigate('/admin-inquiries')}}> Enquiry Management</button>
         <button className="bg-brandLightMaroon p-4 rounded-full">
           {userData}
         </button>
