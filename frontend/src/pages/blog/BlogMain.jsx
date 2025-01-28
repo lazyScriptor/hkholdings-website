@@ -97,7 +97,7 @@ function BlogMain() {
 
   return (
     <>
-      <div className="relative w-screen">
+      <div className="relative">
         {/* Background Image */}
         <img
           src={commonHeroImage}

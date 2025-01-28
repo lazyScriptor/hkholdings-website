@@ -161,17 +161,16 @@ const Sliderr = () => {
         <div className="relative h-screen">
           <div
             className="absolute inset-0 bg-cover bg-center h-full"
-            style={{ backgroundImage: `url(${heroImg4})` }}
+            style={{ backgroundImage: `url(${heroImg2})` }}
           >
             <div className="absolute inset-0 flex flex-col items-center justify-center bg-brandLightMaroon/30 text-white">
               <div className="container flex flex-col items-center justify-center">
-                <h1 className="text-4xl md:text-7xl font-bold mb-4 text-center">
-                  IGNITING INNOVATION THROUGH CRAFTSMANSHIP
+                <h1 className="text-4xl md:text-7xl font-bold mb-4 text-center capitalize">
+                  Professional & Reliable works
                 </h1>
-                <p className="container text-sm text-center max-w-[70%]">
-                  There are many variations of passages of Lorem ipsum dolor sit
-                  amet consectetur, adipisicing elit. Vero esse adipisci aliquid
-                  necessitatibus!
+                <p className="container text-sm text-center max-w-[70%] h-12">
+                  Our dedicated work force is the driving force behind our
+                  success with the right directions.
                 </p>
                 <button
                   onClick={() => navigate("/services")}
@@ -188,17 +187,17 @@ const Sliderr = () => {
         <div className="relative h-screen">
           <div
             className="absolute inset-0 bg-cover bg-center h-full"
-            style={{ backgroundImage: `url(${heroImg2})` }}
+            style={{ backgroundImage: `url(${heroImg3})` }}
           >
             <div className="absolute inset-0 flex flex-col items-center justify-center bg-brandLightMaroon/30 text-white">
               <div className="container flex flex-col items-center justify-center">
-                <h1 className="text-4xl md:text-7xl font-bold mb-4 text-center">
-                  IGNITING INNOVATION THROUGH CRAFTSMANSHIP
+                <h1 className="text-4xl md:text-7xl font-bold mb-4 text-center capitalize">
+                  Professional & Reliable works
                 </h1>
-                <p className="container text-sm text-center max-w-[70%]">
-                  There are many variations of passages of Lorem ipsum dolor sit
-                  amet consectetur, adipisicing elit. Vero esse adipisci aliquid
-                  necessitatibus!
+                <p className="container text-sm text-center max-w-[70%] capitalize h-12">
+                  HK Holdings a leading brand in the field of glass & iron work,
+                  is a trusted company the works to provide quality service to
+                  you.
                 </p>
                 <button
                   onClick={() => navigate("/services")}
@@ -215,44 +214,16 @@ const Sliderr = () => {
         <div className="relative h-screen">
           <div
             className="absolute inset-0 bg-cover bg-center h-full"
-            style={{ backgroundImage: `url(${heroImg3})` }}
-          >
-            <div className="absolute inset-0 flex flex-col items-center justify-center bg-brandLightMaroon/30 text-white">
-              <div className="container flex flex-col items-center justify-center">
-                <h1 className="text-4xl md:text-7xl font-bold mb-4 text-center">
-                  IGNITING INNOVATION THROUGH CRAFTSMANSHIP
-                </h1>
-                <p className="container text-sm text-center max-w-[70%]">
-                  There are many variations of passages of Lorem ipsum dolor sit
-                  amet consectetur, adipisicing elit. Vero esse adipisci aliquid
-                  necessitatibus!
-                </p>
-                <button
-                  onClick={() => navigate("/services")}
-                  className="mt-6 px-8 py-2 bg-brandLightMaroon hover:bg-brandDarkMaroon transition-all duration-200 text-white rounded-lg"
-                >
-                  DISCOVER MORE
-                </button>
-              </div>
-            </div>
-          </div>
-        </div>
-
-        {/* Slide 4 */}
-        <div className="relative h-screen">
-          <div
-            className="absolute inset-0 bg-cover bg-center h-full"
             style={{ backgroundImage: `url(${heroImg4})` }}
           >
             <div className="absolute inset-0 flex flex-col items-center justify-center bg-brandLightMaroon/30 text-white">
               <div className="container flex flex-col items-center justify-center">
-                <h1 className="text-4xl md:text-7xl font-bold mb-4 text-center">
-                  IGNITING INNOVATION THROUGH CRAFTSMANSHIP
+                <h1 className="text-4xl md:text-7xl font-bold mb-4 text-center capitalize">
+                  Professional & Reliable works
                 </h1>
-                <p className="container text-sm text-center max-w-[70%]">
-                  There are many variations of passages of Lorem ipsum dolor sit
-                  amet consectetur, adipisicing elit. Vero esse adipisci aliquid
-                  necessitatibus!
+                <p className="container text-sm text-center max-w-[70%] capitalize h-12">
+                  We inted to continue working diligently to satisfy our
+                  cherished client.
                 </p>
                 <button
                   onClick={() => navigate("/services")}
@@ -265,8 +236,6 @@ const Sliderr = () => {
           </div>
         </div>
 
-        {/* Additional Slides */}
-        {/* Repeat similar structure for other slides */}
       </Slider>
       <div className="h-8 mb-1.5 bg-brandLightMaroon"></div>
     </div>

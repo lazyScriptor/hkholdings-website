@@ -15,7 +15,7 @@ import abt3 from "../../assets/abt3.png";
 function AboutUsMain() {
   return (
     <>
-      <div className="relative w-screen">
+      <div className=" relative">
         {/* Background Image */}
         <img
           src={commonHeroImage}

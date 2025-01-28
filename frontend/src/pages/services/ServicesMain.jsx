@@ -14,7 +14,7 @@ import BottomFooter from "../../components/BottomFooter";
 function ServicesMain() {
   return (
     <>
-      <div className="relative w-screen">
+      <div className="relative">
         {/* Background Image */}
         <img
           src={commonHeroImage}
@@ -94,8 +94,8 @@ const ThirdPart = ({ image }) => {
   return (
     <>
       <div className="bg-brandLightMaroon">
-        <div className="grid grid-cols-1 md:grid-cols-5">
-          <div className="col-span-3 flex flex-col py-12 md:pb-0 md:pt-16 items-center md:items-end justify-start  gap-8 container text-brandWhite">
+        <div className="grid grid-cols-1 lg:grid-cols-5">
+          <div className="col-span-3 flex flex-col py-12 md:pb-20 md:pt-16 items-center md:items-end justify-start  gap-8 container text-brandWhite">
             <h1 className="text-4xl font-semibold ">
               CUSTOM <span className="font-extralight">WELDING</span>
             </h1>
@@ -108,7 +108,7 @@ const ThirdPart = ({ image }) => {
             </p>
           </div>
           <div className="col-span-2">
-            <img src={image} alt="" />
+            <img src={image} alt="" className="h-[100%] overflow-x-hidden" />
           </div>
         </div>
       </div>
@@ -121,11 +121,11 @@ const FourthPart = ({ image }) => {
   return (
     <>
       <div className="bg-[#40342F]">
-        <div className="grid grid-cols-1 md:grid-cols-5">
+        <div className="grid grid-cols-1 lg:grid-cols-5">
           <div className="col-span-2">
-            <img src={image} alt="" />
+            <img src={image} alt="" className="h-[100%] overflow-x-hidden" />
           </div>
-          <div className="col-span-3 flex flex-col py-12 md:pb-0 md:pt-16 items-center md:items-start justify-start  gap-8 container text-brandWhite">
+          <div className="col-span-3 flex flex-col py-12 md:pb-20 md:pt-16 items-center md:items-start justify-start  gap-8 container text-brandWhite">
             <h1 className="text-4xl font-semibold ">
               METAL <span className="font-extralight">WORKS</span>
             </h1>

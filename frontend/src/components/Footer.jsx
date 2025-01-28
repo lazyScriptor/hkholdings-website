@@ -60,11 +60,7 @@ function Footer() {
   ];
   return (
     <div
-      className="py-4 bg-brandBlack  relative bg-cover bg-center"
-      style={{
-        backgroundImage: `url(${bgImage})`, // Replace with your image path
-      }}
-    >
+      className="py-4 bg-brandBlack  relative bg-cover bg-center" >
       {/* Overlay with 60% opacity */}
       <div className="absolute inset-0 bg-brandDarkMaroon"></div>
 
@@ -161,7 +157,7 @@ function Footer() {
                       className="bg-brandWhite hover:bg-transparent duration-200 transition-all cursor-pointer p-2 rounded-full"
                       onClick={() => navigate(item.navigate)}
                     >
-                      {/* Dynamically render each social icon */}
+                
                       <item.icon className="text-gray-400 hover:text-brandLightMaroon text-xl transition-all duration-200" />
                     </div>
                   ))}

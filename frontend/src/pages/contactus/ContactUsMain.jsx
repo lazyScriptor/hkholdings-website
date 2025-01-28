@@ -15,7 +15,7 @@ function ContactUsMain() {
   return (
     <div>
       {" "}
-      <div className="relative w-screen">
+      <div className="relative">
         {/* Background Image */}
         <img
           src={commonHeroImage}
@@ -39,12 +39,7 @@ function ContactUsMain() {
       <Strip2 />
       <div className="h-8 bg-brandLightMaroon"></div>
       <Footer />
-      <div className="h-[100vh] relative">
-        <div className="absolute t-0">
-         
-        </div>
-        <div className="absolute bottom-0 w-full bg-brandLightMaroon h-40"></div>
-      </div>
+     
       <BottomFooter />
     </div>
   );
