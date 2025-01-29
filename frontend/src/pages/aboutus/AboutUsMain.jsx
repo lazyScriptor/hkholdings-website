@@ -27,17 +27,18 @@ function AboutUsMain() {
         <div className="relative z-10 flex flex-col items-center justify-center w-full h-[60vh] text-brandWhite gap-4">
           <h1 className="text-4xl font-semibold">About Us</h1>
           <p className="max-w-[60%] text-center text-sm">
-            Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do
-            eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim
-            ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut{" "}
+            HK Holdings delivers a wide range of product and service related to
+            construction and property decoration with a next level of creator.
           </p>
         </div>
       </div>
 
       <div className="h-8 bg-brandLightMaroon"></div>
       <SecondPart />
+
       <ThirdPart />
       <FourthPart />
+
       <FifthPart />
       <div className="h-8 bg-brandLightMaroon"></div>
 
@@ -52,7 +53,7 @@ export default AboutUsMain;
 const SecondPart = () => {
   return (
     <>
-      <div className="container pt-12 pb-12 md:pb-0">
+      <div className="container py-12 md:pb-0">
         <div className="grid grid-cols-1 md:grid-cols-5 gap-4">
           <div className="md:col-span-2">
             <img src={aboutUsImage} alt="aboutusImage" />
@@ -61,12 +62,12 @@ const SecondPart = () => {
             <h1 className="uppercase text-4xl font-semibold text-center md:text-start">
               WHO WE ARE?
             </h1>
-            <p className="">
-              Lorem ipsum odor amet, consectetuer adipiscing elit. Urna
-              tincidunt lectus mi porttitor rutrum habitasse. Interdum pharetra
-              mi, et platea lobortis ex sapien. Eros eros nisl neque porttitor
-              primis elit maecenas. Viverra quam luctus phasellus class ipsum
-              duis elit vehicula nascetur.{" "}
+            <p className="text-base text-justify">
+              HK Holdings, was established in 2009 is approaching its 16 years
+              in business. HK Holdings was founded with numerous welders. It has
+              now grown to include technical, management, marketing &
+              administrative positions. Our professionalism combined a strong
+              personal touch.
             </p>
             <div className="flex items-start flex-col gap-4">
               <div className="flex">
@@ -77,13 +78,24 @@ const SecondPart = () => {
               </div>
               <div>
                 <div className="flex">
-                  <RiSettingsFill className="text-5xl font-semibold flex items-start text-transparent w-28" />
-                  <p>
-                    We leverage cutting-edge technology to bring you the most
-                    reliable solutions.We leverage cutting-edge technology We
-                    leverage cutting-edge technology to bring you the most
-                    reliable solutions.We leverage cutting-edge technology
-                  </p>
+                  <RiSettingsFill className="text-5xl font-semibold flex items-start text-transparent " />
+                  <div>
+                    <p className="text-base text-justify">
+                      We work diligently to provide homeowners, builders,
+                      architects, and designers with the finest possible
+                      outcomes every single day.
+                    </p>
+                    <p className="text-base text-justify py-4">
+                      As one of Sri Lanka’s leading firms, we strive for
+                      excellence by delivering high-quality products and
+                      services using the latest technology. Our experienced and
+                      skilled team is capable of handling projects of all sizes,
+                      from small residential jobs to large-scale developments.
+                      HK Holdings offers a wide range of construction and home
+                      décor solutions, ensuring superior craftsmanship and
+                      customer satisfaction.
+                    </p>
+                  </div>
                 </div>
               </div>
             </div>
@@ -94,23 +106,27 @@ const SecondPart = () => {
   );
 };
 
-const ThirdPart = () => {
+const ThirdPart = ({ image }) => {
   return (
     <>
-      <div className="bg-brandLightMaroon">
-        <div className="grid grid-cols-1 md:grid-cols-5">
-          <div className="col-span-3 flex flex-col py-12 md:pb-0 md:pt-20 items-center md:items-end justify-start  gap-8 container text-brandWhite">
-            <h1 className="text-4xl font-semibold ">Vision:</h1>
+      <div className="bg-brandLightMaroon ">
+        <div className="grid grid-cols-1 lg:grid-cols-5 container">
+          <div className="col-span-3 flex flex-col py-12 md:pb-20 md:pt-16 items-center md:items-end justify-start  gap-8 container text-brandWhite">
+            <h1 className="text-4xl font-semibold ">Vision</h1>
             <p className="text-center md:text-right">
-              Lorem ipsum odor amet, consectetuer adipiscing elit. Urna
-              tincidunt lectus mi porttitor rutrum habitasse. Interdum pharetra
-              mi, et platea lobortis ex sapien. Eros eros nisl neque porttitor
-              primis elit maecenas. Viverra quam luctus phasellus class ipsum
-              duis elit vehicula nascetur.
+              <span className="text-4xl font-semibold ">O</span>ur mission is to
+              be the lead in Innovation, sustainable glass railing, steel
+              building and wood flooring solutions, enhancing architectural
+              designing worldwide while prioritizing safety, durability and
+              aesthetics excellence.
             </p>
           </div>
           <div className="col-span-2">
-            <img src={aboutusvisionImage} alt="" />
+            <img
+              src={aboutusmissionimage}
+              alt=""
+              className="h-[100%] overflow-x-hidden"
+            />
           </div>
         </div>
       </div>
@@ -119,22 +135,28 @@ const ThirdPart = () => {
   );
 };
 
-const FourthPart = () => {
+const FourthPart = ({ image }) => {
   return (
     <>
-      <div className="bg-brandDarkMaroon">
-        <div className="grid grid-cols-1 md:grid-cols-5">
+      <div className="bg-[#40342F]">
+        <div className="grid grid-cols-1 lg:grid-cols-5 container">
           <div className="col-span-2">
-            <img src={aboutusmissionimage} alt="" />
+            <img
+              src={aboutusvisionImage}
+              alt=""
+              className="h-[100%] overflow-x-hidden"
+            />
           </div>
-          <div className="col-span-3 flex flex-col py-12 md:pb-0 md:pt-20 items-center md:items-start justify-start  gap-8 container text-brandWhite">
-            <h1 className="text-4xl font-semibold ">Mission:</h1>
+          <div className="col-span-3 flex flex-col py-12 md:pb-20 md:pt-16 items-center md:items-start justify-start  gap-8 container text-brandWhite">
+            <h1 className="text-4xl font-semibold ">Mission</h1>
             <p className="text-center md:text-start">
-              Lorem ipsum odor amet, consectetuer adipiscing elit. Urna
-              tincidunt lectus mi porttitor rutrum habitasse. Interdum pharetra
-              mi, et platea lobortis ex sapien. Eros eros nisl neque porttitor
-              primis elit maecenas. Viverra quam luctus phasellus class ipsum
-              duis elit vehicula nascetur.
+              <span className="text-4xl font-semibold">T</span>o lead the
+              construction and design industry by providing innovative,
+              sustainable and high-quality solutions that seamlessly blend the
+              elegance of glass the durability of Steel and the warmth of wood.
+              we strong to elevate spaces, inspire creativity and create the
+              latest value of our clients through craftsmanship integrity and
+              commitment to Excellence in every project.
             </p>
           </div>
         </div>
@@ -143,6 +165,7 @@ const FourthPart = () => {
     </>
   );
 };
+
 const FifthPart = () => {
   return (
     <>
@@ -208,8 +231,6 @@ const FifthPart = () => {
                 <p className="text-white text-sm">Position 1</p>
               </div>
             </div>
-
-    
           </div>
         </div>
       </div>

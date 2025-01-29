@@ -7,7 +7,7 @@ import Footer from "../../components/Footer";
 import BottomFooter from "../../components/BottomFooter";
 import ServicesExpan from "./ServicesExpan";
 import axios from "axios";
-import Swal from 'sweetalert2'
+import Swal from "sweetalert2";
 import { CiEdit } from "react-icons/ci";
 import { MdOutlineDelete } from "react-icons/md";
 
@@ -109,8 +109,11 @@ function BlogMain() {
         <div className="relative z-10 flex flex-col items-center justify-center w-full h-[60vh] text-brandWhite gap-4">
           <h1 className="text-4xl font-semibold">BLOG</h1>
           <p className="max-w-[60%] text-center text-sm">
-            Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do
-            eiusmod tempor incididunt ut labore et dolore magna aliqua.
+            HK holding have designed and produced glass hand railings and
+            balcony railings, steel hand railings and balcony railings, tempered
+            glass, staircase, canopy, Warehouse using only the best materials.
+            All of these items expertly manufactured in the Sri Lanka to your
+            need, those of your house and your way of life.
           </p>
         </div>
       </div>
@@ -155,7 +158,7 @@ export const BlogSection = ({ id, index, image, title, short_description }) => {
   }, [id]);
 
   return (
-    <div className="p-8 shadow-lg hover:shadow-2xl transition-all duration-300 rounded-3xl flex flex-col gap-4" >
+    <div className="p-8 shadow-lg hover:shadow-2xl transition-all duration-300 rounded-3xl flex flex-col gap-4">
       {imageUrl ? (
         <img src={imageUrl} className="rounded-b-lg" alt={`Blog ${id}`} />
       ) : (
@@ -209,8 +212,6 @@ function BlogImage({ blogId }) {
   );
 }
 
-
-
 export const BlogSectionAdmin = ({
   id,
   image,
@@ -243,27 +244,29 @@ export const BlogSectionAdmin = ({
   const handleDelete = async () => {
     // SweetAlert2 confirmation
     const result = await Swal.fire({
-      title: 'Are you sure?',
-      text: 'This blog will be permanently deleted!',
-      icon: 'warning',
+      title: "Are you sure?",
+      text: "This blog will be permanently deleted!",
+      icon: "warning",
       showCancelButton: true,
-      confirmButtonColor: '#3085d6',
-      cancelButtonColor: '#d33',
-      confirmButtonText: 'Yes, delete it!',
+      confirmButtonColor: "#3085d6",
+      cancelButtonColor: "#d33",
+      confirmButtonText: "Yes, delete it!",
     });
 
     if (result.isConfirmed) {
       try {
-        const response = await axios.delete(`http://localhost:3000/blogs/${id}`);
+        const response = await axios.delete(
+          `http://localhost:3000/blogs/${id}`
+        );
         console.log(response.data);
         // Call the onDelete function from the parent to update the UI
         onDelete(id); // Remove the blog from the parent's state
         // Show success message after successful deletion
-        Swal.fire('Deleted!', 'Your blog has been deleted.', 'success');
+        Swal.fire("Deleted!", "Your blog has been deleted.", "success");
       } catch (error) {
         console.error("Error deleting blog image:", error);
         // Show error message if deletion fails
-        Swal.fire('Error!', 'There was an issue deleting the blog.', 'error');
+        Swal.fire("Error!", "There was an issue deleting the blog.", "error");
       }
     }
   };
@@ -284,9 +287,18 @@ export const BlogSectionAdmin = ({
         className="text-md line-clamp-2"
       />
       <div className="flex justify-center gap-2">
-        <button className="p-2 bg-blue-600 text-xl  rounded-xl text-brandWhite" onClick={handleEdit}><CiEdit/></button>
-        <button className="p-2 bg-red-600 text-xl rounded-xl text-brandWhite" onClick={handleDelete}><MdOutlineDelete/></button>
-
+        <button
+          className="p-2 bg-blue-600 text-xl  rounded-xl text-brandWhite"
+          onClick={handleEdit}
+        >
+          <CiEdit />
+        </button>
+        <button
+          className="p-2 bg-red-600 text-xl rounded-xl text-brandWhite"
+          onClick={handleDelete}
+        >
+          <MdOutlineDelete />
+        </button>
       </div>
     </div>
   );

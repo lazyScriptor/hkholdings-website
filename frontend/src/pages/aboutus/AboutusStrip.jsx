@@ -32,7 +32,7 @@ function AboutusStrip() {
             </div>
           </div>
           {/* text section */}
-          <div className="md:col-span-3  flex flex-col gap-8">
+          <div className="md:col-span-3  flex flex-col gap-4">
             <h1 className="text-brandLightMaroon text-2xl font-semibold">
               About us
             </h1>
@@ -40,15 +40,19 @@ function AboutusStrip() {
               <h2 className="text-brandDarkMaroon text-2xl">
                 PROJECT WITH EXPERT & METAL
               </h2>
-              <h3 className="font-semibold text-4xl">WELDING COLLABORATION</h3>
+              <h3 className="font-semibold text-4xl">METAL COllABORATION</h3>
             </div>
             <p className="text-md text-gray-400">
-              {" "}
-              There are many variations of passages about of loram ipsum
-              avalabie, but the majority have suffered alteration free in some
-              form, by injected humour, or tree randomised words which don't
-              lock even{" "}
+              As one of the leading firms in Sri Lanka . We provide our maximum
+              production in high quality manner using the latest technology.
             </p>
+
+            <ul  className=" text-md list-disc pl-8 text-gray-400">
+              <li>High quality material </li>
+              <li>Height standard work </li>
+              <li>Trusted & friendly </li>
+              <li>Guaranteed service</li>
+            </ul>
             <div className="absolute right-0 bottom-28 px-8 md:w-[40%] py-4 bg-brandLightMaroon/10 rounded-l-xl text-gray-400">
               <p className="capitalize flex items-center gap-2 text-lg font-semibold text-brandBlack">
                 <RiSettingsFill /> Innovation at Every Step

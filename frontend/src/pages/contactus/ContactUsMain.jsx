@@ -25,13 +25,13 @@ function ContactUsMain() {
 
         {/* Overlay Content */}
         <div className="relative z-10 flex flex-col items-center justify-center w-full h-[60vh] text-brandWhite gap-4">
-          <h1 className="text-4xl font-semibold">Contact</h1>
+          <h1 className="text-4xl font-semibold">Contact Us</h1>
 
-          <p className="max-w-[60%] text-center text-sm">
+          {/* <p className="max-w-[60%] text-center text-sm">
             Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do
             eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim
             ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut{" "}
-          </p>
+          </p> */}
         </div>
       </div>
       <div className="h-8 bg-brandLightMaroon"></div>
@@ -39,7 +39,6 @@ function ContactUsMain() {
       <Strip2 />
       <div className="h-8 bg-brandLightMaroon"></div>
       <Footer />
-     
       <BottomFooter />
     </div>
   );
@@ -51,34 +50,69 @@ const Strip1 = () => {
   return (
     <>
       <div className="py-20">
-        <div className="grid grid-cols-1 gap-12 md:grid-cols-3 container">
-          <div className=" flex gap-4 justify-center items-center">
-            <PiPhoneCallFill className="text-5xl " />
+        <div className="grid grid-cols-1 gap-12 lg:grid-cols-3 container ">
+          <div className=" flex gap-4 justify-start lg:justify-center items-center">
+            <PiPhoneCallFill className="text-5xl w-12" />
             <h2 className="text-center text-6xl font-extralight">| </h2>
             <div className="flex flex-col justify-start items-start">
               <h4 className="text-2xl font-semibold">PHONE:</h4>
-              <p className="z-50">
-                <a href="tel:0716195913">071 6195913</a> /{" "}
-                <a href="tel:0113425370">011 3425370</a>
+              <p className="z-50 ">
+                <a
+                  className="hover:text-brandLightMaroon transition-all duration-200"
+                  href="tel:0716195913"
+                >
+                  071 6195913
+                </a>{" "}
+                /
+                <a
+                  className="hover:text-brandLightMaroon transition-all duration-200"
+                  href="tel:0716195913"
+                >
+                  {" "}
+                  070 5123804{" "}
+                </a>{" "}
+                /<br />
+                <a
+                  className="hover:text-brandLightMaroon transition-all duration-200"
+                  href="tel:0113425370"
+                >
+                  {" "}
+                  011 3425370
+                </a>
               </p>
             </div>
           </div>
 
-          <div className=" flex gap-4 justify-center  items-center md:justify-end pl-8 md:pl-16">
-            <MdLocationOn className="text-7xl  " />
+          <div className=" flex gap-4 justify-start  items-center lg:justify-center  lg:justify-end lg:pl-8 ">
+            <MdLocationOn className="text-6xl  w-12" />
             <h2 className="text-center text-6xl font-extralight">| </h2>
             <div className="flex flex-col justify-start items-start">
               <h4 className="text-2xl font-semibold">LOCATION:</h4>
-              <p className="">No. 86/A 1/1, Elapitiwala, Ragama</p>
+              <p className="z-50">
+                <a
+                  href="https://maps.app.goo.gl/dAhhR4fijLmCwPJ18"
+                  target="_blank"
+                >
+                  No. 86/A 1/1, Elapitiwala, Ragama
+                </a>
+              </p>
             </div>
           </div>
 
-          <div className=" flex gap-4 justify-center  items-center ">
-            <MdEmail className="text-5xl " />
+          <div className=" flex gap-4 justify-start lg:justify-center   items-center ">
+            <MdEmail className="text-5xl w-12" />
             <h2 className="text-center text-6xl font-extralight">| </h2>
             <div className="flex flex-col justify-start items-start">
               <h4 className="text-2xl font-semibold">EMAIL:</h4>
-              <p className="">info@hkholidngs.lk</p>
+              <p className="z-50">
+                <a
+                  href="mailto:info@hkholdings.lk"
+                  className="hover:text-brandLightMaroon transition-all duration-200"
+                >
+                  {" "}
+                  info@hkholdings.lk
+                </a>
+              </p>
             </div>
           </div>
         </div>
