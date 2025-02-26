@@ -9,6 +9,7 @@ import MainScreen from "./pages/adminpanel/MainScreen";
 import Inquiries from "./pages/adminpanel/Inquiries";
 import MainTextEditorPage from "./pages/blog/texteditor/MainTextEditorPage";
 import BlogPostAdmin from "./pages/adminpanel/BlogPostAdmin";
+import Railings from "./pages/services/Railings";
 // Lazy load components for all routes
 const Home = React.lazy(() => import("./pages/home/Home"));
 const About = React.lazy(() => import("./pages/aboutus/AboutUsMain"));
@@ -57,9 +58,9 @@ function RoutesCustomer() {
               </NavBarCustomer>
             }
           />
-          <Route path="/services">
+          <Route path="/services/all">
             <Route
-              path="all"
+              path=""
               element={
                 <NavBarCustomer number={3}>
                   <MobileNavigation />
@@ -67,7 +68,15 @@ function RoutesCustomer() {
                 </NavBarCustomer>
               }
             />
-            <Route path="railings" element={<>element</>} />
+            <Route
+              path="railings"
+              element={
+                <NavBarCustomer number={3}>
+                  <MobileNavigation />
+                  <Railings />
+                </NavBarCustomer>
+              }
+            />
           </Route>
           <Route path="/pages" element={<>pages</>} />
           <Route path="/shop" element={<>shop</>} />
