@@ -35,7 +35,10 @@ function RoutesCustomer() {
           <Route path="/admin-inquiries" element={<Inquiries />} />
           <Route path="/admin-blogs" element={<BlogPostAdmin />} />
           <Route path="/admin-blogs-create" element={<MainTextEditorPage />} />
-          <Route path="/admin-blogs-edit/:id" element={<MainTextEditorPage />} />
+          <Route
+            path="/admin-blogs-edit/:id"
+            element={<MainTextEditorPage />}
+          />
           <Route
             path="/"
             element={
@@ -54,16 +57,18 @@ function RoutesCustomer() {
               </NavBarCustomer>
             }
           />
-          <Route
-            path="/services"
-            element={
-              <NavBarCustomer number={3}>
-                <MobileNavigation />
-
-                <Services />
-              </NavBarCustomer>
-            }
-          />
+          <Route path="/services">
+            <Route
+              path="all"
+              element={
+                <NavBarCustomer number={3}>
+                  <MobileNavigation />
+                  <Services />
+                </NavBarCustomer>
+              }
+            />
+            <Route path="railings" element={<>element</>} />
+          </Route>
           <Route path="/pages" element={<>pages</>} />
           <Route path="/shop" element={<>shop</>} />
           <Route

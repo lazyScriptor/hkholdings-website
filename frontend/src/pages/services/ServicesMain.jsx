@@ -10,8 +10,10 @@ import services6 from "../../assets/services6.png";
 
 import Footer from "../../components/Footer";
 import BottomFooter from "../../components/BottomFooter";
+import { useNavigate } from "react-router-dom";
 
 function ServicesMain() {
+  const navigate = useNavigate();
   const dataArray = [
     {
       id: 1,
@@ -19,6 +21,7 @@ function ServicesMain() {
       description:
         "We offer high-quality glass hand railings, balcony railings, and staircases for both residential and commercial properties, ensuring safety, durability, and elegance.",
       image: services1,
+      navigation: "railings",
     },
     {
       id: 2,
@@ -26,6 +29,7 @@ function ServicesMain() {
       description:
         "Our steel and wood railing solutions provide a perfect blend of strength and aesthetics, tailored to suit your interior and exterior spaces.",
       image: services2,
+      navigation: "railings",
     },
     {
       id: 3,
@@ -33,6 +37,7 @@ function ServicesMain() {
       description:
         "We specialize in custom warehouse construction, ensuring safety and efficiency to meet all your company's storage and operational needs.",
       image: services3,
+      navigation: "warehouse-construction",
     },
     {
       id: 4,
@@ -40,6 +45,7 @@ function ServicesMain() {
       description:
         "Experience the natural elegance of high-quality wood decking with HK Holdings (PVT) Ltd, your trusted wood deck expert.",
       image: services4,
+      navigation: "wood-decking",
     },
     {
       id: 5,
@@ -47,6 +53,7 @@ function ServicesMain() {
       description:
         "Choose from a variety of styles, components, and finishes to create an innovative, well-constructed staircase that complements your space.",
       image: services5,
+      navigation: "staircases",
     },
     {
       id: 6,
@@ -54,6 +61,7 @@ function ServicesMain() {
       description:
         "We offer a wide selection of carports and canopies, crafted with high-quality glass and polycarbonate sheets for durability and style.",
       image: services6,
+      navigation: "canopies",
     },
     {
       id: 7,
@@ -61,6 +69,7 @@ function ServicesMain() {
       description:
         "As a leading metal and glass roofing company, we provide top-tier products, expert installations, and exceptional customer service.",
       image: services6,
+      navigation: "roofing",
     },
     {
       id: 8,
@@ -68,6 +77,7 @@ function ServicesMain() {
       description:
         "We manufacture a variety of gates, including standard, remote-controlled, and motorized options, tailored to your security and aesthetic needs.",
       image: services6,
+      navigation: "gates",
     },
     {
       id: 9,
@@ -75,9 +85,13 @@ function ServicesMain() {
       description:
         "We provide and install high-quality fences and grills for both residential and commercial properties, ensuring security and enhancing the aesthetic appeal.",
       image: services6,
+      navigation: "fences-and-grills",
     },
   ];
 
+  const handleNavigate = (path) => {
+    navigate(`${path}`);
+  };
   return (
     <>
       <div className="relative">
@@ -115,12 +129,16 @@ function ServicesMain() {
                   title={item.title}
                   description={item.description}
                   image={item.image}
+                  path={item.navigation}
+                  handleNavigation={handleNavigate}
                 />
               ) : (
                 <FourthPart
                   title={item.title}
                   description={item.description}
                   image={item.image}
+                  path={item.navigation}
+                  handleNavigation={handleNavigate}
                 />
               )}
             </>
@@ -167,16 +185,22 @@ const SecondPart = () => {
 //     </div>
 //   );
 // };
-const ThirdPart = ({ image, title, description }) => {
+const ThirdPart = ({ image, title, description, path, handleNavigation }) => {
   return (
     <>
-      <div className="bg-brandLightMaroon">
+      <div onClick={() => console.log("first")} className="bg-brandLightMaroon">
         <div className="grid grid-cols-1 lg:grid-cols-5">
           <div className="col-span-3 flex flex-col py-12 md:pb-20 md:pt-16 items-center md:items-end justify-start  gap-8 container text-brandWhite">
             <h1 className="text-4xl md:h-16 text-center md:text-right">
               {title}
             </h1>
             <p className="text-center md:text-right">{description}</p>
+            <button
+              onClick={() => handleNavigation(path)}
+              className="mt-20 px-4 self-center md:self-auto py-2 w-44 rounded-lg bg-brandDarkMaroon hover:bg-brandLightMaroon transition-all duration-200 text-white shadow-lg"
+            >
+              Read more
+            </button>
           </div>
           <div className="col-span-2">
             <img
@@ -192,19 +216,26 @@ const ThirdPart = ({ image, title, description }) => {
   );
 };
 
-const FourthPart = ({ image, title, description }) => {
+const FourthPart = ({ image, title, description, path, handleNavigation }) => {
   return (
     <>
       <div className="bg-[#40342F]">
         <div className="grid grid-cols-1 lg:grid-cols-5">
           <div className="col-span-2">
-            <img src={image} alt="" className="h-[100%] overflow-x-hidden" />
+            <img
+              src={image}
+              alt=""
+              className="h-[100%] w-[100%]   overflow-x-hidden"
+            />
           </div>
           <div className="col-span-3 flex flex-col py-12 md:pb-20 md:pt-16 items-center md:items-start justify-start  gap-8 container border-b-white border-b text-brandWhite">
             <h1 className="text-4xl md:h-16  text-center md:text-left">
               {title}
             </h1>
             <p className="text-center md:text-start">{description}</p>
+            <button className="mt-20 px-4 self-center md:self-auto py-2 w-44 rounded-lg bg-brandLightMaroon hover:bg-brandDarkMaroon transition-all duration-200 text-white shadow-lg">
+              Read more
+            </button>
           </div>
         </div>
       </div>

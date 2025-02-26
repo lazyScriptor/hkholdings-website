@@ -8,7 +8,7 @@ function MobileNavigation() {
   const navBarComponents = [
     { id: 1, name: "Home", navigate: "/" },
     { id: 2, name: "About", navigate: "/about" },
-    { id: 3, name: "Services", navigate: "/services" },
+    { id: 3, name: "Services", navigate: "/services/all" },
     { id: 4, name: "Blog", navigate: "/blog" },
     { id: 5, name: "Contact", navigate: "/contact" },
   ];
