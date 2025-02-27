@@ -306,15 +306,13 @@ const ContactForm = () => {
           {successMessage && (
             <div className="text-green-500">{successMessage}</div>
           )}
-          <Button
-            variant="contained"
-            color="primary"
+          <button
+            className="mt-8 w-[100%] px-4 self-center md:self-center py-2 rounded-lg  bg-brandLightMaroon hover:bg-brandLightMaroon/80 transition-all duration-200 text-white shadow-lg"
             type="submit"
             disabled={loading}
-            className="mt-4 bg-brandLightMaroon hover:bg-brandDarkMaroon transition-all duration-200 text-white rounded-lg"
           >
             {loading ? <LoadingComponent /> : "Submit"}
-          </Button>
+          </button>
         </div>
       </Box>
     </>

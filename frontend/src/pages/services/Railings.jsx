@@ -18,7 +18,7 @@ function Railings() {
 
         {/* Overlay Content */}
         <div className="relative z-10 flex flex-col items-center justify-center w-full h-[60vh] text-brandWhite gap-4">
-          <h1 className="text-4xl font-semibold">
+          <h1 className="text-4xl max-w-[80%] self-center font-semibold">
             Railings - Strength, Safety, and Style
           </h1>
         </div>

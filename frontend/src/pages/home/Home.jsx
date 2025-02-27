@@ -235,7 +235,6 @@ const Sliderr = () => {
             </div>
           </div>
         </div>
-
       </Slider>
       <div className="h-8 mb-1.5 bg-brandLightMaroon"></div>
     </div>
