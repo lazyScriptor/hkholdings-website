@@ -79,12 +79,7 @@ const FourthPart = ({ image, title, description, path, handleNavigation }) => {
               {title}
             </h1>
             <p className="text-center md:text-start">{description}</p>
-            <button
-              onClick={() => handleNavigation(path)}
-              className="mt-20 px-4 self-center md:self-auto py-2 w-44 rounded-lg bg-brandDarkMaroon hover:bg-brandLightMaroon transition-all duration-200 text-white shadow-lg"
-            >
-              Read more
-            </button>
+          
           </div>
         </div>
       </div>

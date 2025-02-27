@@ -13,71 +13,6 @@ import { MdOutlineDelete } from "react-icons/md";
 
 import LoadingComponent from "../../components/LoadingComponent";
 import { useNavigate } from "react-router-dom";
-// const BlogData = [
-//   {
-//     id: 1,
-//     title: "10 Tips for Building Your First Web Application",
-//     shortDescription:
-//       "Learn the essential steps to develop your first web app, from planning to deployment.",
-//     image: services1,
-//   },
-//   {
-//     id: 2,
-//     title: "Understanding the Basics of Artificial Intelligence",
-//     shortDescription:
-//       "A beginner's guide to AI concepts, algorithms, and real-world applications.",
-//     image: services2,
-//   },
-//   {
-//     id: 3,
-//     title: "Mastering React: A Guide to Components and State Management",
-//     shortDescription:
-//       "Explore the core concepts of React, including components, hooks, and state.",
-//     image: services3,
-//   },
-//   {
-//     id: 4,
-//     title: "The Ultimate Guide to Responsive Web Design",
-//     shortDescription:
-//       "Discover how to create stunning websites that look great on any device.",
-//     image: services1,
-//   },
-//   {
-//     id: 5,
-//     title: "How to Improve Your JavaScript Debugging Skills",
-//     shortDescription:
-//       "Tips and tricks to efficiently debug JavaScript code and solve errors faster.",
-//     image: services2,
-//   },
-//   {
-//     id: 6,
-//     title: "Top 5 Programming Languages to Learn in 2024",
-//     shortDescription:
-//       "An overview of the most in-demand programming languages for the upcoming year.",
-//     image: services3,
-//   },
-//   {
-//     id: 7,
-//     title: "What is Cloud Computing and How Does It Work?",
-//     shortDescription:
-//       "Understand the basics of cloud computing and its advantages for businesses.",
-//     image: services1,
-//   },
-//   {
-//     id: 8,
-//     title: "SEO Tips for Beginners: How to Optimize Your Website",
-//     shortDescription:
-//       "A beginner-friendly guide to improving your website's search engine rankings.",
-//     image: services2,
-//   },
-//   {
-//     id: 9,
-//     title: "The Importance of Cybersecurity in Today's Digital World",
-//     shortDescription:
-//       "Learn about common cyber threats and how to protect your data online.",
-//     image: services3,
-//   },
-// ];
 
 function BlogMain() {
   const [BlogData, setBlogData] = useState([]);
@@ -158,7 +93,10 @@ export const BlogSection = ({ id, index, image, title, short_description }) => {
   }, [id]);
 
   return (
-    <div className="p-8 shadow-lg hover:shadow-2xl transition-all duration-300 rounded-3xl flex flex-col gap-4">
+    <div
+      onCl
+      className="p-8 border-brandLightMaroon/30 shadow-lg border-b-2 border-r-2 hover:shadow-2xl transition-all duration-300 rounded-3xl flex flex-col gap-4"
+    >
       {imageUrl ? (
         <img src={imageUrl} className="rounded-b-lg" alt={`Blog ${id}`} />
       ) : (

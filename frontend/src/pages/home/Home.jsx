@@ -174,7 +174,7 @@ const Sliderr = () => {
                 </p>
                 <button
                   onClick={() => navigate("/services/all")}
-                  className="mt-6 px-8 py-2 bg-brandLightMaroon hover:bg-brandDarkMaroon transition-all duration-200 text-white rounded-lg"
+                  className="mt-12 px-8 py-2 bg-brandLightMaroon hover:bg-brandDarkMaroon transition-all duration-200 text-white rounded-lg"
                 >
                   DISCOVER MORE
                 </button>
@@ -201,7 +201,7 @@ const Sliderr = () => {
                 </p>
                 <button
                   onClick={() => navigate("/services")}
-                  className="mt-6 px-8 py-2 bg-brandLightMaroon hover:bg-brandDarkMaroon transition-all duration-200 text-white rounded-lg"
+                  className="mt-12 px-8 py-2 bg-brandLightMaroon hover:bg-brandDarkMaroon transition-all duration-200 text-white rounded-lg"
                 >
                   DISCOVER MORE
                 </button>
@@ -227,7 +227,7 @@ const Sliderr = () => {
                 </p>
                 <button
                   onClick={() => navigate("/services")}
-                  className="mt-6 px-8 py-2 bg-brandLightMaroon hover:bg-brandDarkMaroon transition-all duration-200 text-white rounded-lg"
+                  className="mt-12 px-8 py-2 bg-brandLightMaroon hover:bg-brandDarkMaroon transition-all duration-200 text-white rounded-lg"
                 >
                   DISCOVER MORE
                 </button>

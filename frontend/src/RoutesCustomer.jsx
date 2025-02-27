@@ -1,6 +1,7 @@
 import React, { Suspense } from "react";
 import { Route, Routes, BrowserRouter } from "react-router-dom";
 import { tailChase } from "ldrs";
+import Staircases from "./pages/services/Staircases";
 const NavBarCustomer = React.lazy(() => import("./components/NavBarCustomer"));
 const MobileNavigation = React.lazy(() =>
   import("./components/MobileNavigation")
@@ -116,7 +117,7 @@ function RoutesCustomer() {
               element={
                 <NavBarCustomer number={3}>
                   <MobileNavigation />
-                  <WoodDecking />
+                  <Staircases />
                 </NavBarCustomer>
               }
             />

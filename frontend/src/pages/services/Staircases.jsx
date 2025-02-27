@@ -18,14 +18,14 @@ function Staircases() {
 
         {/* Overlay Content */}
         <div className="relative z-10 flex flex-col items-center justify-center w-full h-[60vh] text-brandWhite gap-4">
-          <h1 className="text-4xl font-semibold">Warehouse Construction</h1>
+          <h1 className="text-4xl font-semibold">Staircase Solutions</h1>
         </div>
       </div>
 
       <ThirdPart
-        title={"Warehouse Construction – Built for Efficiency and Durability"}
+        title={"Staircase Solutions - Elevate Your Space with Style & Strength"}
         description={
-          "We specialize in high-quality warehouse construction designed to meet your storage and operational needs. Our warehouses are built with strong, durable materials, ensuring long-lasting performance and structural integrity. Whether for manufacturing, logistics, or storage, we focus on maximizing space utilization, ventilation, and accessibility while maintaining cost efficiency. With a combination of modern engineering, precision planning, and industry expertise, we deliver customized warehouse solutions that enhance productivity and streamline your operations"
+          "Our staircase solutions combine functionality, durability, and aesthetic appeal to enhance any space. Whether you need a modern glass staircase, a sleek steel structure, or a classic wooden design, we offer custom-built solutions that ensure safety, stability, and elegance. Designed for residential, commercial, and industrial spaces, our staircases provide a seamless blend of strength and sophistication, tailored to match your architectural vision."
         }
         image={railingImg1}
       />
@@ -51,12 +51,7 @@ const ThirdPart = ({ image, title, description, path, handleNavigation }) => {
               {title}
             </h1>
             <p className="text-center md:text-right">{description}</p>
-            <button
-              onClick={() => handleNavigation(path)}
-              className="mt-20 px-4 self-center md:self-auto py-2 w-44 rounded-lg bg-brandDarkMaroon hover:bg-brandLightMaroon transition-all duration-200 text-white shadow-lg"
-            >
-              Read more
-            </button>
+          
           </div>
           <div className="col-span-2">
             <img src={image} alt="" className="h-[100%] w-[100%]" />
@@ -84,12 +79,7 @@ const FourthPart = ({ image, title, description, path, handleNavigation }) => {
               {title}
             </h1>
             <p className="text-center md:text-start">{description}</p>
-            <button
-              onClick={() => handleNavigation(path)}
-              className="mt-20 px-4 self-center md:self-auto py-2 w-44 rounded-lg bg-brandDarkMaroon hover:bg-brandLightMaroon transition-all duration-200 text-white shadow-lg"
-            >
-              Read more
-            </button>
+            
           </div>
         </div>
       </div>

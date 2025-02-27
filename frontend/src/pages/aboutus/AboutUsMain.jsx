@@ -55,8 +55,8 @@ const SecondPart = () => {
     <>
       <div className="container py-12 md:pb-0">
         <div className="grid grid-cols-1 md:grid-cols-5 gap-4">
-          <div className="md:col-span-2">
-            <img src={aboutUsImage} alt="aboutusImage" />
+          <div className="md:col-span-2 flex items-end">
+            <img src={aboutUsImage} alt="aboutusImage" className="" />
           </div>
           <div className="md:col-span-3 flex flex-col gap-8 pt-8">
             <h1 className="uppercase text-4xl font-semibold text-center md:text-start">
@@ -86,7 +86,7 @@ const SecondPart = () => {
                       outcomes every single day.
                     </p>
                     <p className="text-base text-justify py-4">
-                      As one of Sri Lanka’s leading firms, we strive for
+                      As one of Sri Lanka's leading firms, we strive for
                       excellence by delivering high-quality products and
                       services using the latest technology. Our experienced and
                       skilled team is capable of handling projects of all sizes,
