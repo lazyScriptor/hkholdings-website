@@ -2,7 +2,10 @@ import React, { lazy } from "react";
 import image1 from "../../assets/about1.png";
 import image2 from "../../assets/about2.png";
 import productsImage from "../../assets/ourproducts.png";
+import { useNavigate } from "react-router-dom";
+
 function ProjectsHomeScreen() {
+  const navigate=useNavigate()
   return (
     <div className="container py-12">
       <div>
@@ -34,7 +37,7 @@ function ProjectsHomeScreen() {
                 eiusmod tempor incididunt
               </p>
             </div> */}
-            <button className=" px-4 self-center md:self-auto py-2 w-44 rounded-lg bg-brandLightMaroon hover:bg-brandDarkMaroon transition-all duration-200 text-white shadow-lg">
+            <button onClick={()=>navigate('/services/all')} className=" px-4 self-center md:self-auto py-2 w-44 rounded-lg bg-brandLightMaroon hover:bg-brandDarkMaroon transition-all duration-200 text-white shadow-lg">
               DISCOVER MORE
             </button>
           </div>

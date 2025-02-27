@@ -5,7 +5,7 @@ import Footer from "../../components/Footer";
 import BottomFooter from "../../components/BottomFooter";
 import railingImg1 from "../../assets/realImages/carousel1.jpg";
 import railingImg2 from "../../assets/realImages/carousel3.jpg";
-function WarehouseConstruction() {
+function Staircases() {
   return (
     <>
       <div className=" relative">
@@ -30,14 +30,13 @@ function WarehouseConstruction() {
         image={railingImg1}
       />
 
-
       <Footer />
       <BottomFooter />
     </>
   );
 }
 
-export default WarehouseConstruction;
+export default Staircases;
 
 const ThirdPart = ({ image, title, description, path, handleNavigation }) => {
   return (
@@ -52,7 +51,12 @@ const ThirdPart = ({ image, title, description, path, handleNavigation }) => {
               {title}
             </h1>
             <p className="text-center md:text-right">{description}</p>
-         
+            <button
+              onClick={() => handleNavigation(path)}
+              className="mt-20 px-4 self-center md:self-auto py-2 w-44 rounded-lg bg-brandDarkMaroon hover:bg-brandLightMaroon transition-all duration-200 text-white shadow-lg"
+            >
+              Read more
+            </button>
           </div>
           <div className="col-span-2">
             <img src={image} alt="" className="h-[100%] w-[100%]" />

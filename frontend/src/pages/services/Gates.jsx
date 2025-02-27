@@ -5,7 +5,7 @@ import Footer from "../../components/Footer";
 import BottomFooter from "../../components/BottomFooter";
 import railingImg1 from "../../assets/realImages/carousel1.jpg";
 import railingImg2 from "../../assets/realImages/carousel3.jpg";
-function WarehouseConstruction() {
+function Gates() {
   return (
     <>
       <div className=" relative">
@@ -18,18 +18,17 @@ function WarehouseConstruction() {
 
         {/* Overlay Content */}
         <div className="relative z-10 flex flex-col items-center justify-center w-full h-[60vh] text-brandWhite gap-4">
-          <h1 className="text-4xl font-semibold">Warehouse Construction</h1>
+          <h1 className="text-4xl font-semibold">Gates</h1>
         </div>
       </div>
 
       <ThirdPart
-        title={"Warehouse Construction – Built for Efficiency and Durability"}
+        title={"Gates – Secure & Elegant Entrances"}
         description={
-          "We specialize in high-quality warehouse construction designed to meet your storage and operational needs. Our warehouses are built with strong, durable materials, ensuring long-lasting performance and structural integrity. Whether for manufacturing, logistics, or storage, we focus on maximizing space utilization, ventilation, and accessibility while maintaining cost efficiency. With a combination of modern engineering, precision planning, and industry expertise, we deliver customized warehouse solutions that enhance productivity and streamline your operations"
+          "Our custom-designed gates provide the perfect combination of security, durability, and style. From ornate wrought iron to sleek modern designs, we offer a wide range of gate solutions to suit your property’s needs. Built with high-quality materials, our gates ensure safety, convenience, and lasting performance."
         }
         image={railingImg1}
       />
-
 
       <Footer />
       <BottomFooter />
@@ -37,7 +36,7 @@ function WarehouseConstruction() {
   );
 }
 
-export default WarehouseConstruction;
+export default Gates;
 
 const ThirdPart = ({ image, title, description, path, handleNavigation }) => {
   return (
@@ -52,7 +51,7 @@ const ThirdPart = ({ image, title, description, path, handleNavigation }) => {
               {title}
             </h1>
             <p className="text-center md:text-right">{description}</p>
-         
+          
           </div>
           <div className="col-span-2">
             <img src={image} alt="" className="h-[100%] w-[100%]" />

@@ -173,7 +173,7 @@ const Sliderr = () => {
                   success with the right directions.
                 </p>
                 <button
-                  onClick={() => navigate("/services")}
+                  onClick={() => navigate("/services/all")}
                   className="mt-6 px-8 py-2 bg-brandLightMaroon hover:bg-brandDarkMaroon transition-all duration-200 text-white rounded-lg"
                 >
                   DISCOVER MORE

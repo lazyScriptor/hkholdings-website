@@ -5,7 +5,7 @@ import Footer from "../../components/Footer";
 import BottomFooter from "../../components/BottomFooter";
 import railingImg1 from "../../assets/realImages/carousel1.jpg";
 import railingImg2 from "../../assets/realImages/carousel3.jpg";
-function WarehouseConstruction() {
+function FencesAndGrills() {
   return (
     <>
       <div className=" relative">
@@ -18,18 +18,17 @@ function WarehouseConstruction() {
 
         {/* Overlay Content */}
         <div className="relative z-10 flex flex-col items-center justify-center w-full h-[60vh] text-brandWhite gap-4">
-          <h1 className="text-4xl font-semibold">Warehouse Construction</h1>
+          <h1 className="text-4xl font-semibold">Fences and Grills</h1>
         </div>
       </div>
 
       <ThirdPart
-        title={"Warehouse Construction – Built for Efficiency and Durability"}
+        title={"Fences & Grills – Secure & Stylish Solutions"}
         description={
-          "We specialize in high-quality warehouse construction designed to meet your storage and operational needs. Our warehouses are built with strong, durable materials, ensuring long-lasting performance and structural integrity. Whether for manufacturing, logistics, or storage, we focus on maximizing space utilization, ventilation, and accessibility while maintaining cost efficiency. With a combination of modern engineering, precision planning, and industry expertise, we deliver customized warehouse solutions that enhance productivity and streamline your operations"
+          "Enhance the security and aesthetics of your property with our durable and stylish fences and grills. Designed to provide privacy, protection, and decorative appeal, our solutions are crafted from high-quality materials such as steel, wrought iron, wood, and aluminum. Whether for residential, commercial, or industrial spaces, we offer custom designs that blend strength, functionality, and elegance to perfectly suit your needs."
         }
         image={railingImg1}
       />
-
 
       <Footer />
       <BottomFooter />
@@ -37,7 +36,7 @@ function WarehouseConstruction() {
   );
 }
 
-export default WarehouseConstruction;
+export default FencesAndGrills;
 
 const ThirdPart = ({ image, title, description, path, handleNavigation }) => {
   return (
@@ -52,7 +51,7 @@ const ThirdPart = ({ image, title, description, path, handleNavigation }) => {
               {title}
             </h1>
             <p className="text-center md:text-right">{description}</p>
-         
+
           </div>
           <div className="col-span-2">
             <img src={image} alt="" className="h-[100%] w-[100%]" />

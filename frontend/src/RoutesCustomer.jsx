@@ -11,6 +11,12 @@ import MainTextEditorPage from "./pages/blog/texteditor/MainTextEditorPage";
 import BlogPostAdmin from "./pages/adminpanel/BlogPostAdmin";
 import Railings from "./pages/services/Railings";
 import WarehouseConstruction from "./pages/services/WarehouseConstruction";
+import WoodDecking from "./pages/services/WoodDecking";
+import Canopies from "./pages/services/Canopies";
+import Roofing from "./pages/services/Roofing";
+import Gates from "./pages/services/Gates";
+import FencesAndGrills from "./pages/services/FencesAndGrills";
+
 // Lazy load components for all routes
 const Home = React.lazy(() => import("./pages/home/Home"));
 const About = React.lazy(() => import("./pages/aboutus/AboutUsMain"));
@@ -84,6 +90,64 @@ function RoutesCustomer() {
                 <NavBarCustomer number={3}>
                   <MobileNavigation />
                   <WarehouseConstruction />
+                </NavBarCustomer>
+              }
+            />
+
+            <Route
+              path="wood-decking"
+              element={
+                <NavBarCustomer number={3}>
+                  <MobileNavigation />
+                  <WoodDecking />
+                </NavBarCustomer>
+              }
+            />
+            <Route
+              path="staircases"
+              element={
+                <NavBarCustomer number={3}>
+                  <MobileNavigation />
+                  <WoodDecking />
+                </NavBarCustomer>
+              }
+            />
+            <Route
+              path="canopies"
+              element={
+                <NavBarCustomer number={3}>
+                  <MobileNavigation />
+                  <Canopies />
+                </NavBarCustomer>
+              }
+            />
+
+            <Route
+              path="roofing"
+              element={
+                <NavBarCustomer number={3}>
+                  <MobileNavigation />
+                  <Roofing />
+                </NavBarCustomer>
+              }
+            />
+
+            <Route
+              path="gates"
+              element={
+                <NavBarCustomer number={3}>
+                  <MobileNavigation />
+                  <Gates />
+                </NavBarCustomer>
+              }
+            />
+
+            <Route
+              path="fences-and-grills"
+              element={
+                <NavBarCustomer number={3}>
+                  <MobileNavigation />
+                  <FencesAndGrills />
                 </NavBarCustomer>
               }
             />
