@@ -33,19 +33,19 @@ console.log("PASSWORD:", process.env.PASSWORD);
 console.log("DATABASE:", process.env.DATABASE);
 
 // Database connection
-// const db = mysql.createConnection({
-//   host: "162.240.151.180",
-//   user: "betabacksltdigit_hkuser",
-//   password: "hkuser123!@#",
-//   database: "betabacksltdigit_hkholdings_new_2",
-// });
-
 const db = mysql.createConnection({
-  host: "localhost",
-  user: "root",
-  password: "",
-  database: "hkholdings",
+  host: "162.240.151.180",
+  user: "betasltdigitalwe_hkuser",
+  password: "hkuser123!@#",
+  database: "betasltdigitalwe_betabacksltdigit_hkholdings_new_2",
 });
+
+// const db = mysql.createConnection({
+//   host: "localhost",
+//   user: "root",
+//   password: "",
+//   database: "hkholdings",
+// });
 
 
 db.connect((err) => {

@@ -20,7 +20,7 @@ const settings = {
   infinite: true, // Infinite loop
   speed: 1000, // Transition speed
   autoplay: true, // Autoplay the carousel
-  autoplaySpeed: 30000, // Autoplay speed in ms
+  autoplaySpeed: 3000, // Autoplay speed in ms
   fade: true, // Enable fade transition
 };
 function Home() {
@@ -200,7 +200,7 @@ const Sliderr = () => {
                   you.
                 </p>
                 <button
-                  onClick={() => navigate("/services")}
+                  onClick={() => navigate("/services/all")}
                   className="mt-12 px-8 py-2 bg-brandLightMaroon hover:bg-brandDarkMaroon transition-all duration-200 text-white rounded-lg"
                 >
                   DISCOVER MORE
@@ -226,7 +226,7 @@ const Sliderr = () => {
                   cherished client.
                 </p>
                 <button
-                  onClick={() => navigate("/services")}
+                  onClick={() => navigate("/services/all")}
                   className="mt-12 px-8 py-2 bg-brandLightMaroon hover:bg-brandDarkMaroon transition-all duration-200 text-white rounded-lg"
                 >
                   DISCOVER MORE
