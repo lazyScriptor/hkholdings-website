@@ -33,7 +33,7 @@ console.log("PASSWORD:", process.env.PASSWORD);
 console.log("DATABASE:", process.env.DATABASE);
 
 // Database connection
-const db = mysql.createConnection({
+const db = mysql.createPool({
   host: "162.240.151.180",
   user: "betasltdigitalwe_hkuser",
   password: "hkuser123!@#",
@@ -48,13 +48,6 @@ const db = mysql.createConnection({
 // });
 
 
-db.connect((err) => {
-  if (err) {
-    console.error("Error connecting to the database:", err);
-    return;
-  }
-  console.log("Connected to the database.");
-});
 
 // Set up multer storage
 const storage = multer.diskStorage({

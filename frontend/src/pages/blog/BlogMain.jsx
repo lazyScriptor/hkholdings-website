@@ -97,11 +97,14 @@ export const BlogSection = ({ id, index, image, title, short_description }) => {
       onCl
       className="p-8 border-brandLightMaroon/30 shadow-lg border-b-2 border-r-2 hover:shadow-2xl transition-all duration-300 rounded-3xl flex flex-col gap-4"
     >
-      {imageUrl ? (
-        <img src={imageUrl} className="rounded-b-lg" alt={`Blog ${id}`} />
-      ) : (
-        <LoadingComponent />
-      )}
+      <div className="h-48 overflow-hidden rounded-b-lg">
+        {imageUrl ? (
+          <img src={imageUrl} className="rounded-b-lg" alt={`Blog ${id}`} />
+        ) : (
+          <LoadingComponent />
+        )}
+      </div>
+
       <h2
         dangerouslySetInnerHTML={{ __html: title }}
         className="text-xl font-semibold line-clamp-1"
@@ -211,11 +214,14 @@ export const BlogSectionAdmin = ({
 
   return (
     <div className="p-8 shadow-2xl bg-white bg-opacity-30 rounded-3xl flex flex-col gap-4">
-      {imageUrl ? (
-        <img src={imageUrl} className="rounded-b-lg" alt={`Blog ${id}`} />
-      ) : (
-        <LoadingComponent />
-      )}
+      <div className="h-48 overflow-hidden rounded-b-lg">
+        {imageUrl ? (
+          <img src={imageUrl} className="rounded-b-lg" alt={`Blog ${id}`} />
+        ) : (
+          <LoadingComponent />
+        )}
+      </div>
+
       <h2
         dangerouslySetInnerHTML={{ __html: title }}
         className="text-xl font-semibold line-clamp-1"

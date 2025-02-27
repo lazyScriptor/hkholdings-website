@@ -16,10 +16,10 @@ function TextEditor() {
     title: "",
     shortDescription: "",
   });
-  const {id}=useParams();
+  const { id } = useParams();
   useEffect(() => {
-   console.log("this is the id",id)
-   setBlogId(id)
+    console.log("this is the id", id);
+    setBlogId(id);
     if (blogId) {
       const fetchBlog = async () => {
         try {
@@ -122,7 +122,7 @@ function TextEditor() {
   };
 
   return (
-    <div className="bg-brandLightMaroon/30 border h-[100%] p-16 container flex flex-col gap-4">
+    <div className="bg-brandLightMaroon/30 border h-[100%] p-16 container flex flex-col gap-4 relative">
       <h1>{isEditMode ? "Edit Blog" : "Create Blog"}</h1>
 
       {/* Title Editor */}
@@ -159,9 +159,9 @@ function TextEditor() {
       <div>
         <p>Upload the image</p>
         <input type="file" onChange={handleFileChange} />
-        {image && (
+        {/* {image && (
           <img src={image} alt="Uploaded" style={{ maxWidth: "100%" }} />
-        )}
+        )} */}
       </div>
 
       {/* Fetch Blog Details by Blog ID */}
@@ -174,15 +174,14 @@ function TextEditor() {
         />
       </div> */}
 
-      <div>
-        {imageUrl ? (
-          <img
-            src={imageUrl}
-            alt={`Blog ${blogId}`}
-            style={{ width: "100%", height: "auto" }}
-          />
+      <div className="w-52 ">
+        {imageUrl == undefined ? (
+          <img src={imageUrl} alt={`Blog ${blogId}`} style={{}} />
         ) : (
-          <p>Image not available.</p>
+          <MessageComponent
+            color={`-red-500`}
+            message={"Image not available"}
+          />
         )}
       </div>
     </div>
@@ -190,3 +189,11 @@ function TextEditor() {
 }
 
 export default TextEditor;
+
+const MessageComponent = ({ color, message }) => {
+  return (
+    <div className={` absolute bottom-5 text${color} p-2 border border${color}`}>
+      {message}
+    </div>
+  );
+};
