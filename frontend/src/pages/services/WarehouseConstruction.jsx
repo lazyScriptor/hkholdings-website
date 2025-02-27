@@ -5,7 +5,7 @@ import Footer from "../../components/Footer";
 import BottomFooter from "../../components/BottomFooter";
 import railingImg1 from "../../assets/realImages/carousel1.jpg";
 import railingImg2 from "../../assets/realImages/carousel3.jpg";
-function Railings() {
+function WarehouseConstruction() {
   return (
     <>
       <div className=" relative">
@@ -18,29 +18,18 @@ function Railings() {
 
         {/* Overlay Content */}
         <div className="relative z-10 flex flex-col items-center justify-center w-full h-[60vh] text-brandWhite gap-4">
-          <h1 className="text-4xl font-semibold">
-            Railings - Strength, Safety, and Style
-          </h1>
+          <h1 className="text-4xl font-semibold">Warehouse Construction</h1>
         </div>
       </div>
 
-
       <ThirdPart
-        title={"Glass Railings – Sleek, Modern, and Safe"}
+        title={"Warehouse Construction – Built for Efficiency and Durability"}
         description={
-          "Enhance your space with elegant glass railings that offer a seamless blend of style and security. Perfect for balconies, staircases, and terraces, our glass railings provide unobstructed views while maintaining durability and strength. Designed with high-quality tempered glass and sturdy metal framing, they ensure safety without compromising aesthetics. Whether for residential or commercial spaces, our glass railings add a touch of sophistication while maximizing openness and natural light.˝"
+          "We specialize in high-quality warehouse construction designed to meet your storage and operational needs. Our warehouses are built with strong, durable materials, ensuring long-lasting performance and structural integrity. Whether for manufacturing, logistics, or storage, we focus on maximizing space utilization, ventilation, and accessibility while maintaining cost efficiency. With a combination of modern engineering, precision planning, and industry expertise, we deliver customized warehouse solutions that enhance productivity and streamline your operations"
         }
         image={railingImg1}
       />
-      <FourthPart
-        title={"Wood & Steel Railings – Strength Meets Timeless Elegance"}
-        description={
-          "Our wood and steel railings combine the durability of steel with the natural warmth of wood, creating a perfect balance of strength and style. Ideal for staircases, balconies, and outdoor spaces, these railings offer long-lasting performance with a classic, refined look. The steel framework ensures stability and resilience, while the wooden elements add a touch of elegance and warmth. Whether modern or traditional, our wood and steel railings enhance any space with both beauty and security."
-        }
-        image={railingImg2}
-      />
 
-      <div className="h-8 bg-brandLightMaroon"></div>
 
       <Footer />
       <BottomFooter />
@@ -48,12 +37,15 @@ function Railings() {
   );
 }
 
-export default Railings;
+export default WarehouseConstruction;
 
 const ThirdPart = ({ image, title, description, path, handleNavigation }) => {
   return (
     <>
-      <div onClick={() => console.log("first")} className="bg-brandLightMaroon">
+      <div
+        onClick={() => console.log("first")}
+        className="bg-brandLightMaroon "
+      >
         <div className="grid grid-cols-1 lg:grid-cols-5">
           <div className="col-span-3 flex flex-col py-12 md:pb-20 md:pt-16 items-center md:items-end justify-start  gap-8 container text-brandWhite">
             <h1 className="text-4xl md:h-16 text-center md:text-right">
@@ -68,11 +60,7 @@ const ThirdPart = ({ image, title, description, path, handleNavigation }) => {
             </button>
           </div>
           <div className="col-span-2">
-            <img
-              src={image}
-              alt=""
-              className="h-[100%] w-[100%] border-b border-b-white  "
-            />
+            <img src={image} alt="" className="h-[100%] w-[100%]" />
           </div>
         </div>
       </div>
@@ -106,7 +94,7 @@ const FourthPart = ({ image, title, description, path, handleNavigation }) => {
           </div>
         </div>
       </div>
-
+      <div className="h-8 " />
     </>
   );
 };

@@ -10,6 +10,7 @@ import Inquiries from "./pages/adminpanel/Inquiries";
 import MainTextEditorPage from "./pages/blog/texteditor/MainTextEditorPage";
 import BlogPostAdmin from "./pages/adminpanel/BlogPostAdmin";
 import Railings from "./pages/services/Railings";
+import WarehouseConstruction from "./pages/services/WarehouseConstruction";
 // Lazy load components for all routes
 const Home = React.lazy(() => import("./pages/home/Home"));
 const About = React.lazy(() => import("./pages/aboutus/AboutUsMain"));
@@ -74,6 +75,15 @@ function RoutesCustomer() {
                 <NavBarCustomer number={3}>
                   <MobileNavigation />
                   <Railings />
+                </NavBarCustomer>
+              }
+            />
+            <Route
+              path="warehouse-construction"
+              element={
+                <NavBarCustomer number={3}>
+                  <MobileNavigation />
+                  <WarehouseConstruction />
                 </NavBarCustomer>
               }
             />

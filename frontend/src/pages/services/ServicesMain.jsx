@@ -73,7 +73,7 @@ function ServicesMain() {
     },
     {
       id: 8,
-      title: "Gates – Wicket, Wood, Steel & Amano",
+      title: "Gates Wicket, Wood, Steel & Amano",
       description:
         "We manufacture a variety of gates, including standard, remote-controlled, and motorized options, tailored to your security and aesthetic needs.",
       image: services6,
