@@ -1,6 +1,6 @@
 import React, { lazy } from "react";
 import image1 from "../../assets/about1.png";
-import image2 from "../../assets/about2.png";
+import image2 from "../../assets/realImages/newImages/heroAboutusImg1.webp";
 import { useNavigate } from "react-router-dom";
 import { RiSettingsFill } from "react-icons/ri";
 function AboutusStrip() {
@@ -19,15 +19,15 @@ function AboutusStrip() {
                 src={image1}
                 alt=""
                 loading={lazy}
-                className="w-36 shadow-2xl rounded-2xl"
+                className="w-36 h-60 shadow-2xl rounded-2xl"
               />
             </div>
-            <div className="flex items-end">
+            <div className="flex items-center md:items-end">
               <img
                 src={image2}
                 alt=""
                 loading={lazy}
-                className="w-36 shadow-2xl rounded-2xl"
+                className="w-36 h-60 shadow-2xl rounded-2xl"
               />
             </div>
           </div>

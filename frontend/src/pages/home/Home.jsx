@@ -3,6 +3,9 @@ import hero from "../../assets/hero.webp";
 import heroImg2 from "../../assets/hero2.webp";
 import heroImg3 from "../../assets/hero3.webp";
 import heroImg4 from "../../assets/hero4.webp";
+
+import heroImg6 from "../../assets/realImages/newImages/hero1.webp";
+import heroImg7 from "../../assets/realImages/newImages/hero2.webp";
 import "slick-carousel/slick/slick.css";
 import "slick-carousel/slick/slick-theme.css";
 import Slider from "react-slick";
@@ -215,6 +218,57 @@ const Sliderr = () => {
           <div
             className="absolute inset-0 bg-cover bg-center h-full"
             style={{ backgroundImage: `url(${heroImg4})` }}
+          >
+            <div className="absolute inset-0 flex flex-col items-center justify-center bg-brandLightMaroon/30 text-white">
+              <div className="container flex flex-col items-center justify-center">
+                <h1 className="text-4xl md:text-7xl font-bold mb-4 text-center capitalize">
+                  Professional & Reliable works
+                </h1>
+                <p className="container text-sm text-center max-w-[70%] capitalize h-12">
+                  We inted to continue working diligently to satisfy our
+                  cherished client.
+                </p>
+                <button
+                  onClick={() => navigate("/services/all")}
+                  className="mt-12 px-8 py-2 bg-brandLightMaroon hover:bg-brandDarkMaroon transition-all duration-200 text-white rounded-lg"
+                >
+                  DISCOVER MORE
+                </button>
+              </div>
+            </div>
+          </div>
+        </div>
+        {/* Slide 4 */}
+        <div className="relative h-screen">
+          <div
+            className="absolute inset-0 bg-cover bg-center h-full"
+            style={{ backgroundImage: `url(${heroImg6})` }}
+          >
+            <div className="absolute inset-0 flex flex-col items-center justify-center bg-brandLightMaroon/30 text-white">
+              <div className="container flex flex-col items-center justify-center">
+                <h1 className="text-4xl md:text-7xl font-bold mb-4 text-center capitalize">
+                  Professional & Reliable works
+                </h1>
+                <p className="container text-sm text-center max-w-[70%] capitalize h-12">
+                  We inted to continue working diligently to satisfy our
+                  cherished client.
+                </p>
+                <button
+                  onClick={() => navigate("/services/all")}
+                  className="mt-12 px-8 py-2 bg-brandLightMaroon hover:bg-brandDarkMaroon transition-all duration-200 text-white rounded-lg"
+                >
+                  DISCOVER MORE
+                </button>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        {/* Slide 5 */}
+        <div className="relative h-screen">
+          <div
+            className="absolute inset-0 bg-cover bg-center h-full"
+            style={{ backgroundImage: `url(${heroImg7})` }}
           >
             <div className="absolute inset-0 flex flex-col items-center justify-center bg-brandLightMaroon/30 text-white">
               <div className="container flex flex-col items-center justify-center">

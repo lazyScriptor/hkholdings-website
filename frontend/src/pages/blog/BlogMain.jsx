@@ -1,8 +1,5 @@
 import React, { useEffect, useState } from "react";
 import commonHeroImage from "../../assets/commonheroimage.png";
-import services1 from "../../assets/services1.png";
-import services2 from "../../assets/services2.png";
-import services3 from "../../assets/services3.png";
 import Footer from "../../components/Footer";
 import BottomFooter from "../../components/BottomFooter";
 import ServicesExpan from "./ServicesExpan";

@@ -1,12 +1,15 @@
-import React from "react";
+import React, { useState } from "react";
 
 import commonHeroImage from "../../assets/commonheroimage.png";
-import services1 from "../../assets/services1.png";
-import services2 from "../../assets/services2.png";
-import services3 from "../../assets/services3.png";
-import services4 from "../../assets/services4.png";
-import services5 from "../../assets/services5.png";
-import services6 from "../../assets/services6.png";
+import services1 from "../../assets/services1.webp";
+import services2 from "../../assets/services2.webp";
+import services3 from "../../assets/services3.webp";
+import services4 from "../../assets/services4.webp";
+import services5 from "../../assets/services5.webp";
+import services6 from "../../assets/services6.webp";
+import services7 from "../../assets/services7.webp";
+import services8 from "../../assets/services8.webp";
+import services9 from "../../assets/services9.webp";
 
 import Footer from "../../components/Footer";
 import BottomFooter from "../../components/BottomFooter";
@@ -68,7 +71,7 @@ function ServicesMain() {
       title: "Steel & Glass Roofing",
       description:
         "As a leading metal and glass roofing company, we provide top-tier products, expert installations, and exceptional customer service.",
-      image: services6,
+      image: services7,
       navigation: "roofing",
     },
     {
@@ -76,7 +79,7 @@ function ServicesMain() {
       title: "Gates Wicket, Wood, Steel & Amano",
       description:
         "We manufacture a variety of gates, including standard, remote-controlled, and motorized options, tailored to your security and aesthetic needs.",
-      image: services6,
+      image: services8,
       navigation: "gates",
     },
     {
@@ -84,7 +87,7 @@ function ServicesMain() {
       title: "Fences & Grills",
       description:
         "We provide and install high-quality fences and grills for both residential and commercial properties, ensuring security and enhancing the aesthetic appeal.",
-      image: services6,
+      image: services9,
       navigation: "fences-and-grills",
     },
   ];
@@ -114,7 +117,7 @@ function ServicesMain() {
           </p>
         </div>
       </div>
-      <div className="h-8 bg-brandLightMaroon"></div>
+      <div className="h-8 bg-brandLightMaroon" />
 
       {/* <SecondPart /> */}
       <div className="bg-[#241C1A]">
@@ -186,6 +189,7 @@ const SecondPart = () => {
 //   );
 // };
 const ThirdPart = ({ image, title, description, path, handleNavigation }) => {
+  const [loading, setLoading] = useState(true);
   return (
     <>
       <div onClick={() => console.log("first")} className="bg-brandLightMaroon">
@@ -195,6 +199,7 @@ const ThirdPart = ({ image, title, description, path, handleNavigation }) => {
               {title}
             </h1>
             <p className="text-center md:text-right">{description}</p>
+            {loading && <p> "Loading..."</p>}
             <button
               onClick={() => handleNavigation(path)}
               className="mt-20 px-4 self-center md:self-auto py-2 w-44 rounded-lg bg-brandDarkMaroon hover:bg-brandDarkMaroon/80 transition-all duration-200 text-white shadow-lg"
@@ -204,6 +209,7 @@ const ThirdPart = ({ image, title, description, path, handleNavigation }) => {
           </div>
           <div className="col-span-2">
             <img
+              onLoad={() => setLoading(false)} // Hide loading when image loads
               src={image}
               alt=""
               className="h-[100%] overflow-x-hidden w-[100%] border-b border-b-white  "

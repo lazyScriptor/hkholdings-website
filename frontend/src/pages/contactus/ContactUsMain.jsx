@@ -210,7 +210,6 @@ const ContactForm = () => {
         `${import.meta.env.VITE_API_URL}/enquiries`,
         formData
       );
-      console.log(response, "Dd");
       setSuccessMessage("Your enquiry has been submitted successfully!");
       setFormData({
         first_name: "",
@@ -220,7 +219,8 @@ const ContactForm = () => {
         message: "",
       });
     } catch (error) {
-      setErrorMessage("Something went wrong. Please try again later.");
+      console.log(error);
+      setErrorMessage("Something went wrong. Please try again later.", error);
     } finally {
       setLoading(false);
     }
