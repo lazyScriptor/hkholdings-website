@@ -21,7 +21,7 @@ function ProjectsHomeScreen() {
             <h1 className="text-brandLightMaroon capitalize text-2xl font-semibold">our Products</h1>
             <div>
               <h2 className="text-brandDarkMaroon text-2xl">
-                RRECENTLY COMPLETED
+                RECENTLY COMPLETED
               </h2>
               <h3 className="font-semibold text-4xl">OUR LATEST PROJECTS</h3>
             </div>

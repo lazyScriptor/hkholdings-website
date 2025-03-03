@@ -47,7 +47,7 @@ function AboutusStrip() {
               production in high quality manner using the latest technology.
             </p>
 
-            <ul  className=" text-md list-disc pl-8 text-gray-400">
+            <ul className=" text-md list-disc pl-8 text-gray-400">
               <li>High quality material </li>
               <li>Height standard work </li>
               <li>Trusted & friendly </li>

@@ -2,6 +2,7 @@ import React, { Suspense } from "react";
 import { Route, Routes, BrowserRouter } from "react-router-dom";
 import { tailChase } from "ldrs";
 import Staircases from "./pages/services/Staircases";
+import PrivateRoute from "./PrivateRoute";
 const NavBarCustomer = React.lazy(() => import("./components/NavBarCustomer"));
 const MobileNavigation = React.lazy(() =>
   import("./components/MobileNavigation")
@@ -47,15 +48,23 @@ function RoutesCustomer() {
         }
       >
         <Routes>
-          <Route path="/admin-panel" element={<Login />} />
-          <Route path="/admin-dashboard" element={<MainScreen />} />
-          <Route path="/admin-inquiries" element={<Inquiries />} />
-          <Route path="/admin-blogs" element={<BlogPostAdmin />} />
-          <Route path="/admin-blogs-create" element={<MainTextEditorPage />} />
           <Route
-            path="/admin-blogs-edit/:id"
-            element={<MainTextEditorPage />}
-          />
+            path="/admin"
+            element={
+              <>
+                <Login />
+                <PrivateRoute />
+              </>
+            }
+          >
+            <Route path="dashboard" element={<MainScreen />} />
+            <Route path="inquiries" element={<Inquiries />} />
+            <Route path="blogs" element={<BlogPostAdmin />} />
+            <Route path="blogs-create" element={<MainTextEditorPage />} />
+            <Route path="blogs-edit/:id" element={<MainTextEditorPage />} />
+
+            <Route path="blogs-edit/:id" element={<MainTextEditorPage />} />
+          </Route>
           <Route
             path="/"
             element={
@@ -161,7 +170,6 @@ function RoutesCustomer() {
                 </NavBarCustomer>
               }
             />
-
           </Route>
           <Route path="/pages" element={<>pages</>} />
           <Route path="/shop" element={<>shop</>} />

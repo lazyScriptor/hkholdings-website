@@ -280,6 +280,27 @@ app.post("/register", async (req, res) => {
   });
 });
 
+const verifyToken = (req, res, next) => {
+  const token = req.header("Authorization")?.split(" ")[1]; // Assuming token is passed in Authorization header as "Bearer token"
+
+  if (!token) {
+    return res
+      .status(403)
+      .json({ message: "Access denied. No token provided." });
+  }
+
+  try {
+    const decoded = jwt.verify(token, process.env.JWT_SECRET); // Replace with your secret key
+    req.user = decoded; // Attach the decoded data to the request
+    next(); // Token is valid, proceed with the request
+  } catch (error) {
+    res.status(401).json({ message: "Invalid or expired token." });
+  }
+};
+app.get("protected", verifyToken, (req, res) => {
+  res.json({ message: "Welcome to the admin dashboard" });
+});
+
 // Login endpoint
 app.post("/login", (req, res) => {
   const { email, password } = req.body;
