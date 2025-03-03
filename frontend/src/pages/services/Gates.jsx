@@ -18,7 +18,7 @@ function Gates() {
 
         {/* Overlay Content */}
         <div className="relative z-10 flex flex-col items-center justify-center w-full h-[60vh] text-brandWhite gap-4">
-          <h1 className="text-4xl font-semibold">Gates Wicket, Wood, Steel & Amano</h1>
+          <h1 className="text-4xl text-center font-semibold max-w-[80%]">Gates Wicket, Wood, Steel & Amano</h1>
         </div>
       </div>
 

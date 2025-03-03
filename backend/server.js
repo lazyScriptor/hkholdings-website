@@ -27,17 +27,18 @@ app.use(cors({ origin: "*" })); // Adjust port accordingly
 // Middleware to parse JSON
 app.use(bodyParser.json());
 
-console.log("HOST:", process.env.HOST);
-console.log("USER:", process.env.USER);
-console.log("PASSWORD:", process.env.PASSWORD);
-console.log("DATABASE:", process.env.DATABASE);
-
 // Database connection
+
 const db = mysql.createPool({
   host: "162.240.151.180",
   user: "betasltdigitalwe_hkuser",
   password: "hkuser123!@#",
   database: "betasltdigitalwe_betabacksltdigit_hkholdings_new_2",
+  waitForConnections: true,
+  connectionLimit: 10, // Limit number of connections
+  queueLimit: 0,
+  acquireTimeout: 10000, // Increase timeout to 10s
+  connectTimeout: 10000, // Increase connection timeout
 });
 
 // const db = mysql.createConnection({
@@ -46,8 +47,6 @@ const db = mysql.createPool({
 //   password: "",
 //   database: "hkholdings",
 // });
-
-
 
 // Set up multer storage
 const storage = multer.diskStorage({

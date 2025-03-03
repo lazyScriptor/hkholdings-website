@@ -121,6 +121,7 @@ function RoutesCustomer() {
                 </NavBarCustomer>
               }
             />
+
             <Route
               path="canopies"
               element={
@@ -160,6 +161,7 @@ function RoutesCustomer() {
                 </NavBarCustomer>
               }
             />
+
           </Route>
           <Route path="/pages" element={<>pages</>} />
           <Route path="/shop" element={<>shop</>} />

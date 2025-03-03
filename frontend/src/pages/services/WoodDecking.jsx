@@ -18,7 +18,7 @@ function WoodDecking() {
 
         {/* Overlay Content */}
         <div className="relative z-10 flex flex-col items-center justify-center w-full h-[60vh] text-brandWhite gap-4">
-          <h1 className="text-4xl font-semibold">Wood Decking</h1>
+          <h1 className="text-4xl font-semibold max-w-[80%] text-center">Wood Decking</h1>
         </div>
       </div>
 

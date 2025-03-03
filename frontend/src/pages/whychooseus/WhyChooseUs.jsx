@@ -1,6 +1,10 @@
 import React, { lazy } from "react";
 import image1 from "../../assets/vector1.png";
 import image2 from "../../assets/vector2.png";
+import image3 from "../../assets/vector3.png";
+import image4 from "../../assets/vector4.png";
+import image5 from "../../assets/vector5.png";
+import image6 from "../../assets/vector6.png";
 import whyChooseUsImage from "../../assets/whyImage1.png";
 
 function WhyChooseUs() {
@@ -11,23 +15,23 @@ function WhyChooseUs() {
     },
     {
       title: "Strong welding  ",
-      image: image1,
+      image: image2,
     },
     {
       title: "Quality & better completion ",
-      image: image1,
+      image: image3,
     },
     {
       title: "After service ",
-      image: image1,
+      image: image4,
     },
     {
       title: "High quality materials",
-      image: image1,
+      image: image5,
     },
     {
       title: "Guidance of skilled experts  ",
-      image: image1,
+      image: image6,
     },
   ];
   return (
@@ -61,7 +65,9 @@ function WhyChooseUs() {
                   className="bg-[#8B8C8A] hover:bg-brandLightMaroon duration-700 transition-all hover:shadow-lg
                 hover:shadow-brandLightMaroon rounded-lg p-2 lg:p-6 text-brandWhite flex gap-2 lg:gap-4 items-center"
                 >
-                  <img src={item.image} alt="" />
+                  <div className="w-20">
+                    <img src={item.image} alt="" />
+                  </div>
                   <h2 className="font-semibold"> {item.title}</h2>
                 </div>
               ))}
@@ -82,4 +88,4 @@ function WhyChooseUs() {
   );
 }
 
-export default WhyChooseUs
+export default WhyChooseUs;

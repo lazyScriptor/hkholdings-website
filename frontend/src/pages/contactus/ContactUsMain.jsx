@@ -83,13 +83,13 @@ const Strip1 = () => {
             </div>
           </div>
 
-          <div className=" flex gap-4 justify-start  items-center lg:justify-center  lg:justify-end lg:pl-8 ">
+          <div className=" flex gap-4 justify-start  items-center  group  lg:justify-end lg:pl-8 ">
             <MdLocationOn className="text-6xl  w-12" />
             <h2 className="text-center text-6xl font-extralight">| </h2>
             <div className="flex flex-col justify-start items-start">
               <h4 className="text-2xl font-semibold">LOCATION:</h4>
               <p className="z-50">
-                <a
+                <a className=" group-hover:text-brandLightMaroon transition-all duration-200"
                   href="https://maps.app.goo.gl/dAhhR4fijLmCwPJ18"
                   target="_blank"
                 >

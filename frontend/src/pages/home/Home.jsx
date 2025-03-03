@@ -187,7 +187,7 @@ const Sliderr = () => {
         </div>
 
         {/* Slide 2 */}
-        <div className="relative h-screen">
+        {/* <div className="relative h-screen">
           <div
             className="absolute inset-0 bg-cover bg-center h-full"
             style={{ backgroundImage: `url(${heroImg3})` }}
@@ -211,7 +211,7 @@ const Sliderr = () => {
               </div>
             </div>
           </div>
-        </div>
+        </div> */}
 
         {/* Slide 3 */}
         <div className="relative h-screen">
@@ -244,14 +244,14 @@ const Sliderr = () => {
             className="absolute inset-0 bg-cover bg-center h-full"
             style={{ backgroundImage: `url(${heroImg6})` }}
           >
-            <div className="absolute inset-0 flex flex-col items-center justify-center bg-brandLightMaroon/30 text-white">
+            <div className="absolute inset-0 flex flex-col items-center justify-center bg-brandLightMaroon/50 text-white">
               <div className="container flex flex-col items-center justify-center">
                 <h1 className="text-4xl md:text-7xl font-bold mb-4 text-center capitalize">
                   Professional & Reliable works
                 </h1>
                 <p className="container text-sm text-center max-w-[70%] capitalize h-12">
-                  We inted to continue working diligently to satisfy our
-                  cherished client.
+                  Your vision, our expertise—creating lasting impressions
+                  through quality craftsmanship.
                 </p>
                 <button
                   onClick={() => navigate("/services/all")}
@@ -270,14 +270,14 @@ const Sliderr = () => {
             className="absolute inset-0 bg-cover bg-center h-full"
             style={{ backgroundImage: `url(${heroImg7})` }}
           >
-            <div className="absolute inset-0 flex flex-col items-center justify-center bg-brandLightMaroon/30 text-white">
+            <div className="absolute inset-0 flex flex-col items-center justify-center bg-brandLightMaroon/50 text-white">
               <div className="container flex flex-col items-center justify-center">
                 <h1 className="text-4xl md:text-7xl font-bold mb-4 text-center capitalize">
                   Professional & Reliable works
                 </h1>
                 <p className="container text-sm text-center max-w-[70%] capitalize h-12">
-                  We inted to continue working diligently to satisfy our
-                  cherished client.
+                  Committed to excellence, we ensure every project exceeds
+                  expectations with superior quality.
                 </p>
                 <button
                   onClick={() => navigate("/services/all")}

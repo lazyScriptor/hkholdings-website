@@ -3,15 +3,31 @@ import heroImg from "../assets/hero.jpg";
 import { LuPhoneCall } from "react-icons/lu";
 import logo from "../assets/logo.webp";
 import MobileNavigation from "./MobileNavigation";
+import { MdOutlineArrowDropDown } from "react-icons/md";
+import { useNavigate } from "react-router-dom";
+
 function NavBarCustomer({ children, number }) {
+  const navigate =useNavigate();
   const navBarComponents = [
     { id: 1, name: "Home", navigate: "/" },
     { id: 2, name: "About", navigate: "/about" },
-    { id: 3, name: "Services", navigate: "/services/all" },
     { id: 4, name: "Blog", navigate: "/blog" },
     { id: 5, name: "Contact", navigate: "/contact" },
   ];
-
+  const subnavigations = [
+    { id: 6, name: "Railings", navigate: "/railings" },
+    {
+      id: 7,
+      name: "Warehouse Construction",
+      navigate: "/warehouse-construction",
+    },
+    { id: 8, name: "Wood Decking", navigate: "/wood-decking" },
+    { id: 9, name: "StairCases", navigate: "/staircases" },
+    { id: 10, name: "Canopies", navigate: "/canopies" },
+    { id: 11, name: "Gates", navigate: "/gates" },
+    { id: 12, name: "Roofing", navigate: "/roofing" },
+    { id: 12, name: "Fences and Grills", navigate: "/fences-and-grills" },
+  ];
   return (
     <div className="relative">
       {/* Navbar */}
@@ -39,6 +55,33 @@ function NavBarCustomer({ children, number }) {
             ))}
           </ul>
 
+          <li className="group relative cursor-pointer flex">
+            {/* services word and drop arrow */}
+            <div className=" items-center hidden md:flex gap-[2px] justify-center dark:hover:text-white ">
+              <span className="truncate cursor-pointer" onClick={()=>navigate('/services/all')} >Services</span>
+              <span>
+                <MdOutlineArrowDropDown className="group-hover:rotate-180 duration-300" />
+              </span>
+            </div>
+            {/* Drop down links */}
+            <div className="absolute mt-6 z-[9999] transition-all duration-200 hidden group-hover:block w-[210px] rounded-md bg-white/90 shadow-lg dark:bg-gray-900 p-2 text-white ">
+              <ul className="space-y-2">
+                <li className="h-4" />
+                {subnavigations &&
+                  subnavigations.map((item, index) => (
+                    <a href={`/services/all${item.navigate}`} className="cursor-pointer">
+                      <li
+                        key={index}
+                        className="text-gray-500 truncate hover:text-brandLightMaroon dark:hover:text-white transition-all duration-200 cursor-pointer hover:bg-brandLightMaroon/20 p-1 rounded"
+                      >
+                        {item.name}
+                      </li>
+                    </a>
+                  ))}
+              </ul>
+            </div>
+          </li>
+
           {/* Right: Button (absolute positioning) */}
           <div className="hidden md:block absolute group top-2 right-4">
             <a href="tel:0716195913">
@@ -49,7 +92,6 @@ function NavBarCustomer({ children, number }) {
                 <p className="group-hover:text-green-20 group-hover:border-0 transition-all duration-400 ">
                   071 6195913
                 </p>
-
               </button>
             </a>
           </div>
