@@ -14,7 +14,7 @@ function AboutusStrip() {
     () => {
       gsap.from(".box", {
         x: -100,
-        duration: 2,
+        duration: 1,
         ease: "power4.inOut",
         yoyo: true,
         stagger: {

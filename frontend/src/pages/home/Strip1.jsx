@@ -26,7 +26,7 @@ function Strip1() {
     () => {
       gsap.from(".box", {
         y: -100,
-        duration: 2,
+        duration: 1,
         ease: "power4.inOut",
         yoyo: true,
         stagger: {
