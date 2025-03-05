@@ -2,9 +2,12 @@ import React from "react";
 import commonHeroImage from "../../assets/commonheroimage.png";
 
 import aboutUsImage from "../../assets/aboutUsImage.png";
-import aboutusvisionImage from "../../assets/aboutusvision.png";
-import aboutusmissionimage from "../../assets/aboutusmissionimage.png";
+import aboutusvisionImage from "../../assets/vission.webp";
+import aboutusmissionimage from "../../assets/mission.webp";
 import aboutuscharacters from "../../assets/aboutuscharacters.png";
+import backgroundTexture from "../../assets/backgroundTexture.webp";
+import ceoImage from "../../assets/ceo.webp";
+import { PiQuotes } from "react-icons/pi";
 import Footer from "../../components/Footer";
 import BottomFooter from "../../components/BottomFooter";
 import { RiSettingsFill } from "react-icons/ri";
@@ -38,6 +41,9 @@ function AboutUsMain() {
 
       <ThirdPart />
       <FourthPart />
+
+      <MembersQuotes />
+      <div className="h-8 bg-brandLightMaroon my-12"></div>
 
       <FifthPart />
       <div className="h-8 bg-brandLightMaroon"></div>
@@ -230,6 +236,83 @@ const FifthPart = () => {
                 <h3 className="text-white text-lg font-semibold">Name 1</h3>
                 <p className="text-white text-sm">Position 1</p>
               </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </>
+  );
+};
+const MembersQuotes = ({ image, title, position, description }) => {
+  return (
+    <>
+      <div className="pt-12 relative overflow-hidden flex flex-col items-center">
+        <img
+          src={backgroundTexture}
+          className="absolute z-[-40] w-[100%] h-[100%]"
+        />
+        <div className="pt-4 container  ">
+          <div className="grid grid-cols-1 lg:grid-cols-5 gap-12 md:gap-4">
+            <img src={ceoImage} className="lg:col-span-2" />
+
+            <div className="flex flex-col items-center lg:items-start justify-center gap-4 text-brandDarkMaroon lg:col-span-3">
+              <h1 className="font-bold text-2xl">CEO of HK holdings</h1>
+              <p className="pb-12 text-center lg:text-start leading-[3rem]">
+                <PiQuotes className="hidden lg:block rotate-180 -translate-x- translate-y-2 text-4xl" />
+                The biggest risk is not taking any risk. In a world that is
+                changing really quickly, the only strategy that is guaranteed to
+                fail is not taking risks. As a leader, you have to embrace
+                uncertainty, make bold decisions, and continuously innovate.
+                Success is not about avoiding failures but about learning from
+                them and adapting. That's what separates great companies from
+                the ones that fade away{" "}
+                <PiQuotes className="hidden lg:block text-4xl translate-x-56 -translate-y-12 xl:hidden"  />{" "}
+              </p>
+            </div>
+          </div>
+        </div>
+        <hr className="w-[60%] my-12 h-1 rounded-full bg-gray-200 border-none" />
+
+        <div className="pt-4 container  ">
+          <div className="grid grid-cols-1 lg:grid-cols-5 gap-12 md:gap-4">
+            <div className="flex flex-col items-center lg:items-start  justify-center gap-4 text-brandDarkMaroon lg:col-span-3">
+              <h1 className="font-bold text-center  lg:text-end text-2xl">
+                Manager of HK holdings
+              </h1>
+              <p className="pb-12 text-center lg:text-end leading-[3rem] relative">
+                <PiQuotes className="hidden lg:block rotate-180 -translate-x-2 translate-y-2 text-4xl" />
+                The biggest risk is not taking any risk. In a world that is
+                changing really quickly, the only strategy that is guaranteed to
+                fail is not taking risks. As a leader, you have to embrace
+                uncertainty, make bold decisions, and continuously innovate.
+                Success is not about avoiding failures but about learning from
+                them and adapting. That's what separates great companies from
+                the ones that fade away{" "}
+                <PiQuotes className="hidden lg:block text-4xl absolute -right-12 bottom-16  xl:hidden" />{" "}
+              </p>
+            </div>
+            <img src={ceoImage} className="lg:col-span-2" />
+          </div>
+        </div>
+        <hr className="w-[60%] my-12 h-1 rounded-full bg-gray-200 border-none" />
+
+        <div className="pt-4 container  ">
+          <div className="grid grid-cols-1 lg:grid-cols-5 gap-12 md:gap-4">
+            <img src={ceoImage} className="lg:col-span-2" />
+
+            <div className="flex flex-col items-center lg:items-start  justify-center gap-4 text-brandDarkMaroon lg:col-span-3">
+              <h1 className="font-bold text-2xl">CTO of HK holdings</h1>
+              <p className="pb-12 text-center lg:text-start leading-[3rem] ">
+                <PiQuotes className="hidden lg:block rotate-180 -translate-x- translate-y-2 text-4xl" />
+                The biggest risk is not taking any risk. In a world that is
+                changing really quickly, the only strategy that is guaranteed to
+                fail is not taking risks. As a leader, you have to embrace
+                uncertainty, make bold decisions, and continuously innovate.
+                Success is not about avoiding failures but about learning from
+                them and adapting. That's what separates great companies from
+                the ones that fade away{" "}
+                <PiQuotes className="hidden lg:block text-4xl translate-x-56 -translate-y-12  xl:hidden" />{" "}
+              </p>
             </div>
           </div>
         </div>

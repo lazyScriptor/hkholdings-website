@@ -6,7 +6,7 @@ import img3 from "../../assets/strip1img3.webp";
 import carousel1 from "../../assets/realImages/carousel1.jpg";
 import carousel2 from "../../assets/realImages/carousel2.jpg";
 import carousel3 from "../../assets/realImages/carousel3.jpg";
-import carousel4 from "../../assets/realImages/carousel4.jpeg";
+import carousel4 from "../../assets/realImages/carousel4.webp";
 import carousel5 from "../../assets/realImages/carousel5.jpeg";
 import carousel6 from "../../assets/realImages/carousel6.jpg";
 import carousel7 from "../../assets/realImages/carousel7.jpg";
@@ -50,7 +50,7 @@ const CardComponent = () => {
       id: 1,
       title: "Tempered Glass Work",
       description:
-        "High-quality tempered glass solutions for  durability, and modern aesthetics, perfect for residential and commercial applications.",
+        "High-quality tempered glass solutions for durability, and modern aesthetics, perfect for residential and commercial applications.",
       image: carousel1,
     },
     {
@@ -80,6 +80,13 @@ const CardComponent = () => {
       description:
         "Exceptional wooden craftsmanship for furniture, paneling, doors, and custom designs, adding warmth and sophistication to any space.",
       image: carousel6,
+    },
+    {
+      id: 6,
+      title: "Stainless Steel Fabrication",
+      description:
+        "Precision-crafted stainless steel solutions for durable, corrosion-resistant, and sleek architectural and industrial applications.",
+      image: carousel4, // Replace with the appropriate image
     },
   ];
 

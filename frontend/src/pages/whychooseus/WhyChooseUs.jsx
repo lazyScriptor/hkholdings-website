@@ -14,7 +14,7 @@ function WhyChooseUs() {
       image: image1,
     },
     {
-      title: "Strong welding  ",
+      title: "Reliability  ",
       image: image2,
     },
     {
@@ -48,7 +48,7 @@ function WhyChooseUs() {
                 Why you should choose
               </h2>
               <h3 className="font-semibold text-4xl  uppercase">
-                our welding company
+                our  company
               </h3>
             </div>
             <p className="text-md text-gray-400">

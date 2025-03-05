@@ -13,6 +13,7 @@ import { IoLogoInstagram } from "react-icons/io";
 import { TbBrandLinkedin } from "react-icons/tb";
 import { PiWhatsappLogoLight } from "react-icons/pi";
 import { FaFigma } from "react-icons/fa";
+import { PiTiktokLogo } from "react-icons/pi";
 import OpenDirectionsButton from "./OpenDirectionsButton";
 function Footer() {
   const navigate = useNavigate();
@@ -39,11 +40,11 @@ function Footer() {
       icon: PiWhatsappLogoLight,
       navigate: "https://wa.me/+94705123804",
     },
-    // {
-    //   id: 4,
-    //   icon: FaFigma,
-    //   navigate: "/",
-    // },
+    {
+      id: 4,
+      icon: PiTiktokLogo,
+      navigate: "https://www.tiktok.com/@hkholding?_t=ZS-8uQDMb4esNz&_r=1",
+    },
   ];
   return (
     <div className="py-4 bg-brandBlack  relative bg-cover bg-center">

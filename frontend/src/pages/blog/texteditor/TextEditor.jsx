@@ -177,11 +177,11 @@ function TextEditor() {
       <div className="w-52 ">
         {imageUrl == undefined ? (
           <img src={imageUrl} alt={`Blog ${blogId}`} style={{}} />
-        ) : (
-          <MessageComponent
-            color={`-red-500`}
-            message={"Image not available"}
-          />
+        ) : (""
+          // <MessageComponent
+          //   color={`-red-500`}
+          //   message={"Image not available"}
+          // />
         )}
       </div>
     </div>

@@ -84,13 +84,13 @@ function NavBarCustomer({ children, number }) {
 
           {/* Right: Button (absolute positioning) */}
           <div className="hidden md:block absolute group top-2 right-4">
-            <a href="tel:0716195913">
+            <a href="tel:+94705123804">
               <button className="flex rounded-full w-[200px] h-10  text-white hover:text-brandWhite items-center gap-2 border border-green-800 hover:bg-green-600 hover:rounded-full font-bold py-2 px-8 duration-700 transition-all overflow-hidden">
                 {/* Icon */}
                 <LuPhoneCall className=" group-hover:text-green-100 transition-all duration-300 " />
                 {/* Text */}
                 <p className="group-hover:text-green-20 group-hover:border-0 transition-all duration-400 ">
-                  071 6195913
+                070 5123 804
                 </p>
               </button>
             </a>

@@ -2,6 +2,7 @@ import React, { lazy } from "react";
 import image1 from "../../assets/about1.png";
 import image2 from "../../assets/about2.png";
 import productsImage from "../../assets/ourproducts.png";
+
 import { useNavigate } from "react-router-dom";
 
 function ProjectsHomeScreen() {

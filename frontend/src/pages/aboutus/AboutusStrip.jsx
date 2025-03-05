@@ -38,9 +38,9 @@ function AboutusStrip() {
             </h1>
             <div>
               <h2 className="text-brandDarkMaroon text-2xl">
-                PROJECT WITH EXPERT & METAL
+                PROJECT WITH EXPERT, METAL AND GLASS
               </h2>
-              <h3 className="font-semibold text-4xl">METAL COllABORATION</h3>
+              <h3 className="font-semibold text-4xl">METAL COLLABORATION</h3>
             </div>
             <p className="text-md text-gray-400">
               As one of the leading firms in Sri Lanka . We provide our maximum
@@ -53,8 +53,8 @@ function AboutusStrip() {
               <li>Trusted & friendly </li>
               <li>Guaranteed service</li>
             </ul>
-            <div className="absolute right-0 bottom-28 px-8 md:w-[40%] py-4 bg-brandLightMaroon/10 rounded-l-xl text-gray-400">
-              <p className="capitalize flex items-center gap-2 text-lg font-semibold text-brandBlack">
+            <div className="absolute right-0 bottom-28 px-8 md:w-[40%] py-4 bg-brandLightMaroon/60 rounded-l-xl text-gray-400">
+              <p className="capitalize flex items-center gap-2 text-lg font-semibold text-brandWhite">
                 <RiSettingsFill /> Innovation at Every Step
               </p>
             </div>
