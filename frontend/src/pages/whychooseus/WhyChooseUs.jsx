@@ -1,4 +1,4 @@
-import React, { lazy } from "react";
+import React, { lazy, useRef } from "react";
 import image1 from "../../assets/vector1.png";
 import image2 from "../../assets/vector2.png";
 import image3 from "../../assets/vector3.png";
@@ -6,8 +6,34 @@ import image4 from "../../assets/vector4.png";
 import image5 from "../../assets/vector5.png";
 import image6 from "../../assets/vector6.png";
 import whyChooseUsImage from "../../assets/whyImage1.png";
-
+import ScrollTrigger from "gsap/ScrollTrigger";
+import { useGSAP } from "@gsap/react";
+import gsap from "gsap";
 function WhyChooseUs() {
+  gsap.registerPlugin(ScrollTrigger);
+  const container = useRef();
+
+  useGSAP(
+    () => {
+      gsap.from(".box", {
+        x: -100,
+        duration: 2,
+        ease: "power4.inOut",
+        yoyo: true,
+        stagger: {
+          each: 0.2,
+        },
+        scrollTrigger: {
+          trigger: container.current, // The element that triggers the animation
+          start: "top 90%", // When the top of the container reaches 80% of the viewport
+          end: "top 30%", // End point for the animation
+          toggleActions: "play none none none", // Play once when it enters
+        },
+      });
+    },
+    { scope: container }
+  );
+
   const iconArray = [
     {
       title: "Fast service ",
@@ -35,23 +61,21 @@ function WhyChooseUs() {
     },
   ];
   return (
-    <div className="container py-12">
+    <div className="container py-12" ref={container}>
       <div>
         <div className="grid grid-cols-1 md:grid-cols-5 gap-4">
           {/* text section */}
           <div className="md:col-span-3  flex flex-col gap-8 order-2 md:order-1">
-            <h1 className="text-brandLightMaroon text-2xl font-semibold">
+            <h1 className="box text-brandLightMaroon text-2xl font-semibold">
               Why choose us ?
             </h1>
             <div>
-              <h2 className="text-brandDarkMaroon text-2xl uppercase">
+              <h2 className="box text-brandDarkMaroon text-2xl uppercase">
                 Why you should choose
               </h2>
-              <h3 className="font-semibold text-4xl  uppercase">
-                our  company
-              </h3>
+              <h3 className="box font-semibold text-4xl  uppercase">our company</h3>
             </div>
-            <p className="text-md text-gray-400">
+            <p className=" text-md text-gray-400">
               {" "}
               We are ready to create your residences , apartment, office or any
               other place as you wish. Our main objective is to reach the

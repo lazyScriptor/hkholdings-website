@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useRef } from "react";
 import { Paper } from "@mui/material";
 import img1 from "../../assets/strip1img1.webp";
 import img2 from "../../assets/strip1img2.webp";
@@ -14,18 +14,45 @@ import servicesBackgroundImage from "../../assets/servicesbackground.png";
 import Slider from "react-slick"; // Slick carousel import
 import "slick-carousel/slick/slick.css"; // Slick carousel styles
 import "slick-carousel/slick/slick-theme.css";
+import ScrollTrigger from "gsap/ScrollTrigger";
+import { useGSAP } from "@gsap/react";
+import gsap from "gsap";
 
 function Strip1() {
+  gsap.registerPlugin(ScrollTrigger);
+  const container = useRef();
+
+  useGSAP(
+    () => {
+      gsap.from(".box", {
+        y: -100,
+        duration: 2,
+        ease: "power4.inOut",
+        yoyo: true,
+        stagger: {
+          each: 0.2,
+        },
+        scrollTrigger: {
+          trigger: container.current, // The element that triggers the animation
+          start: "top 90%", // When the top of the container reaches 80% of the viewport
+          end: "top 20%", // End point for the animation
+          toggleActions: "play none none none", // Play once when it enters
+        },
+      });
+    },
+    { scope: container }
+  );
   return (
     <div
+      ref={container}
       className="bg-brandDarkMaroon py-12 flex flex-col justify-center items-center"
       style={{ backgroundImage: `url(${servicesBackgroundImage})` }}
     >
       <div className="py-8 flex justify-center flex-col items-center gap-4">
-        <h1 className="text-3xl text-brandWhite uppercase">
+        <h1 className="box text-3xl text-brandWhite uppercase text-center">
           Services we provided
         </h1>
-        <p className="text-md text-brandWhite text-opacity-70 max-w-[70%] text-center">
+        <p className="box text-md text-brandWhite text-opacity-70 max-w-[70%] text-center">
           {" "}
           HK Holdings specializes in high-quality construction and decorative
           solutions, offering tempered glass work, professional welding, custom
