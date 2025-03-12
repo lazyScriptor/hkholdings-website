@@ -68,14 +68,6 @@ To run this project, you will need to add the following environment variables to
 
 
 
-## Creating Clickable Buttons**
-```md
-## 🔗 Useful Links
-
-[![Demo Video](https://img.shields.io/badge/Demo-Video-blue?style=for-the-badge&logo=youtube)](https://drive.google.com/file/d/1YcbBkjH9fOfX9fJTz7vDIJQCinkbDTbL/view?usp=sharing)
-
-[![Live Preview](https://img.shields.io/badge/Live%20Preview-Website-green?style=for-the-badge&logo=vercel)](https://your-live-demo-link.com)
-
 
 ## Installation
 
