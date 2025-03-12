@@ -10,7 +10,11 @@ Fully responsive design, optimized for both desktop and mobile devices.
 Easy-to-navigate sections highlighting company details, services, and contact information.
 
 ![Logo](https://raw.githubusercontent.com/lazyScriptor/hkholdings-website/refs/heads/master/frontend/src/assets/logo.jpg)
-<img src="https://raw.githubusercontent.com/lazyScriptor/hkholdings-website/refs/heads/master/frontend/src/assets/logo.jpg"/>
+<div style="display: flex; justify-content: center; align-items: center; height: 100vh;">
+    <img src="https://raw.githubusercontent.com/lazyScriptor/hkholdings-website/refs/heads/master/frontend/src/assets/logo.jpg" 
+         style="max-width: 100%; height: auto;">
+</div>
+
 
 
 ## Environment Variables
