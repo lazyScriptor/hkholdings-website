@@ -1,5 +1,5 @@
 <div style="background-color:#AD8E61; padding:20px; border-radius:10px;">
-# HK Holdings
+## HK holdings
 
 HK Holdings Website and Admin Panel
 This repository contains the source code for the HK Holdings official website and its admin panel. The project is built using modern web development technologies to deliver a responsive, user-friendly interface and a robust backend.
