@@ -44,7 +44,7 @@ To run this project, you will need to add the following environment variables to
 ![TailwindCSS](https://img.shields.io/badge/TailwindCSS-3.0-blue?logo=tailwindcss)
 
 
-##  Screenshots
+## 📸 Screenshots
 
 <p align="center">
   <img src="https://drive.google.com/uc?export=view&id=1qyBlER1tMFBzezTbEh5Tp2stnKwD-b5S" width="600" alt="Homepage Screenshot">
