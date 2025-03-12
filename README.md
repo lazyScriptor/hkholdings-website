@@ -10,10 +10,10 @@ Fully responsive design, optimized for both desktop and mobile devices.
 Easy-to-navigate sections highlighting company details, services, and contact information.
 
 ![Logo](https://raw.githubusercontent.com/lazyScriptor/hkholdings-website/refs/heads/master/frontend/src/assets/logo.jpg)
-<div style="display: flex; justify-content: center; align-items: center; height: 100vh;">
-    <img src="https://raw.githubusercontent.com/lazyScriptor/hkholdings-website/refs/heads/master/frontend/src/assets/logo.jpg" 
-         style="max-width: 50%; height: auto;">
-</div>
+<p align="center">
+  <img src="https://raw.githubusercontent.com/lazyScriptor/hkholdings-website/refs/heads/master/frontend/src/assets/logo.jpg" width="200" alt="HK Holdings Logo">
+</p>
+
 
 
 
@@ -31,24 +31,35 @@ To run this project, you will need to add the following environment variables to
 
 `JWT_SECRET`=theeka
 
-
 ## Color Reference
 
-| Color             | Hex                                                                |
-| ----------------- | ------------------------------------------------------------------ |
-| brandDarkMaroon| ![#40342F](https://via.placeholder.com/10/0a192f?text=+)  |
-| brandLightMaroon| ![#AD8E61](https://via.placeholder.com/10/f8f8f8?text=+)  |
-| brandWhite | ![#FEFEFE](https://via.placeholder.com/10/00b48a?text=+)  |
-| brandBlack | ![#241C1A](https://via.placeholder.com/10/00b48a?text=+)  |
-| brandGrey | ![#8B8V8A](https://via.placeholder.com/10/00b48a?text=+)  |
+| Color Name          | Hex Code  | Preview |
+|---------------------|----------|---------|
+| **Dark Maroon**    | `#40342F` | ![#40342F](https://via.placeholder.com/15/40342F/000000?text=+) |
+| **Light Maroon**   | `#AD8E61` | ![#AD8E61](https://via.placeholder.com/15/AD8E61/000000?text=+) |
+| **White**          | `#FEFEFE` | ![#FEFEFE](https://via.placeholder.com/15/FEFEFE/000000?text=+) |
+| **Black**          | `#241C1A` | ![#241C1A](https://via.placeholder.com/15/241C1A/000000?text=+) |
+| **Grey**           | `#8B8E8A` | ![#8B8E8A](https://via.placeholder.com/15/8B8E8A/000000?text=+) |
 
 
-## Demo
+![React](https://img.shields.io/badge/React-18.2.0-blue?logo=react)
+![Node.js](https://img.shields.io/badge/Node.js-18.0.0-green?logo=node.js)
+![TailwindCSS](https://img.shields.io/badge/TailwindCSS-3.0-blue?logo=tailwindcss)
 
 
-User view v 1.4 - https://drive.google.com/file/d/1YcbBkjH9fOfX9fJTz7vDIJQCinkbDTbL/view?usp=sharing
+👉 This makes your **README interactive** and easy to follow.
 
-Admin panel v 1.1 - https://drive.google.com/file/d/1IFrz7lKrWloZs7ueMy2HeuEi70npr4Jp/view?usp=sharing
+---
+
+## **6️⃣ Creating Clickable Buttons**
+```md
+## 🔗 Useful Links
+
+[![Demo Video](https://img.shields.io/badge/Demo-Video-blue?style=for-the-badge&logo=youtube)](https://drive.google.com/file/d/1YcbBkjH9fOfX9fJTz7vDIJQCinkbDTbL/view?usp=sharing)
+
+[![Live Preview](https://img.shields.io/badge/Live%20Preview-Website-green?style=for-the-badge&logo=vercel)](https://your-live-demo-link.com)
+
+
 ## Installation
 
 For the frontend and backend
