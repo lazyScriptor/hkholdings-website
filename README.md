@@ -47,23 +47,23 @@ To run this project, you will need to add the following environment variables to
 ##  Screenshots
 
 <p align="center">
-  <img src="https://drive.google.com/file/d/1qyBlER1tMFBzezTbEh5Tp2stnKwD-b5S/view?usp=drive_link" width="600" alt="Homepage Screenshot">
+  <img src="https://drive.google.com/uc?export=view&id=1qyBlER1tMFBzezTbEh5Tp2stnKwD-b5S" width="600" alt="Homepage Screenshot">
 </p>
 
 <p align="center">
-  <img src="https://drive.google.com/file/d/1Hhr4m_slDSbiF0ANA4gQaQVNsDjS2ljb/view?usp=drive_link" width="600" alt="Dashboard Screenshot">
+  <img src="https://drive.google.com/uc?export=view&id=1Hhr4m_slDSbiF0ANA4gQaQVNsDjS2ljb" width="600" alt="Dashboard Screenshot">
 </p>
 
 <p align="center">
-  <img src="https://drive.google.com/file/d/1sq1q89kXyuYFARIHnvzbyu0jTVKoBwaT/view?usp=drive_link" width="600" alt="Admin Panel Screenshot">
+  <img src="https://drive.google.com/uc?export=view&id=1sq1q89kXyuYFARIHnvzbyu0jTVKoBwaT" width="600" alt="Admin Panel Screenshot">
 </p>
 
 <p align="center">
-  <img src="https://drive.google.com/file/d/11g52YR2bMNU5zqis26Y7uEJqLxB-9TBz/view?usp=drive_link" width="600" alt="User Profile Screenshot">
+  <img src="https://drive.google.com/uc?export=view&id=11g52YR2bMNU5zqis26Y7uEJqLxB-9TBz" width="600" alt="User Profile Screenshot">
 </p>
 
 <p align="center">
-  <img src="https://drive.google.com/file/d/1W9GNs2qegbrIy_xSYH7DzXTp5abFh4OP/view?usp=drive_link" width="600" alt="Settings Screenshot">
+  <img src="https://drive.google.com/uc?export=view&id=1W9GNs2qegbrIy_xSYH7DzXTp5abFh4OP" width="600" alt="Settings Screenshot">
 </p>
 
 
