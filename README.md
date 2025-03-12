@@ -9,7 +9,6 @@ Professional and visually appealing layout to showcase HK Holdings’ services a
 Fully responsive design, optimized for both desktop and mobile devices.
 Easy-to-navigate sections highlighting company details, services, and contact information.
 
-![Logo](https://raw.githubusercontent.com/lazyScriptor/hkholdings-website/refs/heads/master/frontend/src/assets/logo.jpg)
 <p align="center">
   <img src="https://raw.githubusercontent.com/lazyScriptor/hkholdings-website/refs/heads/master/frontend/src/assets/logo.jpg" width="200" alt="HK Holdings Logo">
 </p>
@@ -26,8 +25,6 @@ To run this project, you will need to add the following environment variables to
 `USER`=root
 
 `PASSWORD`=
-
-`DATABASE`=hkholdings
 
 `JWT_SECRET`=theeka
 
@@ -47,11 +44,31 @@ To run this project, you will need to add the following environment variables to
 ![TailwindCSS](https://img.shields.io/badge/TailwindCSS-3.0-blue?logo=tailwindcss)
 
 
-👉 This makes your **README interactive** and easy to follow.
+##  Screenshots
 
----
+<p align="center">
+  <img src="https://drive.google.com/file/d/1qyBlER1tMFBzezTbEh5Tp2stnKwD-b5S/view?usp=drive_link" width="600" alt="Homepage Screenshot">
+</p>
 
-## **6️⃣ Creating Clickable Buttons**
+<p align="center">
+  <img src="https://drive.google.com/file/d/1Hhr4m_slDSbiF0ANA4gQaQVNsDjS2ljb/view?usp=drive_link" width="600" alt="Dashboard Screenshot">
+</p>
+
+<p align="center">
+  <img src="https://drive.google.com/file/d/1sq1q89kXyuYFARIHnvzbyu0jTVKoBwaT/view?usp=drive_link" width="600" alt="Admin Panel Screenshot">
+</p>
+
+<p align="center">
+  <img src="https://drive.google.com/file/d/11g52YR2bMNU5zqis26Y7uEJqLxB-9TBz/view?usp=drive_link" width="600" alt="User Profile Screenshot">
+</p>
+
+<p align="center">
+  <img src="https://drive.google.com/file/d/1W9GNs2qegbrIy_xSYH7DzXTp5abFh4OP/view?usp=drive_link" width="600" alt="Settings Screenshot">
+</p>
+
+
+
+## Creating Clickable Buttons**
 ```md
 ## 🔗 Useful Links
 
