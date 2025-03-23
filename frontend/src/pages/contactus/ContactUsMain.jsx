@@ -8,28 +8,30 @@ import Footer from "../../components/Footer";
 import BottomFooter from "../../components/BottomFooter";
 import { Box, Button } from "@mui/material";
 import axios from "axios";
-import LoadingComponent from '../../components/LoadingComponent'
+import LoadingComponent from "../../components/LoadingComponent";
 import TextEditor from "../blog/texteditor/TextEditor";
+
 function ContactUsMain() {
   return (
     <div>
       {" "}
-      <div className="relative w-screen">
+      <div className="relative">
         {/* Background Image */}
         <img
           src={commonHeroImage}
           alt="Background"
-          className="absolute w-screen h-[100vh]"
+          className="absolute z-0 w-screen h-[100vh]"
         />
 
         {/* Overlay Content */}
         <div className="relative z-10 flex flex-col items-center justify-center w-full h-[60vh] text-brandWhite gap-4">
-          <h1 className="text-4xl font-semibold">Contact</h1>
-          <p className="max-w-[60%] text-center text-sm">
+          <h1 className="text-4xl font-semibold">Contact Us</h1>
+
+          {/* <p className="max-w-[60%] text-center text-sm">
             Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do
             eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim
             ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut{" "}
-          </p>
+          </p> */}
         </div>
       </div>
       <div className="h-8 bg-brandLightMaroon"></div>
@@ -48,33 +50,69 @@ const Strip1 = () => {
   return (
     <>
       <div className="py-20">
-        <div className="grid grid-cols-1 gap-12 md:grid-cols-3 container">
-          <div className=" flex gap-4 justify-center items-center">
-            <PiPhoneCallFill className="text-5xl " />
+        <div className="grid grid-cols-1 gap-12 lg:grid-cols-3 container ">
+          <div className=" flex gap-4 justify-start lg:justify-center items-center">
+            <PiPhoneCallFill className="text-5xl w-12" />
             <h2 className="text-center text-6xl font-extralight">| </h2>
             <div className="flex flex-col justify-start items-start">
               <h4 className="text-2xl font-semibold">PHONE:</h4>
-              <p className="">+94 11 2 89654511</p>
-            </div>
-          </div>
-
-          <div className=" flex gap-4 justify-center  items-center md:justify-end pl-8 md:pl-16">
-            <MdLocationOn className="text-7xl  " />
-            <h2 className="text-center text-6xl font-extralight">| </h2>
-            <div className="flex flex-col justify-start items-start">
-              <h4 className="text-2xl font-semibold">LOCATION:</h4>
-              <p className="">
-                404/4A/1, Maithreedasa Mawatha, Pitipana North, Homagama
+              <p className="z-50 ">
+                <a
+                  className="hover:text-brandLightMaroon transition-all duration-200"
+                  href="tel:0716195913"
+                >
+                  071 6195913
+                </a>{" "}
+                /
+                <a
+                  className="hover:text-brandLightMaroon transition-all duration-200"
+                  href="tel:0716195913"
+                >
+                  {" "}
+                  070 5123804{" "}
+                </a>{" "}
+                /<br />
+                <a
+                  className="hover:text-brandLightMaroon transition-all duration-200"
+                  href="tel:0113425370"
+                >
+                  {" "}
+                  011 3425370
+                </a>
               </p>
             </div>
           </div>
 
-          <div className=" flex gap-4 justify-center  items-center ">
-            <MdEmail className="text-5xl " />
+          <div className=" flex gap-4 justify-start  items-center  group  lg:justify-end lg:pl-8 ">
+            <MdLocationOn className="text-6xl  w-12" />
+            <h2 className="text-center text-6xl font-extralight">| </h2>
+            <div className="flex flex-col justify-start items-start">
+              <h4 className="text-2xl font-semibold">LOCATION:</h4>
+              <p className="z-50">
+                <a className=" group-hover:text-brandLightMaroon transition-all duration-200"
+                  href="https://maps.app.goo.gl/dAhhR4fijLmCwPJ18"
+                  target="_blank"
+                >
+                  No. 86/A 1/1, Elapitiwala, Ragama
+                </a>
+              </p>
+            </div>
+          </div>
+
+          <div className=" flex gap-4 justify-start lg:justify-center   items-center ">
+            <MdEmail className="text-5xl w-12" />
             <h2 className="text-center text-6xl font-extralight">| </h2>
             <div className="flex flex-col justify-start items-start">
               <h4 className="text-2xl font-semibold">EMAIL:</h4>
-              <p className="">info@hkholidngs.lk</p>
+              <p className="z-50">
+                <a
+                  href="mailto:info@hkholdings.lk"
+                  className="hover:text-brandLightMaroon transition-all duration-200"
+                >
+                  {" "}
+                  info@hkholdings.lk
+                </a>
+              </p>
             </div>
           </div>
         </div>
@@ -148,7 +186,6 @@ const ContactForm = () => {
   };
 
   const handleSubmit = async (e) => {
-  
     e.preventDefault();
     setLoading(true);
     setErrorMessage(null);
@@ -168,12 +205,11 @@ const ContactForm = () => {
     }
 
     try {
-      console.log("d")
+      console.log("d");
       const response = await axios.post(
         `${import.meta.env.VITE_API_URL}/enquiries`,
         formData
       );
-      console.log(response,"Dd")
       setSuccessMessage("Your enquiry has been submitted successfully!");
       setFormData({
         first_name: "",
@@ -183,7 +219,8 @@ const ContactForm = () => {
         message: "",
       });
     } catch (error) {
-      setErrorMessage("Something went wrong. Please try again later.");
+      console.log(error);
+      setErrorMessage("Something went wrong. Please try again later.", error);
     } finally {
       setLoading(false);
     }
@@ -269,15 +306,13 @@ const ContactForm = () => {
           {successMessage && (
             <div className="text-green-500">{successMessage}</div>
           )}
-          <Button
-            variant="contained"
-            color="primary"
+          <button
+            className="mt-8 w-[100%] px-4 self-center md:self-center py-2 rounded-lg  bg-brandLightMaroon hover:bg-brandLightMaroon/80 transition-all duration-200 text-white shadow-lg"
             type="submit"
             disabled={loading}
-            className="mt-4 bg-brandLightMaroon hover:bg-brandDarkMaroon transition-all duration-200 text-white rounded-lg"
           >
-            {loading ? <LoadingComponent/> : "Submit"}
-          </Button>
+            {loading ? <LoadingComponent /> : "Submit"}
+          </button>
         </div>
       </Box>
     </>

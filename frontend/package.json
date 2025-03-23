@@ -4,7 +4,7 @@
   "version": "0.0.0",
   "type": "module",
   "scripts": {
-    "dev": "vite",
+    "dev": "vite --host 0.0.0.0",
     "build": "vite build",
     "lint": "eslint .",
     "preview": "vite preview"
@@ -12,12 +12,18 @@
   "dependencies": {
     "@emotion/react": "^11.13.3",
     "@emotion/styled": "^11.13.0",
+    "@gsap/react": "^2.1.2",
     "@hookform/resolvers": "^3.9.0",
     "@mui/material": "^6.1.1",
     "@mui/x-date-pickers": "^7.18.0",
     "@react-oauth/google": "^0.12.1",
+<<<<<<< HEAD
     "@tailwindcss/line-clamp": "^0.4.4",
     "@tailwindcss/typography": "^0.5.15",
+=======
+    "@react-spring/web": "^9.7.5",
+    "@splinetool/react-spline": "^4.0.0",
+>>>>>>> animation
     "axios": "^1.7.7",
     "dayjs": "^1.11.13",
     "dompurify": "^3.2.2",

@@ -1,28 +1,65 @@
-import React from "react";
+import React, { useRef } from "react";
 import { Paper } from "@mui/material";
 import img1 from "../../assets/strip1img1.webp";
 import img2 from "../../assets/strip1img2.webp";
 import img3 from "../../assets/strip1img3.webp";
+import carousel1 from "../../assets/realImages/carousel1.jpg";
+import carousel2 from "../../assets/realImages/carousel2.jpg";
+import carousel3 from "../../assets/realImages/carousel3.jpg";
+import carousel4 from "../../assets/realImages/carousel4.webp";
+import carousel5 from "../../assets/realImages/carousel5.jpeg";
+import carousel6 from "../../assets/realImages/carousel6.jpg";
+import carousel7 from "../../assets/realImages/carousel7.jpg";
 import servicesBackgroundImage from "../../assets/servicesbackground.png";
 import Slider from "react-slick"; // Slick carousel import
 import "slick-carousel/slick/slick.css"; // Slick carousel styles
 import "slick-carousel/slick/slick-theme.css";
+import ScrollTrigger from "gsap/ScrollTrigger";
+import { useGSAP } from "@gsap/react";
+import gsap from "gsap";
 
 function Strip1() {
+  gsap.registerPlugin(ScrollTrigger);
+  const container = useRef();
+
+  useGSAP(
+    () => {
+      gsap.from(".box", {
+        y: -100,
+        duration: 1,
+        ease: "power4.inOut",
+        yoyo: true,
+        stagger: {
+          each: 0.2,
+        },
+        scrollTrigger: {
+          trigger: container.current, // The element that triggers the animation
+          start: "top 90%", // When the top of the container reaches 80% of the viewport
+          end: "top 20%", // End point for the animation
+          toggleActions: "play none none none", // Play once when it enters
+        },
+      });
+    },
+    { scope: container }
+  );
   return (
     <div
+      ref={container}
       className="bg-brandDarkMaroon py-12 flex flex-col justify-center items-center"
       style={{ backgroundImage: `url(${servicesBackgroundImage})` }}
     >
       <div className="py-8 flex justify-center flex-col items-center gap-4">
-        <h1 className="text-3xl text-brandWhite uppercase">
+        <h1 className="box text-3xl text-brandWhite uppercase text-center">
           Services we provided
         </h1>
-        <p className="text-md text-brandWhite text-opacity-70 max-w-[70%] text-center">
+        <p className="box text-md text-brandWhite text-opacity-70 max-w-[70%] text-center">
           {" "}
-          There are many variations of passages about of loram ipsum avalabie,
-          but the majority have suffered alteration free in some form, by
-          injected humour, or tree randomised words which don't lock even{" "}
+          HK Holdings specializes in high-quality construction and decorative
+          solutions, offering tempered glass work, professional welding, custom
+          staircases, stylish hand railings & balcony railings, and premium
+          wooden craftsmanship. With expert craftsmanship and a commitment to
+          durability and aesthetics, we deliver tailored solutions for both
+          residential and commercial projects.
         </p>
       </div>
       <div className="container w-[90%] text-brandWhite">
@@ -38,24 +75,45 @@ const CardComponent = () => {
   const cardComponentDetails = [
     {
       id: 1,
-      title: "CUSTOM WELDING ",
+      title: "Tempered Glass Work",
       description:
-        "Lorem ipsum dolor sit amet consectetur adipisicing elit. Quisquaiste iure a architecto, hic fuga",
-      image: img1,
+        "High-quality tempered glass solutions for durability, and modern aesthetics, perfect for residential and commercial applications.",
+      image: carousel1,
     },
     {
       id: 2,
-      title: "METAL WORKS",
+      title: "Professional Welding Services",
       description:
-        "Lorem ipsum dolor sit amet consectetur adipisicing elit. Quisquaiste iure a architecto, hic fuga",
-      image: img1,
+        "Expert welding solutions for structural and decorative metalwork, ensuring strength, precision, and longevity.",
+      image: carousel5,
     },
     {
       id: 3,
-      title: "STEEL WELDING",
+      title: "Hand Railings & Balcony Railings",
       description:
-        "Lorem ipsum dolor sit amet consectetur adipisicing elit. Quisquaiste iure a architecto, hic fuga",
-      image: img1,
+        "Stylish and sturdy railings crafted for safety and elegance, enhancing balconies, staircases, and walkways.",
+      image: carousel3,
+    },
+    {
+      id: 4,
+      title: "Custom Staircase Designs",
+      description:
+        "Innovative staircase solutions, including metal, glass, and wood combinations, designed for both functionality and visual appeal.",
+      image: carousel7,
+    },
+    {
+      id: 5,
+      title: "Premium Wooden Work",
+      description:
+        "Exceptional wooden craftsmanship for furniture, paneling, doors, and custom designs, adding warmth and sophistication to any space.",
+      image: carousel6,
+    },
+    {
+      id: 6,
+      title: "Stainless Steel Fabrication",
+      description:
+        "Precision-crafted stainless steel solutions for durable, corrosion-resistant, and sleek architectural and industrial applications.",
+      image: carousel4, // Replace with the appropriate image
     },
   ];
 
@@ -93,15 +151,15 @@ const CardComponent = () => {
             {" "}
             {/* Add padding for spacing */}
             <Paper sx={{ borderRadius: 0 }} className="bg-white">
-              <div className="p-4">
+              <div className="p-4 h-52 sm:h-24  lg:h-36 xl:h-28">
                 <h2 className="font-bold">{item.title}</h2>
                 <p className="text-xs py-2">{item.description}</p>
               </div>
 
               {/* Image carousel */}
-              <div className="pt-4">
+              <div className="pt-4 h-80">
                 <img
-                  className="aspect-video h-80 object-cover w-full"
+                  className="aspect-video object-cover w-full h-full"
                   src={item.image}
                   alt={item.title}
                 />

@@ -33,11 +33,24 @@ console.log("PASSWORD:", process.env.PASSWORD);
 console.log("DATABASE:", process.env.DATABASE);
 
 // Database connection
+<<<<<<< HEAD
 const db = mysql.createConnection({
+=======
+
+const db = mysql.createPool({
+>>>>>>> animation
   host: "162.240.151.180",
   user: "betasltdigitalwe_hkuser",
   password: "hkuser123!@#",
   database: "betasltdigitalwe_betabacksltdigit_hkholdings_new_2",
+<<<<<<< HEAD
+=======
+  waitForConnections: true,
+  connectionLimit: 10, // Limit number of connections
+  queueLimit: 0,
+  acquireTimeout: 10000, // Increase timeout to 10s
+  connectTimeout: 10000, // Increase connection timeout
+>>>>>>> animation
 });
 
 // const db = mysql.createConnection({
@@ -46,6 +59,7 @@ const db = mysql.createConnection({
 //   password: "",
 //   database: "hkholdings",
 // });
+<<<<<<< HEAD
 
 
 db.connect((err) => {
@@ -55,6 +69,8 @@ db.connect((err) => {
   }
   console.log("Connected to the database.");
 });
+=======
+>>>>>>> animation
 
 // Set up multer storage
 const storage = multer.diskStorage({
@@ -288,6 +304,30 @@ app.post("/register", async (req, res) => {
   });
 });
 
+<<<<<<< HEAD
+=======
+const verifyToken = (req, res, next) => {
+  const token = req.header("Authorization")?.split(" ")[1]; // Assuming token is passed in Authorization header as "Bearer token"
+
+  if (!token) {
+    return res
+      .status(403)
+      .json({ message: "Access denied. No token provided." });
+  }
+
+  try {
+    const decoded = jwt.verify(token, process.env.JWT_SECRET); // Replace with your secret key
+    req.user = decoded; // Attach the decoded data to the request
+    next(); // Token is valid, proceed with the request
+  } catch (error) {
+    res.status(401).json({ message: "Invalid or expired token." });
+  }
+};
+app.get("protected", verifyToken, (req, res) => {
+  res.json({ message: "Welcome to the admin dashboard" });
+});
+
+>>>>>>> animation
 // Login endpoint
 app.post("/login", (req, res) => {
   const { email, password } = req.body;

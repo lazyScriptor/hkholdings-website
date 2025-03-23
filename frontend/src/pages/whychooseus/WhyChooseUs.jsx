@@ -1,65 +1,110 @@
-import React, { lazy } from "react";
+import React, { lazy, useRef } from "react";
 import image1 from "../../assets/vector1.png";
 import image2 from "../../assets/vector2.png";
+import image3 from "../../assets/vector3.png";
+import image4 from "../../assets/vector4.png";
+import image5 from "../../assets/vector5.png";
+import image6 from "../../assets/vector6.png";
 import whyChooseUsImage from "../../assets/whyImage1.png";
-
+import ScrollTrigger from "gsap/ScrollTrigger";
+import { useGSAP } from "@gsap/react";
+import gsap from "gsap";
 function WhyChooseUs() {
+  gsap.registerPlugin(ScrollTrigger);
+  const container = useRef();
+
+  useGSAP(
+    () => {
+      gsap.from(".box", {
+        x: -100,
+        duration: 1,
+        ease: "power4.inOut",
+        yoyo: true,
+        stagger: {
+          each: 0.2,
+        },
+        scrollTrigger: {
+          trigger: container.current, // The element that triggers the animation
+          start: "top 90%", // When the top of the container reaches 80% of the viewport
+          end: "top 30%", // End point for the animation
+          toggleActions: "play none none none", // Play once when it enters
+        },
+      });
+    },
+    { scope: container }
+  );
+
+  const iconArray = [
+    {
+      title: "Fast service ",
+      image: image1,
+    },
+    {
+      title: "Reliability  ",
+      image: image2,
+    },
+    {
+      title: "Quality & better completion ",
+      image: image3,
+    },
+    {
+      title: "After service ",
+      image: image4,
+    },
+    {
+      title: "High quality materials",
+      image: image5,
+    },
+    {
+      title: "Guidance of skilled experts  ",
+      image: image6,
+    },
+  ];
   return (
-    <div className="container py-12">
+    <div className="container py-12" ref={container}>
       <div>
         <div className="grid grid-cols-1 md:grid-cols-5 gap-4">
           {/* text section */}
           <div className="md:col-span-3  flex flex-col gap-8 order-2 md:order-1">
-            <h1 className="text-brandLightMaroon text-2xl font-semibold">Why choose us ?</h1>
+            <h1 className="box text-brandLightMaroon text-2xl font-semibold">
+              Why choose us ?
+            </h1>
             <div>
-              <h2 className="text-brandDarkMaroon text-2xl uppercase">
+              <h2 className="box text-brandDarkMaroon text-2xl uppercase">
                 Why you should choose
               </h2>
-              <h3 className="font-semibold text-4xl  uppercase">
-                our welding company
-              </h3>
+              <h3 className="box font-semibold text-4xl  uppercase">our company</h3>
             </div>
-            <p className="text-md text-gray-400">
+            <p className=" text-md text-gray-400">
               {" "}
-              There are many variations of passages about of loram ipsum
-              avalabie, but the majority have suffered alteration free in some
-              form, by injected humour, or tree randomised words which don't
-              lock even{" "}
+              We are ready to create your residences , apartment, office or any
+              other place as you wish. Our main objective is to reach the
+              pinnacle of our development by ensuring customer satisfaction
+              thought the provision of quality product. We are always committed
+              to providing a flexible service & reasonable price.
             </p>
-            <div className="block space-y-4 md:space-y-0  md:flex md:gap-4 py-12">
-              <div
-                className="bg-[#8B8C8A] hover:bg-brandLightMaroon duration-700 transition-all hover:shadow-lg
-              hover:shadow-brandLightMaroon p-6 text-brandWhite flex gap-4"
-              >
-                <img src={image1} alt="" />
-                <div className="flex flex-col gap-2">
-                  <h2 className="font-semibold"> STRONG WELDING</h2>
-                  <h2 className="text-xs">
-                    Lorem ipsum odor amet, consectetuer adipiscing elit. Conubia
-                    fringilla aliquet nullam augue suscipit{" "}
-                  </h2>
+            <div className="grid grid-cols-1 gap-2  md:grid-cols-2 md:gap-4 py-12">
+              {iconArray.map((item, index) => (
+                <div
+                  className="bg-[#8B8C8A] hover:bg-brandLightMaroon duration-700 transition-all hover:shadow-lg
+                hover:shadow-brandLightMaroon rounded-lg p-2 lg:p-6 text-brandWhite flex gap-2 lg:gap-4 items-center"
+                >
+                  <div className="w-20">
+                    <img src={item.image} alt="" />
+                  </div>
+                  <h2 className="font-semibold"> {item.title}</h2>
                 </div>
-              </div>
-
-              <div
-                className="bg-[#8B8C8A] hover:bg-brandLightMaroon duration-700 transition-all hover:shadow-lg
-              hover:shadow-brandLightMaroon p-6 text-brandWhite flex gap-4"
-              >
-                <img src={image2} alt="" />
-                <div className="flex flex-col gap-2">
-                  <h2 className="font-semibold"> FAST SERVICE</h2>
-                  <h2 className="text-xs">
-                    Lorem ipsum odor amet, consectetuer adipiscing elit. Conubia
-                    fringilla aliquet nullam augue suscipit{" "}
-                  </h2>
-                </div>
-              </div>
+              ))}
             </div>
           </div>
 
           {/* image section */}
           <div className="flex  md:col-span-2  justify-center gap-1  items-center order-1 md:order-2 ">
-            <img src={whyChooseUsImage} alt="" className=" shadow-2xl h-full rounded-2xl"/>
+            <img
+              src={whyChooseUsImage}
+              alt=""
+              className=" shadow-2xl h-full rounded-2xl"
+            />
           </div>
         </div>
       </div>

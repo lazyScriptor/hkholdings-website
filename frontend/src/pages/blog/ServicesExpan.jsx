@@ -97,6 +97,7 @@ export default function ServicesExpan({
 
   return (
     <React.Fragment>
+<<<<<<< HEAD
       <button
         className="mt-6 relative group flex justify-center hover:border-brandLightMaroon hover:border w-[40%] h-8 hover:w-12 items-center gap-2 px-4  bg-brandLightMaroon hover:bg-brandDarkMaroon/10 self-center transition-all duration-600 text-white rounded-lg "
         variant="outlined"
@@ -105,6 +106,17 @@ export default function ServicesExpan({
         <GrView className="group-hover:absolute group-hover:text-brandLightMaroon  transition-all duration-1000" />
         <p className="group-hover:text-transparent transition-all duration-1000 truncate">See more</p>
       </button>
+=======
+      <div className="w-full flex justify-center">
+
+      <button
+        onClick={handleClickOpen}
+        className="px-4  md:self-auto py-2 w-44 rounded-lg bg-brandLightMaroon hover:bg-brandDarkMaroon transition-all duration-200 text-white  shadow-lg"
+      >
+        See more
+      </button>
+      </div>
+>>>>>>> animation
       <Dialog
         fullWidth={fullWidth}
         maxWidth={maxWidth}

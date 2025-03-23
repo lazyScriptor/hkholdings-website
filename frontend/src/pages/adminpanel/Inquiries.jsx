@@ -170,7 +170,13 @@ function Inquiries() {
             >
               <IoIosArrowBack />
             </button>
+<<<<<<< HEAD
             <h2 className="text-brandWhite text-4xl ">Inquiry Management</h2>
+=======
+            <h2 style={{ color: "#FFFFFF", fontSize: "32px" }}>
+              Enquiry Management
+            </h2>
+>>>>>>> animation
           </div>
           <div style={{ display: "flex", gap: "16px" }}>
             <Box>

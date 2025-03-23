@@ -20,7 +20,10 @@ function TextEditor() {
   });
   const { id } = useParams();
   useEffect(() => {
+<<<<<<< HEAD
     setUploadBtnStatus(true);
+=======
+>>>>>>> animation
     console.log("this is the id", id);
     setBlogId(id);
     if (blogId) {
@@ -140,10 +143,15 @@ function TextEditor() {
   };
 
   return (
+<<<<<<< HEAD
     <div className="bg-brandLightMaroon/30 border h-[100%] p-16 container flex flex-col gap-4">
       <h1 className="text-brandWhite text-4xl py-4">
         {isEditMode ? "Edit Blog" : "Create Blog"}
       </h1>
+=======
+    <div className="bg-brandLightMaroon/30 border h-[100%] p-16 container flex flex-col gap-4 relative">
+      <h1>{isEditMode ? "Edit Blog" : "Create Blog"}</h1>
+>>>>>>> animation
 
       {/* Title Editor */}
       {/* Title Editor */}
@@ -177,6 +185,7 @@ function TextEditor() {
 
       {/* Image Upload */}
       <div>
+<<<<<<< HEAD
         {isEditMode ? (
           <h2 className="text-brandWhite text-4xl py-8 ">Upload the Image</h2>
         ) : (
@@ -221,6 +230,12 @@ function TextEditor() {
             alt="Uploaded"
             className="mt-4 max-w-full rounded-lg"
           />
+=======
+        <p>Upload the image</p>
+        <input type="file" onChange={handleFileChange} />
+        {/* {image && (
+          <img src={image} alt="Uploaded" style={{ maxWidth: "100%" }} />
+>>>>>>> animation
         )} */}
       </div>
 
@@ -234,6 +249,7 @@ function TextEditor() {
         />
       </div> */}
 
+<<<<<<< HEAD
       <div className="flex justify-center ">
         {imageUrl && isEditMode ? (
           <img
@@ -243,6 +259,16 @@ function TextEditor() {
           />
         ) : (
           <p>Image not available.</p>
+=======
+      <div className="w-52 ">
+        {imageUrl == undefined ? (
+          <img src={imageUrl} alt={`Blog ${blogId}`} style={{}} />
+        ) : (""
+          // <MessageComponent
+          //   color={`-red-500`}
+          //   message={"Image not available"}
+          // />
+>>>>>>> animation
         )}
       </div>
     </div>
@@ -250,3 +276,11 @@ function TextEditor() {
 }
 
 export default TextEditor;
+
+const MessageComponent = ({ color, message }) => {
+  return (
+    <div className={` absolute bottom-5 text${color} p-2 border border${color}`}>
+      {message}
+    </div>
+  );
+};

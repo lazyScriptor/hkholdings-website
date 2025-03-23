@@ -31,6 +31,10 @@ export default {
     },
   },
   plugins: [
+<<<<<<< HEAD
     require('@tailwindcss/typography'),
+=======
+  
+>>>>>>> animation
   ],
 };
