@@ -19,7 +19,7 @@ export default {
        brandWhite:"#FEFEFE",
        brandBlack:"#241C1A",
        brandGrey:"#8B8V8A",
-      },
+      }, 
       fontFamily: {
         roboto: ["Roboto", "sans-serif"],
         openSans: ["Open Sans", "sans-serif"],
