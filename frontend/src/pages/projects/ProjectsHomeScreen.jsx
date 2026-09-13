@@ -1,50 +1,60 @@
-import React, { lazy } from "react";
-import image1 from "../../assets/about1.png";
-import image2 from "../../assets/about2.png";
+import React from "react";
+import { Link } from "react-router-dom";
 import productsImage from "../../assets/ourproducts.png";
-
-import { useNavigate } from "react-router-dom";
+import Reveal from "../../components/ui/Reveal";
 
 function ProjectsHomeScreen() {
-  const navigate=useNavigate()
   return (
-    <div className="container py-12">
-      <div>
-        <div className="grid grid-cols-1 md:grid-cols-5 gap-4">
-          {/* image section */}
-          <div className="flex  md:col-span-2  justify-center ">
-            <div className="flex items-start">
-              <img src={productsImage} alt="" loading={lazy} className=""/>
-            </div>
-          </div>
-          {/* text section */}
-          <div className="md:col-span-3  flex flex-col gap-8">
-            <h1 className="text-brandLightMaroon capitalize text-2xl font-semibold">our Products</h1>
-            <div>
-              <h2 className="text-brandDarkMaroon text-2xl">
-                RECENTLY COMPLETED
-              </h2>
-              <h3 className="font-semibold text-4xl">OUR LATEST PROJECTS</h3>
-            </div>
-            <p className="text-md text-gray-400">
-              There are many variations of passages about of loram ipsum
-              avalabie, but the majority have suffered alteration free in some
-              form, by injected humour, or tree randomised words which don't
-              lock even.
+    <section className="section container">
+      <div className="grid grid-cols-1 items-center gap-10 md:grid-cols-5 lg:gap-16">
+        {/* Image */}
+        <Reveal
+          variant="left"
+          className="flex justify-center md:col-span-2"
+        >
+          <img
+            src={productsImage}
+            alt="A selection of completed HK Holdings projects"
+            loading="lazy"
+            className="w-full max-w-sm object-contain"
+          />
+        </Reveal>
+
+        {/* Copy */}
+        <div className="md:col-span-3">
+          <Reveal variant="fade" as="span" className="eyebrow">
+            Our products
+          </Reveal>
+
+          <Reveal variant="up" delay={80} className="mt-4">
+            <h2 className="text-lg font-medium uppercase tracking-wide text-ink-700 md:text-xl">
+              Recently completed
+            </h2>
+            <p className="mt-1 font-display text-fluid-h2 font-bold uppercase text-ink-900">
+              Our latest projects
             </p>
-            {/* <div className="px-8 py-4 bg-[#FEF6EB] text-gray-400">
-              <p className="uppercase">
-                Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do
-                eiusmod tempor incididunt
-              </p>
-            </div> */}
-            <button onClick={()=>navigate('/services/all')} className=" px-4 self-center md:self-auto py-2 w-44 rounded-lg bg-brandLightMaroon hover:bg-brandDarkMaroon transition-all duration-200 text-white shadow-lg">
-              DISCOVER MORE
-            </button>
-          </div>
+          </Reveal>
+
+          {/* Replaced the placeholder "loram ipsum" copy that was live on the page */}
+          <Reveal
+            variant="up"
+            delay={160}
+            className="mt-5 max-w-xl text-fluid-body text-ink-500"
+          >
+            From tempered glass railings and custom staircases to steel gates,
+            canopies and full warehouse builds — every project leaves our
+            workshop finished to the same standard. Browse our recent work to
+            see the detail we put into each installation.
+          </Reveal>
+
+          <Reveal variant="up" delay={240} className="mt-8">
+            <Link to="/services/all" className="btn-primary btn-sheen">
+              Discover more
+            </Link>
+          </Reveal>
         </div>
       </div>
-    </div>
+    </section>
   );
 }
 

@@ -1,73 +1,95 @@
-import React, { lazy } from "react";
+import React from "react";
+import { Link } from "react-router-dom";
+import { RiSettingsFill } from "react-icons/ri";
+import { HiCheck } from "react-icons/hi";
 import image1 from "../../assets/about1.png";
 import image2 from "../../assets/realImages/newImages/heroAboutusImg1.webp";
-import { useNavigate } from "react-router-dom";
-import { RiSettingsFill } from "react-icons/ri";
+import Reveal from "../../components/ui/Reveal";
+
+const HIGHLIGHTS = [
+  "High quality material",
+  "Highest standard of work",
+  "Trusted & friendly team",
+  "Guaranteed service",
+];
+
 function AboutusStrip() {
-  const navigate = useNavigate();
-  const handleAboutClick = () => {
-    navigate("/about");
-  };
   return (
-    <div className="container py-12">
-      <div>
-        <div className="grid grid-cols-1 md:grid-cols-5 gap-4">
-          {/* image section */}
-          <div className="flex  md:col-span-2  justify-center gap-1 ">
-            <div className="flex items-start">
-              <img
-                src={image1}
-                alt=""
-                loading={lazy}
-                className="w-36 h-60 shadow-2xl rounded-2xl"
-              />
+    <section className="section container">
+      <div className="grid grid-cols-1 items-center gap-10 md:grid-cols-5 lg:gap-16">
+        {/* Images */}
+        <Reveal variant="left" className="md:col-span-2">
+          <div className="flex justify-center gap-4">
+            <div className="img-frame h-56 w-36 shadow-lift sm:h-72 sm:w-44">
+              <img src={image1} alt="HK Holdings craftsmanship" loading="lazy" />
             </div>
-            <div className="flex items-center md:items-end">
+            <div className="img-frame mt-10 h-56 w-36 shadow-lift sm:h-72 sm:w-44">
               <img
                 src={image2}
-                alt=""
-                loading={lazy}
-                className="w-36 h-60 shadow-2xl rounded-2xl"
+                alt="A completed HK Holdings installation"
+                loading="lazy"
               />
             </div>
           </div>
-          {/* text section */}
-          <div className="md:col-span-3  flex flex-col gap-4">
-            <h1 className="text-brandLightMaroon text-2xl font-semibold">
-              About us
-            </h1>
-            <div>
-              <h2 className="text-brandDarkMaroon text-2xl">
-                PROJECT WITH EXPERT, METAL AND GLASS
-              </h2>
-              <h3 className="font-semibold text-4xl">METAL COLLABORATION</h3>
-            </div>
-            <p className="text-md text-gray-400">
-              As one of the leading firms in Sri Lanka . We provide our maximum
-              production in high quality manner using the latest technology.
-            </p>
+        </Reveal>
 
-            <ul className=" text-md list-disc pl-8 text-gray-400">
-              <li>High quality material </li>
-              <li>Height standard work </li>
-              <li>Trusted & friendly </li>
-              <li>Guaranteed service</li>
+        {/* Copy */}
+        <div className="md:col-span-3">
+          <Reveal variant="fade" as="span" className="eyebrow">
+            About us
+          </Reveal>
+
+          <Reveal variant="up" delay={80} className="mt-4">
+            <h2 className="text-lg font-medium uppercase tracking-wide text-ink-700 md:text-xl">
+              Project with expert, metal and glass
+            </h2>
+            <p className="mt-1 font-display text-fluid-h2 font-bold uppercase text-ink-900">
+              Metal collaboration
+            </p>
+          </Reveal>
+
+          <Reveal
+            variant="up"
+            delay={160}
+            className="mt-5 max-w-xl text-fluid-body text-ink-500"
+          >
+            As one of the leading firms in Sri Lanka, we deliver our maximum
+            production in a high quality manner using the latest technology.
+          </Reveal>
+
+          <Reveal variant="up" delay={240} className="mt-6">
+            <ul className="grid gap-3 sm:grid-cols-2">
+              {HIGHLIGHTS.map((item) => (
+                <li key={item} className="flex items-center gap-3">
+                  <span className="grid h-6 w-6 shrink-0 place-items-center rounded-full bg-gold-500/15 text-gold-600">
+                    <HiCheck className="text-sm" />
+                  </span>
+                  <span className="text-sm text-ink-600">{item}</span>
+                </li>
+              ))}
             </ul>
-            <div className="absolute right-0 bottom-28 px-8 md:w-[40%] py-4 bg-brandLightMaroon/60 rounded-l-xl text-gray-400">
-              <p className="capitalize flex items-center gap-2 text-lg font-semibold text-brandWhite">
-                <RiSettingsFill /> Innovation at Every Step
-              </p>
-            </div>
-            <button
-              onClick={handleAboutClick}
-              className="mt-20 px-4 self-center md:self-auto py-2 w-44 rounded-lg bg-brandLightMaroon hover:bg-brandDarkMaroon transition-all duration-200 text-white shadow-lg"
-            >
-              DISCOVER MORE
-            </button>
-          </div>
+          </Reveal>
+
+          {/* Badge — now sits in flow instead of escaping the section */}
+          <Reveal
+            variant="right"
+            delay={320}
+            className="mt-8 inline-flex items-center gap-3 rounded-xl bg-gold-500 px-6 py-3 text-white shadow-gold"
+          >
+            <RiSettingsFill className="animate-[spin_6s_linear_infinite] text-xl" />
+            <p className="font-display font-semibold capitalize">
+              Innovation at every step
+            </p>
+          </Reveal>
+
+          <Reveal variant="up" delay={400} className="mt-8">
+            <Link to="/about" className="btn-primary btn-sheen">
+              Discover more
+            </Link>
+          </Reveal>
         </div>
       </div>
-    </div>
+    </section>
   );
 }
 

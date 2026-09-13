@@ -1,162 +1,163 @@
 import React from "react";
-import bgImage from "../assets/hero4.webp";
+import { Link } from "react-router-dom";
 import { BiSolidPhoneCall } from "react-icons/bi";
 import { CiGlobe } from "react-icons/ci";
-import { MdOutlineLocationOn } from "react-icons/md";
-import logo from "../assets/logo.webp";
-import { useNavigate } from "react-router-dom";
-import { styles } from "../pages/contactus/ContactUsMain";
-import { TextField } from "@mui/material";
 import { FiFacebook } from "react-icons/fi";
-import { CiLocationArrow1 } from "react-icons/ci";
-import { IoLogoInstagram } from "react-icons/io";
 import { TbBrandLinkedin } from "react-icons/tb";
-import { PiWhatsappLogoLight } from "react-icons/pi";
-import { FaFigma } from "react-icons/fa";
-import { PiTiktokLogo } from "react-icons/pi";
+import { PiWhatsappLogoLight, PiTiktokLogo } from "react-icons/pi";
+import logo from "../assets/logo.webp";
 import OpenDirectionsButton from "./OpenDirectionsButton";
-function Footer() {
-  const navigate = useNavigate();
-  const LinkItems = [
-    { id: 1, name: "Home", navigation: "/" },
-    { id: 2, name: "About", navigation: "/about" },
-    { id: 4, name: "Blog", navigation: "/blog" },
-    { id: 5, name: "Contact", navigation: "/contact" },
-    { id: 3, name: "Services", navigation: "/services/all" },
-  ];
-  const SocialButtons = [
-    {
-      id: 1,
-      icon: FiFacebook,
-      navigate: "https://www.facebook.com/HKHoldingsPvtLtd/",
-    },
-    {
-      id: 2,
-      icon: TbBrandLinkedin,
-      navigate: "https://www.linkedin.com/company/hk-holdings2009/about/",
-    },
-    {
-      id: 3,
-      icon: PiWhatsappLogoLight,
-      navigate: "https://wa.me/+94705123804",
-    },
-    {
-      id: 4,
-      icon: PiTiktokLogo,
-      navigate: "https://www.tiktok.com/@hkholding?_t=ZS-8uQDMb4esNz&_r=1",
-    },
-  ];
-  return (
-    <div className="py-4 bg-brandBlack  relative bg-cover bg-center">
-      {/* Overlay with 60% opacity */}
-      <div className="absolute inset-0 bg-brandDarkMaroon"></div>
+import { MAIN_LINKS, SERVICE_LINKS } from "../data/navigation";
 
-      {/* Content container */}
-      <div className="container relative z-10 py-12">
-        <div className="grid  grid-cols-1  md:grid-cols-4 text-brandWhite gap-8">
-          <div className="flex justify-center" >
-            <img
-              onClick={() => navigate("/")}
-              className="cursor-pointer w-40 aspect-square  bg-white bg-opacity-55 shadow-2xl rounded-xl"
-              src={logo}
-              alt=""
-            />
+const SOCIALS = [
+  {
+    id: "facebook",
+    label: "Facebook",
+    icon: FiFacebook,
+    href: "https://www.facebook.com/HKHoldingsPvtLtd/",
+  },
+  {
+    id: "linkedin",
+    label: "LinkedIn",
+    icon: TbBrandLinkedin,
+    href: "https://www.linkedin.com/company/hk-holdings2009/about/",
+  },
+  {
+    id: "whatsapp",
+    label: "WhatsApp",
+    icon: PiWhatsappLogoLight,
+    href: "https://wa.me/+94705123804",
+  },
+  {
+    id: "tiktok",
+    label: "TikTok",
+    icon: PiTiktokLogo,
+    href: "https://www.tiktok.com/@hkholding?_t=ZS-8uQDMb4esNz&_r=1",
+  },
+];
+
+function Footer() {
+  return (
+    <footer className="relative bg-ink-900 text-white">
+      <div className="container py-16">
+        <div className="grid grid-cols-1 gap-10 sm:grid-cols-2 lg:grid-cols-4">
+          {/* Brand */}
+          <div className="flex flex-col items-center gap-4 sm:items-start">
+            <Link to="/" aria-label="HK Holdings — home">
+              <img
+                src={logo}
+                alt="HK Holdings"
+                className="w-32 rounded-xl bg-white/90 p-3 shadow-lift transition-transform duration-500 ease-out-expo hover:scale-105"
+              />
+            </Link>
+            <p className="text-center text-sm leading-relaxed text-white/60 sm:text-left">
+              Professional &amp; reliable glass and iron works since 2009 —
+              serving homeowners, builders and businesses across Sri Lanka.
+            </p>
           </div>
 
-          <div className="flex justify-center">
-            <div>
-              <h2 className="font-bold flex justify-center md:justify-normal ">
-                LINKS
-              </h2>
-              <div className="flex flex-col gap-2 py-4 items-center md:items-start">
-                {LinkItems.map((item, index) => (
-                  <p
-                    onClick={() => navigate(`${item.navigation}`)}
-                    className="text-gray-300 hover:text-brandLightMaroon text-xs transition-all duration-200 cursor-pointer "
+          {/* Links */}
+          <nav aria-label="Footer" className="text-center sm:text-left">
+            <h2 className="font-display text-sm font-bold uppercase tracking-[0.18em] text-gold-400">
+              Links
+            </h2>
+            <ul className="mt-5 flex flex-col gap-2.5">
+              {MAIN_LINKS.map((item) => (
+                <li key={item.id}>
+                  <Link
+                    to={item.to}
+                    className="text-sm text-white/60 transition-colors duration-200 hover:text-gold-400"
                   >
                     {item.name}
-                  </p>
-                ))}
-              </div>
-            </div>
-          </div>
+                  </Link>
+                </li>
+              ))}
+            </ul>
+          </nav>
 
-          <div className="">
-            <h2 className="flex justify-center md:justify-normal font-bold">
-              CONTACT
+          {/* Services */}
+          <nav aria-label="Services" className="text-center sm:text-left">
+            <h2 className="font-display text-sm font-bold uppercase tracking-[0.18em] text-gold-400">
+              Services
             </h2>
-            <div className="flex flex-col gap-2 py-4 items-center md:items-start">
-              <div className="flex justify-center items-center gap-2 text-xs group">
-                <BiSolidPhoneCall className="text-gray-400 group-hover:text-brandLightMaroon transition-all duration-200" />
-                <p className="text-gray-400  text-xs transition-all duration-200 cursor-pointer">
+            <ul className="mt-5 flex flex-col gap-2.5">
+              {SERVICE_LINKS.slice(0, 6).map((item) => (
+                <li key={item.id}>
+                  <Link
+                    to={item.to}
+                    className="text-sm text-white/60 transition-colors duration-200 hover:text-gold-400"
+                  >
+                    {item.name}
+                  </Link>
+                </li>
+              ))}
+            </ul>
+          </nav>
+
+          {/* Contact */}
+          <div className="text-center sm:text-left">
+            <h2 className="font-display text-sm font-bold uppercase tracking-[0.18em] text-gold-400">
+              Contact
+            </h2>
+            <div className="mt-5 flex flex-col gap-3">
+              <div className="group flex items-center justify-center gap-2 sm:justify-start">
+                <BiSolidPhoneCall className="shrink-0 text-white/40 transition-colors duration-200 group-hover:text-gold-400" />
+                <p className="text-sm text-white/60">
                   <a
-                    className="hover:text-brandLightMaroon"
-                    href="tel:0716195913"
+                    href="tel:+94716195913"
+                    className="transition-colors duration-200 hover:text-gold-400"
                   >
                     071 6195913
-                  </a>{" "}
-                  /{" "}
+                  </a>
+                  {" / "}
                   <a
-                    className="hover:text-brandLightMaroon"
-                    href="tel:0113425370"
+                    href="tel:+94113425370"
+                    className="transition-colors duration-200 hover:text-gold-400"
                   >
                     011 3425370
                   </a>
                 </p>
               </div>
 
-              <div className="flex justify-center items-center gap-2 text-xs  group">
-                <CiGlobe className="text-gray-400 group-hover:text-brandLightMaroon transition-all duration-200" />
-                <p className="text-gray-400 group-hover:text-brandLightMaroon text-xs transition-all duration-200 cursor-pointer">
-                  <a href="mailto:theekshana.jny@gmail.com">
-                    www.hkholdings.lk
-                  </a>
-                </p>
+              {/*
+                Previously this row displayed "www.hkholdings.lk" but linked to a
+                personal gmail address. It now points at the site itself.
+              */}
+              <div className="group flex items-center justify-center gap-2 sm:justify-start">
+                <CiGlobe className="shrink-0 text-white/40 transition-colors duration-200 group-hover:text-gold-400" />
+                <Link
+                  to="/"
+                  className="text-sm text-white/60 transition-colors duration-200 hover:text-gold-400"
+                >
+                  www.hkholdings.lk
+                </Link>
               </div>
+
               <OpenDirectionsButton />
             </div>
-          </div>
-          <div className="flex justify-start flex-col">
-            <div className="flex flex-col gap-4">
-              {/* <h3 className="font-bold flex justify-center md:justify-normal ">
-                Subscribe To Newsletter
-              </h3>
-              <div className="flex gap-4 justify-center items-center">
-                <TextField
-                  fullWidth
-                  sx={styles}
-                  id="outlined-basic"
-                  label="Last Name"
-                  variant="outlined"
-                />
-                <button className=" px-8 py-3 bg-brandLightMaroon hover:bg-brandDarkMaroon transition-all duration-200 text-white rounded-lg">
-                  SEND
-                </button>
-              </div> */}
-              <div className="flex flex-col gap-2">
-                <h4 className="font-semibold">Follow us</h4>
-                <div className="flex gap-2">
-                  {SocialButtons.map((item) => (
-                    <div
-                      key={item.id}
-                      className="bg-brandWhite hover:bg-transparent duration-200 transition-all cursor-pointer p-2 rounded-full"
-                    >
-                      <a
-                        href={item.navigate}
-                        target="_blank"
-                        rel="noopener noreferrer"
-                      >
-                        <item.icon className="text-gray-400 hover:text-brandLightMaroon text-xl transition-all duration-200" />
-                      </a>
-                    </div>
-                  ))}
-                </div>
+
+            {/* Social */}
+            <div className="mt-7">
+              <h3 className="text-sm font-semibold text-white/80">Follow us</h3>
+              <div className="mt-3 flex justify-center gap-3 sm:justify-start">
+                {SOCIALS.map((item) => (
+                  <a
+                    key={item.id}
+                    href={item.href}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    aria-label={item.label}
+                    className="grid h-10 w-10 place-items-center rounded-full bg-white/10 text-white/70 transition-all duration-300 ease-out-expo hover:-translate-y-1 hover:bg-gold-500 hover:text-white"
+                  >
+                    <item.icon className="text-lg" />
+                  </a>
+                ))}
               </div>
             </div>
           </div>
         </div>
       </div>
-    </div>
+    </footer>
   );
 }
 

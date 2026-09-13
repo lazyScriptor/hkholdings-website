@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import commonHeroImage from "../../assets/commonheroimage.png";
+import PageHero from "../../components/ui/PageHero";
 import { PiPhoneCallFill } from "react-icons/pi";
 import { MdLocationOn } from "react-icons/md";
 import { MdEmail } from "react-icons/md";
@@ -15,26 +15,12 @@ function ContactUsMain() {
   return (
     <div>
       {" "}
-      <div className="relative">
-        {/* Background Image */}
-        <img
-          src={commonHeroImage}
-          alt="Background"
-          className="absolute z-0 w-screen h-[100vh]"
-        />
-
-        {/* Overlay Content */}
-        <div className="relative z-10 flex flex-col items-center justify-center w-full h-[60vh] text-brandWhite gap-4">
-          <h1 className="text-4xl font-semibold">Contact Us</h1>
-
-          {/* <p className="max-w-[60%] text-center text-sm">
-            Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do
-            eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim
-            ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut{" "}
-          </p> */}
-        </div>
-      </div>
-      <div className="h-8 bg-brandLightMaroon"></div>
+      <PageHero
+        eyebrow="Get in touch"
+        title="Contact Us"
+        subtitle="Tell us about your project — glass, steel, timber or a full build. We'll come back to you with honest advice and a clear quote."
+        crumbs={[{ label: "Contact" }]}
+      />
       <Strip1 />
       <Strip2 />
       <div className="h-8 bg-brandLightMaroon"></div>
@@ -126,11 +112,12 @@ const Strip2 = () => {
       <div className="bg-brandDarkMaroon py-12">
         <div className="container flex flex-col items-center gap-4  text-brandWhite">
           <div className="p-8">
-            <h1 className="text-4xl font-semibold text-center">
-              LET'S CONNECT CONSTELLATIONS
+            <h1 className="text-4xl font-semibold text-center text-white">
+              LET'S CONNECT
             </h1>
-            <p className="font-light text-center">
-              Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do{" "}
+            <p className="font-light text-center text-white/75">
+              Send us a few details about your project and we'll get back to you
+              with advice and a clear quote.
             </p>
           </div>
           <ContactForm />

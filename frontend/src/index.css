@@ -1,7 +1,256 @@
+@import url("https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Outfit:wght@400;500;600;700;800&display=swap");
+
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
 
-/* *{
-  border:red 1px solid;
-} */
+/* ============================================================
+   Base
+   ============================================================ */
+@layer base {
+  :root {
+    --brand-gold: 173 142 97;
+    --brand-ink: 36 28 26;
+    --nav-h: 4rem;
+  }
+
+  html {
+    scroll-behavior: smooth;
+    -webkit-text-size-adjust: 100%;
+    scroll-padding-top: var(--nav-h);
+  }
+
+  body {
+    @apply bg-white font-sans text-ink-600 antialiased;
+    font-size: 1rem;
+    line-height: 1.65;
+    text-rendering: optimizeLegibility;
+    overflow-x: hidden;
+  }
+
+  /* Headings deliberately do NOT declare a colour: they inherit it from their
+     container. Forcing a dark colour here silently overrode the `text-white`
+     set on dark sections (a directly-applied colour always beats an inherited
+     one), rendering dark-on-dark headings. Set heading colour at the section
+     level instead. */
+  h1,
+  h2,
+  h3,
+  h4,
+  h5 {
+    @apply font-display;
+    line-height: 1.12;
+    letter-spacing: -0.02em;
+  }
+
+  /* Media never overflows its container */
+  img,
+  video,
+  svg {
+    max-width: 100%;
+  }
+
+  /* Visible, on-brand focus ring for keyboard users */
+  :focus-visible {
+    @apply outline-none ring-2 ring-gold-500 ring-offset-2 ring-offset-white;
+    border-radius: 4px;
+  }
+
+  ::selection {
+    background-color: rgb(var(--brand-gold) / 0.28);
+    color: rgb(var(--brand-ink));
+  }
+
+  /* Scrollbar */
+  ::-webkit-scrollbar {
+    width: 10px;
+    height: 10px;
+  }
+  ::-webkit-scrollbar-track {
+    @apply bg-ink-100;
+  }
+  ::-webkit-scrollbar-thumb {
+    @apply rounded-full bg-ink-300;
+    border: 2px solid transparent;
+    background-clip: content-box;
+  }
+  ::-webkit-scrollbar-thumb:hover {
+    @apply bg-gold-500;
+    background-clip: content-box;
+  }
+
+  html {
+    scrollbar-color: theme("colors.ink.300") theme("colors.ink.100");
+  }
+}
+
+/* ============================================================
+   Components
+   ============================================================ */
+@layer components {
+  /* --- Section rhythm --- */
+  .section {
+    @apply py-16 md:py-24;
+  }
+  .section-sm {
+    @apply py-12 md:py-16;
+  }
+
+  /* --- Buttons --- */
+  .btn {
+    @apply relative inline-flex items-center justify-center gap-2 overflow-hidden rounded-lg px-6 py-3
+           text-sm font-semibold uppercase tracking-wider transition-all duration-300 ease-out-expo
+           focus-visible:ring-2 focus-visible:ring-gold-500 focus-visible:ring-offset-2 disabled:pointer-events-none disabled:opacity-60;
+  }
+  .btn-primary {
+    @apply btn bg-gold-500 text-white shadow-soft hover:-translate-y-0.5 hover:bg-gold-600 hover:shadow-gold active:translate-y-0;
+  }
+  .btn-dark {
+    @apply btn bg-ink-900 text-white shadow-soft hover:-translate-y-0.5 hover:bg-ink-800 hover:shadow-lift active:translate-y-0;
+  }
+  .btn-outline {
+    @apply btn border-2 border-gold-500 bg-transparent text-gold-600 hover:-translate-y-0.5 hover:bg-gold-500 hover:text-white active:translate-y-0;
+  }
+  .btn-ghost-light {
+    @apply btn border border-white/40 bg-white/10 text-white backdrop-blur-sm hover:border-white/70 hover:bg-white/20;
+  }
+
+  /* Sheen sweep on hover */
+  .btn-sheen::after {
+    content: "";
+    @apply pointer-events-none absolute inset-0 -translate-x-full bg-gold-sheen;
+  }
+  .btn-sheen:hover::after {
+    @apply animate-shimmer;
+  }
+
+  /* --- Cards --- */
+  .card {
+    @apply rounded-2xl bg-white shadow-soft transition-all duration-500 ease-out-expo;
+  }
+  .card-hover {
+    @apply card hover:-translate-y-1.5 hover:shadow-lift;
+  }
+
+  /* --- Eyebrow label --- */
+  .eyebrow {
+    @apply inline-flex items-center gap-2 text-sm font-semibold uppercase tracking-[0.18em] text-gold-500;
+  }
+  .eyebrow::before {
+    content: "";
+    @apply inline-block h-px w-8 bg-gold-500;
+  }
+
+  /* --- Image zoom frame --- */
+  .img-frame {
+    @apply overflow-hidden rounded-2xl;
+  }
+  .img-frame img {
+    @apply h-full w-full object-cover transition-transform duration-[900ms] ease-out-expo;
+  }
+  .img-frame:hover img {
+    @apply scale-[1.07];
+  }
+
+  /* --- Hide scrollbar (for drag-scroll rows) --- */
+  .no-scrollbar {
+    -ms-overflow-style: none;
+    scrollbar-width: none;
+  }
+  .no-scrollbar::-webkit-scrollbar {
+    display: none;
+  }
+}
+
+/* ============================================================
+   Utilities
+   ============================================================ */
+@layer utilities {
+  .text-balance {
+    text-wrap: balance;
+  }
+  .text-pretty {
+    text-wrap: pretty;
+  }
+  .text-gradient-gold {
+    @apply bg-gradient-to-r from-gold-300 via-gold-500 to-gold-300 bg-clip-text text-transparent;
+  }
+  .glass {
+    @apply bg-white/10 backdrop-blur-md;
+  }
+  /* Promote to its own layer for smooth transforms */
+  .gpu {
+    transform: translateZ(0);
+    will-change: transform, opacity;
+  }
+}
+
+/* ============================================================
+   Third-party: slick carousel — themed to brand
+   ============================================================ */
+.slick-slider,
+.slick-list,
+.slick-track {
+  min-width: 0;
+}
+
+.slick-dots {
+  bottom: 24px;
+}
+.slick-dots li {
+  margin: 0 4px;
+  width: auto;
+  height: auto;
+}
+.slick-dots li button:before {
+  content: "";
+}
+.slick-dots li button {
+  width: 26px;
+  height: 4px;
+  padding: 0;
+  border-radius: 999px;
+  background-color: rgb(255 255 255 / 0.45);
+  transition: all 0.4s cubic-bezier(0.16, 1, 0.3, 1);
+}
+.slick-dots li.slick-active button {
+  width: 44px;
+  background-color: rgb(var(--brand-gold));
+}
+/* Dark dots for light-background carousels */
+.dots-dark .slick-dots li button {
+  background-color: rgb(var(--brand-ink) / 0.25);
+}
+.dots-dark .slick-dots li.slick-active button {
+  background-color: rgb(var(--brand-gold));
+}
+
+.slick-prev,
+.slick-next {
+  z-index: 20;
+  width: 42px;
+  height: 42px;
+}
+.slick-prev:before,
+.slick-next:before {
+  color: rgb(var(--brand-gold));
+  font-size: 28px;
+  opacity: 0.9;
+}
+
+/* ============================================================
+   Accessibility: honour reduced-motion
+   ============================================================ */
+@media (prefers-reduced-motion: reduce) {
+  html {
+    scroll-behavior: auto;
+  }
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.001ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.001ms !important;
+    scroll-behavior: auto !important;
+  }
+}

@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 
-import commonHeroImage from "../../assets/commonheroimage.png";
+import PageHero from "../../components/ui/PageHero";
 import services1 from "../../assets/services1.webp";
 import services2 from "../../assets/services2.webp";
 import services3 from "../../assets/services3.webp";
@@ -97,27 +97,12 @@ function ServicesMain() {
   };
   return (
     <>
-      <div className="relative">
-        {/* Background Image */}
-        <img
-          src={commonHeroImage}
-          alt="Background"
-          className="absolute w-screen h-[100vh]"
-        />
-
-        {/* Overlay Content */}
-        <div className="relative z-10 flex flex-col items-center justify-center w-full h-[60vh] text-brandWhite gap-4">
-          <h1 className="text-4xl font-semibold">Services</h1>
-          <p className="max-w-[60%] text-center text-sm">
-            For more than 16 years, HK Holdings has been taking steps to fit
-            every customer's design, using the best designer crafting and
-            technology. As all other international and local designers has just
-            recently been invented by our company. we are always committed to
-            providing a flexible service at a reasonable price.
-          </p>
-        </div>
-      </div>
-      <div className="h-8 bg-brandLightMaroon" />
+      <PageHero
+        eyebrow="What we do"
+        title="Services"
+        subtitle="For more than 16 years, HK Holdings has been shaping its work around every customer's design, using the best craftsmanship and technology. We remain committed to providing a flexible service at a reasonable price."
+        crumbs={[{ label: "Services" }]}
+      />
 
       {/* <SecondPart /> */}
       <div className="bg-[#241C1A]">
@@ -125,27 +110,19 @@ function ServicesMain() {
           <h1 className="text-4xl font-semibold flex items-center justify-center gap-4 text-brandWhite py-12">
             ALL SERVICES
           </h1>
-          {dataArray.map((item, index) => (
-            <>
-              {index % 2 == 0 ? (
-                <ThirdPart
-                  title={item.title}
-                  description={item.description}
-                  image={item.image}
-                  path={item.navigation}
-                  handleNavigation={handleNavigate}
-                />
-              ) : (
-                <FourthPart
-                  title={item.title}
-                  description={item.description}
-                  image={item.image}
-                  path={item.navigation}
-                  handleNavigation={handleNavigate}
-                />
-              )}
-            </>
-          ))}
+          {dataArray.map((item, index) => {
+            const Block = index % 2 === 0 ? ThirdPart : FourthPart;
+            return (
+              <Block
+                key={item.id}
+                title={item.title}
+                description={item.description}
+                image={item.image}
+                path={item.navigation}
+                handleNavigation={handleNavigate}
+              />
+            );
+          })}
         </div>
       </div>
       <div className="h-8 bg-brandLightMaroon"></div>
@@ -158,24 +135,8 @@ function ServicesMain() {
 
 export default ServicesMain;
 
-const SecondPart = () => {
-  return (
-    <>
-      <div className="container py-20 flex flex-col justify-center items-center gap-16">
-        <h1 className="uppercase text-4xl font-semibold text-center md:text-start">
-          WHO WE ARE?
-        </h1>
-        <p className="text-center  md:max-w-[80%]">
-          Lorem ipsum odor amet, consectetuer adipiscing elit. Urna tincidunt
-          lectus mi porttitor rutrum habitasse. Interdum pharetra mi, et platea
-          lobortis ex sapien. Eros eros nisl neque porttitor primis elit
-          maecenas. Viverra quam luctus phasellus class ipsum duis elit vehicula
-          nascetur.{" "}
-        </p>
-      </div>
-    </>
-  );
-};
+/* `SecondPart` was dead code (its only call site is commented out) and held
+   placeholder lorem-ipsum copy, so it has been removed. */
 // const SecondPart = () => {
 //   return (
 //     <div className="py-12 container">

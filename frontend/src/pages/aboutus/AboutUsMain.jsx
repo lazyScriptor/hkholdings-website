@@ -1,5 +1,5 @@
 import React from "react";
-import commonHeroImage from "../../assets/commonheroimage.png";
+import PageHero from "../../components/ui/PageHero";
 
 import aboutUsImage from "../../assets/aboutUsImage.png";
 import aboutusvisionImage from "../../assets/vission.webp";
@@ -18,25 +18,13 @@ import abt3 from "../../assets/abt3.png";
 function AboutUsMain() {
   return (
     <>
-      <div className=" relative">
-        {/* Background Image */}
-        <img
-          src={commonHeroImage}
-          alt="Background"
-          className="absolute w-screen h-[100vh]"
-        />
+      <PageHero
+        eyebrow="Since 2009"
+        title="About Us"
+        subtitle="HK Holdings delivers a wide range of products and services related to construction and property decoration, with a next level of craftsmanship."
+        crumbs={[{ label: "About" }]}
+      />
 
-        {/* Overlay Content */}
-        <div className="relative z-10 flex flex-col items-center justify-center w-full h-[60vh] text-brandWhite gap-4">
-          <h1 className="text-4xl font-semibold">About Us</h1>
-          <p className="max-w-[60%] text-center text-sm">
-            HK Holdings delivers a wide range of product and service related to
-            construction and property decoration with a next level of creator.
-          </p>
-        </div>
-      </div>
-
-      <div className="h-8 bg-brandLightMaroon"></div>
       <SecondPart />
 
       <ThirdPart />
@@ -180,10 +168,11 @@ const FifthPart = () => {
           <h1 className="text-4xl font-semibold uppercase text-center">
             OUR TEAM
           </h1>
-          <p className="text-center w-[80%]">
-            There are many variations of passages about of loram ipsum avalabie,
-            but the majority have suffered alteration free in some form, by
-            injected humour, or tree randomised words which don't lock even
+          <p className="max-w-3xl text-center text-fluid-body text-ink-500">
+            Our strength is our people. From welders and fabricators to
+            technical, management and administrative staff, every HK Holdings
+            project is delivered by a team that takes pride in the finish — and
+            stands behind the work long after installation.
           </p>
           <div className="flex gap-2 h-[60vh] ">
             {/* Image 1 */}

@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from "react";
-import commonHeroImage from "../../assets/commonheroimage.png";
+import PageHero from "../../components/ui/PageHero";
 import Footer from "../../components/Footer";
 import BottomFooter from "../../components/BottomFooter";
 import ServicesExpan from "./ServicesExpan";
@@ -29,27 +29,12 @@ function BlogMain() {
 
   return (
     <>
-      <div className="relative">
-        {/* Background Image */}
-        <img
-          src={commonHeroImage}
-          alt="Background"
-          className="absolute w-screen h-[100vh]"
-        />
-
-        {/* Overlay Content */}
-        <div className="relative z-10 flex flex-col items-center justify-center w-full h-[60vh] text-brandWhite gap-4">
-          <h1 className="text-4xl font-semibold">BLOG</h1>
-          <p className="max-w-[60%] text-center text-sm">
-            HK holding have designed and produced glass hand railings and
-            balcony railings, steel hand railings and balcony railings, tempered
-            glass, staircase, canopy, Warehouse using only the best materials.
-            All of these items expertly manufactured in the Sri Lanka to your
-            need, those of your house and your way of life.
-          </p>
-        </div>
-      </div>
-      <div className="h-8 bg-brandLightMaroon"></div>
+      <PageHero
+        eyebrow="News & updates"
+        title="Blog"
+        subtitle="HK Holdings designs and produces glass and steel hand railings, balcony railings, tempered glass, staircases, canopies and warehouses — expertly manufactured in Sri Lanka using only the best materials."
+        crumbs={[{ label: "Blog" }]}
+      />
       <div className="grid grid-cols-1 md:grid-cols-3 gap-4 container py-12">
         {BlogData.map((item, index) => (
           <BlogSection
