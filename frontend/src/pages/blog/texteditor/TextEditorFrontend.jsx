@@ -1,4 +1,5 @@
 import React, { useState, useEffect } from "react";
+import { API_BASE_URL } from "../../../config/api";
 import axios from "axios";
 
 function TextEditor() {
@@ -28,7 +29,7 @@ function TextEditor() {
     }
 
     try {
-      const response = await axios.get(`http://localhost:3000/blogs/${blogId}`);
+      const response = await axios.get(`${API_BASE_URL}/blogs/${blogId}`);
       const fetchedImageUrl = response.data.image; // Assuming the image URL is in `image` field
       setImage(fetchedImageUrl); // Set the image URL in state
     } catch (err) {

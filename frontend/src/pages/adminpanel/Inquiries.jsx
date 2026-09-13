@@ -1,4 +1,5 @@
 import React, { useEffect, useState } from "react";
+import { API_BASE_URL } from "../../config/api";
 import {
   Button,
   Table,
@@ -46,7 +47,7 @@ function Inquiries() {
     const fetchEnquiries = async () => {
       setLoading(true);
       try {
-        const response = await axios.get("http://localhost:3000/enquiries", {
+        const response = await axios.get(`${API_BASE_URL}/enquiries`, {
           params: { startDate, endDate }, // Pass start and end date
         });
         setEnquiries(response.data);
@@ -90,7 +91,7 @@ function Inquiries() {
 
       // If confirmed, delete the enquiry
       if (result.isConfirmed) {
-        await axios.delete(`http://localhost:3000/enquiries/${id}`);
+        await axios.delete(`${API_BASE_URL}/enquiries/${id}`);
         setEnquiries((prevEnquiries) =>
           prevEnquiries.filter((enquiry) => enquiry.id !== id)
         );
@@ -117,7 +118,7 @@ function Inquiries() {
 
       // If confirmed, delete selected enquiries
       if (result.isConfirmed) {
-        await axios.delete("http://localhost:3000/enquiries", {
+        await axios.delete(`${API_BASE_URL}/enquiries`, {
           data: { ids: selected },
         });
         setEnquiries((prevEnquiries) =>

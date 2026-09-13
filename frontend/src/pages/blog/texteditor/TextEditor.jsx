@@ -1,4 +1,5 @@
 import React, { useState, useEffect } from "react";
+import { API_BASE_URL } from "../../../config/api";
 import ReactQuill from "react-quill";
 import "react-quill/dist/quill.snow.css";
 import axios from "axios";
@@ -24,7 +25,7 @@ function TextEditor() {
       const fetchBlog = async () => {
         try {
           const response = await axios.get(
-            `http://localhost:3000/blogs/${blogId}`
+            `${API_BASE_URL}/blogs/${blogId}`
           );
           const { jsonData, title, short_description, image } = response.data;
 
@@ -49,7 +50,7 @@ function TextEditor() {
     // Construct the URL
     const fetchImage = async () => {
       try {
-        const url = `http://localhost:3000/uploads/${blogId}`; // Adjust based on your backend
+        const url = `${API_BASE_URL}/uploads/${blogId}`; // Adjust based on your backend
         setImageUrl(url);
       } catch (error) {
         console.error("Error fetching image:", error);
@@ -65,7 +66,7 @@ function TextEditor() {
 
     try {
       const response = await axios.post(
-        "http://localhost:3000/blogs",
+        `${API_BASE_URL}/blogs`,
         fullData
       );
       setBlogId(response.data.blogId); // Set the returned blog ID
@@ -82,7 +83,7 @@ function TextEditor() {
     const fullData = { title, shortDescription: body, image, jsonData };
 
     try {
-      await axios.put(`http://localhost:3000/blogs/${blogId}`, fullData);
+      await axios.put(`${API_BASE_URL}/blogs/${blogId}`, fullData);
       setError("");
       alert("Blog updated successfully!");
     } catch (err) {
@@ -103,7 +104,7 @@ function TextEditor() {
 
     try {
       const response = await axios.post(
-        `http://localhost:3000/blogs/${blogId}/upload`,
+        `${API_BASE_URL}/blogs/${blogId}/upload`,
         formData,
         {
           headers: { "Content-Type": "multipart/form-data" },

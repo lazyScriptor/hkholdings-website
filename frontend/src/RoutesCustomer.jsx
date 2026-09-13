@@ -61,7 +61,7 @@ function RoutesCustomer() {
   tailChase.register();
 
   return (
-    <BrowserRouter>
+    <BrowserRouter basename={import.meta.env.BASE_URL}>
       <ScrollToTop />
       <Suspense fallback={<PageLoader />}>
         <Routes>

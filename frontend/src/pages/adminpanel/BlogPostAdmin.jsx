@@ -1,4 +1,5 @@
 import React, { useEffect, useState } from "react";
+import { API_BASE_URL } from "../../config/api";
 import axios from "axios";
 import { useNavigate } from "react-router-dom";
 import Swal from "sweetalert2";
@@ -14,7 +15,7 @@ function BlogPostAdmin() {
   useEffect(() => {
     const fetchBlogs = async () => {
       try {
-        const response = await axios.get(`http://localhost:3000/blogs`);
+        const response = await axios.get(`${API_BASE_URL}/blogs`);
         console.log("Fetched blogs:", response.data);
         setBlogData(response.data);
       } catch (error) {
