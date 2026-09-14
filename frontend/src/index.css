@@ -132,13 +132,10 @@
     @apply card hover:-translate-y-1.5 hover:shadow-lift;
   }
 
-  /* --- Eyebrow label --- */
+  /* --- Eyebrow label ---
+     The leading decorative line was removed at the client's request. */
   .eyebrow {
-    @apply inline-flex items-center gap-2 text-sm font-semibold uppercase tracking-[0.18em] text-gold-500;
-  }
-  .eyebrow::before {
-    content: "";
-    @apply inline-block h-px w-8 bg-gold-500;
+    @apply inline-flex items-center text-sm font-semibold uppercase tracking-[0.18em] text-gold-500;
   }
 
   /* --- Image zoom frame --- */

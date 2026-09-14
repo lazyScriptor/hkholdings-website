@@ -55,7 +55,9 @@ function WhyChooseUs() {
                 delay={index * 90}
                 className="group flex items-center gap-4 rounded-xl bg-ink-50 p-4 transition-all duration-500 ease-out-expo hover:-translate-y-1 hover:bg-gold-500 hover:shadow-gold lg:p-5"
               >
-                <div className="grid h-14 w-14 shrink-0 place-items-center rounded-lg bg-white/70 p-2 transition-colors duration-500 group-hover:bg-white/20">
+                {/* The icons are white line-art, so the tile must stay dark
+                    in both states or they vanish on the light card. */}
+                <div className="grid h-14 w-14 shrink-0 place-items-center rounded-lg bg-ink-800 p-2.5 shadow-sm transition-colors duration-500 group-hover:bg-ink-950">
                   <img
                     src={item.image}
                     alt=""

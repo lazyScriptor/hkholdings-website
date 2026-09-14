@@ -80,11 +80,11 @@ function NavBarCustomer({ children }) {
   return (
     <div className="relative">
       <header
-        className={`fixed inset-x-0 top-0 z-50 transition-all duration-500 ease-out-expo
+        className={`fixed inset-x-0 top-0 z-50 transition-shadow duration-300
           ${
             scrolled
-              ? "bg-ink-950/95 shadow-lift backdrop-blur-md"
-              : "bg-gradient-to-b from-ink-950/80 to-transparent"
+              ? "bg-ink-950 shadow-lift backdrop-blur-md"
+              : "bg-gradient-to-b from-ink-950/85 via-ink-950/40 to-transparent"
           }`}
       >
         <nav
