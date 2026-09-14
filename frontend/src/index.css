@@ -187,6 +187,11 @@
 
 /* ============================================================
    Third-party: slick carousel — themed to brand
+
+   Every rule is prefixed with `.slick-slider` so it out-specifies
+   slick-theme.css, which Vite injects AFTER this file (it's imported from the
+   page components). Without the extra specificity, slick's defaults win on a
+   tie and the dots render as its default black "•" bullets.
    ============================================================ */
 .slick-slider,
 .slick-list,
@@ -194,46 +199,71 @@
   min-width: 0;
 }
 
-.slick-dots {
-  bottom: 24px;
+/* Dots: pill indicators, centred with fl*/
+.slick-slider .slick-dots {
+  bottom: 28px;
+  display: flex !important;
+  align-items: center;
+  justify-content: center;
+  gap: 10px;
+  width: 100%;
+  margin: 0;
+  padding: 0;
+  line-height: 0;
 }
-.slick-dots li {
-  margin: 0 4px;
+.slick-slider .slick-dots li {
   width: auto;
   height: auto;
+  margin: 0;
+  padding: 0;
 }
-.slick-dots li button:before {
+/* Kill slick's default bullet glyph outright */
+.slick-slider .slick-dots li button::before {
+  display: none;
   content: "";
 }
-.slick-dots li button {
-  width: 26px;
+.slick-slider .slick-dots li button {
+  width: 22px;
   height: 4px;
   padding: 0;
+  border: none;
   border-radius: 999px;
-  background-color: rgb(255 255 255 / 0.45);
-  transition: all 0.4s cubic-bezier(0.16, 1, 0.3, 1);
+  background-color: rgb(255 255 255 / 0.55);
+  box-shadow: 0 1px 3px rgb(0 0 0 / 0.35);
+  cursor: pointer;
+  transition: width 0.45s cubic-bezier(0.16, 1, 0.3, 1),
+    background-color 0.3s ease;
 }
-.slick-dots li.slick-active button {
-  width: 44px;
-  background-color: rgb(var(--brand-gold));
+.slick-slider .slick-dots li button:hover {
+  background-color: rgb(255 255 255 / 0.9);
 }
-/* Dark dots for light-background carousels */
-.dots-dark .slick-dots li button {
-  background-color: rgb(var(--brand-ink) / 0.25);
-}
-.dots-dark .slick-dots li.slick-active button {
-  background-color: rgb(var(--brand-gold));
+.slick-slider .slick-dots li.slick-active button {
+  width: 42px;
+  background-color: #ad8e61;
+  box-shadow: 0 1px 6px rgb(173 142 97 / 0.7);
 }
 
-.slick-prev,
-.slick-next {
+/* Dark variant for carousels on light backgrounds */
+.slick-slider.dots-dark .slick-dots li button {
+  background-color: rgb(36 28 26 / 0.28);
+  box-shadow: none;
+}
+.slick-slider.dots-dark .slick-dots li button:hover {
+  background-color: rgb(36 28 26 / 0.5);
+}
+.slick-slider.dots-dark .slick-dots li.slick-active button {
+  background-color: #ad8e61;
+}
+
+.slick-slider .slick-prev,
+.slick-slider .slick-next {
   z-index: 20;
   width: 42px;
   height: 42px;
 }
-.slick-prev:before,
-.slick-next:before {
-  color: rgb(var(--brand-gold));
+.slick-slider .slick-prev::before,
+.slick-slider .slick-next::before {
+  color: #ad8e61;
   font-size: 28px;
   opacity: 0.9;
 }
